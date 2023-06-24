@@ -9,10 +9,10 @@ class TextView: UIView {
     
     enum Constraints {
         static let heightAnchorConstraintConstant: CGFloat = 120
-        static let textViewTopAnchorConstraintConstant: CGFloat = 17
-        static let textViewLeadingAnchorConstraintConstant: CGFloat = 16
+        static let textViewTopAnchorConstraintConstant: CGFloat = 12
+        static let textViewLeadingAnchorConstraintConstant: CGFloat = 12
         static let textViewTrailingAnchorConstraintConstant: CGFloat = -16
-        static let textViewBottomAnchorConstraintConstant: CGFloat = -17
+        static let textViewBottomAnchorConstraintConstant: CGFloat = -12
     }
     enum ViewConfiguration {
         static let viewCornerRadius: CGFloat = 16

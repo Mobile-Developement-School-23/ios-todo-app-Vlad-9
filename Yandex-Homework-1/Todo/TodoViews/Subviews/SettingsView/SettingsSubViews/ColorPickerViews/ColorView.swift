@@ -15,7 +15,7 @@ class ColorView: UIView {
     }
     enum Constants {
         static let priorityLabelFontSize: CGFloat = 17
-        static let label = "Цвет дела"
+        static let label = NSLocalizedString("task.color", comment: "Цвет дела")
     }
     
     //MARK: - Dependencies

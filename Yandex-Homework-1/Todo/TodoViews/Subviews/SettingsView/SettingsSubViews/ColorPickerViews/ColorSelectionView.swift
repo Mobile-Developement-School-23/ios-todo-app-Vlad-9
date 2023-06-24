@@ -36,11 +36,11 @@ class ColorSelectionView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
-        label.text = "#HexCode"
+        label.text = NSLocalizedString("task.hex", comment: "hexcode")
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .left
         label.textColor = Colors.labelPrimary.value
-        label.font = .systemFont(ofSize:17, weight: .regular) //TODO
+        label.font = .systemFont(ofSize:17, weight: .regular) 
         
         return label
     }()

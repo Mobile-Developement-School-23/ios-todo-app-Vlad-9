@@ -27,7 +27,7 @@ class PriorityView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
-        label.text = "Важность"
+        label.text = NSLocalizedString("task.priority", comment: "priority")
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .left
         label.textColor = Colors.labelPrimary.value
@@ -53,7 +53,7 @@ class PriorityView: UIView {
     
     private func configureSegmentedControl() {
         segmentedControl.insertSegment(with: Icon.LowIcon.image, at: 0, animated: false)
-        segmentedControl.insertSegment(withTitle: "нет", at: 1, animated: false)
+        segmentedControl.insertSegment(withTitle: NSLocalizedString("task.priorityLow", comment: "low priority"), at: 1, animated: false)
         segmentedControl.insertSegment(with: Icon.HighIcon.image, at: 2, animated: false)
         segmentedControl.selectedSegmentIndex = 1
         segmentedControl.backgroundColor = Colors.supportOverlay.value

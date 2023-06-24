@@ -18,7 +18,7 @@ class RemoveView: UIView {
     enum Constants {
         static let viewCornerRadius: CGFloat = 16
         static let buttonFontSize: CGFloat = 17
-        static let buttonTitle = "Удалить"
+        static let buttonTitle = NSLocalizedString("task.remove", comment: "remove task")
     }
     
     //MARK: - Dependencies

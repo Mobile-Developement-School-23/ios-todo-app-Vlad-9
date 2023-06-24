@@ -8,9 +8,9 @@ class MainViewController: UIViewController {
     private var todoItems:FileCache = FileCache()
     
     func setupbutton() {
-        backButton.setTitle("Перейти на экран Дела с сохраненным делом", for: .normal)
+        backButton.setTitle(NSLocalizedString("task.goToTask", comment: "low go to task"), for: .normal)
         backButton.addTarget(self, action: #selector(presentView), for: .touchUpInside)
-        emptyButton.setTitle("Создать новое дело", for: .normal)
+        emptyButton.setTitle(NSLocalizedString("task.newTask", comment: "create new task"), for: .normal)
         emptyButton.addTarget(self, action: #selector(presentViewWithNewTask), for: .touchUpInside)
     }
 

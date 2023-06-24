@@ -95,7 +95,7 @@ extension TextView { //TODO: - Вынести в протокол
     func configureText(with text: String) {
         self.textView.text = text
         if text == "" {
-            textView.text = "Что надо сделать?"
+            textView.text = NSLocalizedString("placeholder.title", comment: "text for placeholder")
             textView.textColor = Colors.labelTeritary.value
         } else {
             flag = false
@@ -124,7 +124,7 @@ extension TextView: UITextViewDelegate {
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Что надо сделать?"
+            textView.text = NSLocalizedString("placeholder.title", comment: "text for placeholder")
             textView.textColor = Colors.labelTeritary.value
             flag = true
         }

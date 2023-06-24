@@ -134,25 +134,25 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
     }
     
     // MARK: - Setup NavBar
-    
+  
     func setupNavigationBar() {
-        cancelButton.setTitle("Отменить", for: .normal)
+        cancelButton.setTitle(  NSLocalizedString("task.back", comment: "back"), for: .normal)
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         cancelButton.tintColor = Colors.colorBlue.value
         saveButton.titleLabel?.font = .systemFont(ofSize: Constants.navigationBarElementsFontSize)
         
-        saveButton.setTitle("Сохранить", for: .normal)
+        saveButton.setTitle(NSLocalizedString("task.save", comment: "save"), for: .normal)
         saveButton.addTarget(self, action: #selector(saveTodo), for: .touchUpInside)
         saveButton.isEnabled = false
         saveButton.tintColor = Colors.colorBlue.value
         saveButton.titleLabel?.font = .systemFont(ofSize: Constants.navigationBarElementsFontSize, weight: .semibold)
         
         
-        let priorityLabel: UILabel = {
+        let taskLabel: UILabel = {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.numberOfLines = 1
-            label.text = "Дело"
+            label.text =   NSLocalizedString("task.title", comment: "title for task")
             label.adjustsFontSizeToFitWidth = true
             label.textAlignment = .center
             label.textColor = Colors.labelPrimary.value
@@ -161,7 +161,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
             return label
         }()
 
-        navigationItem.titleView = priorityLabel
+        navigationItem.titleView = taskLabel
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cancelButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
     }

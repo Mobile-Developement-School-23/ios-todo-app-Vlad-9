@@ -17,7 +17,6 @@ class PriorityView: UIView {
         static let segmentedControlBottomAnchorConstraintConstant: CGFloat = -12.5
     }
     enum Constants {
-        //  static let dateButtonFontSize: CGFloat = 13
         static let priorityLabelFontSize: CGFloat = 17
     }
     

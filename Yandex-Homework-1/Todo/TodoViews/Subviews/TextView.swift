@@ -25,7 +25,7 @@ class TextView: UIView {
     // MARK: - Dependencies
     
     weak var delegate: ITextViewDelegate?
-    
+    private var flag = true
     // MARK: - UI
     
     private lazy var textView: UITextView = {
@@ -35,7 +35,6 @@ class TextView: UIView {
         textView.allowsEditingTextAttributes = true
         textView.backgroundColor = Colors.backSecondary.value
         textView.isScrollEnabled = false
-        textView.text = ""
         return textView
     }()
     
@@ -44,6 +43,7 @@ class TextView: UIView {
     override init(frame: CGRect) {
         
         super.init(frame: .zero)
+       
         configureView()
         setupConstraints()
     }
@@ -79,6 +79,9 @@ class TextView: UIView {
     //MARK: - Configure
     
     private func configureView() {
+
+        self.textView.delegate = self
+       // textView.textColor = Colors.labelTeritary.value
         self.backgroundColor = Colors.backSecondary.value
         self.layer.cornerRadius = ViewConfiguration.viewCornerRadius
     }
@@ -90,12 +93,37 @@ extension TextView { //TODO: - Вынести в протокол
     
     func configureText(with text: String) {
         self.textView.text = text
+        if text == "" {
+            textView.text = "Что надо сделать?"
+            textView.textColor = Colors.labelTeritary.value
+        }
     }
     func getText() -> String {
-        return(textView.text)
+        if !flag {
+            return(textView.text)
+        } else {
+            return String()
+        }
+       
     }
     func resign()
     {
         self.textView.resignFirstResponder()
+    }
+}
+extension TextView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if flag {
+            textView.text = nil
+            textView.textColor = Colors.labelPrimary.value
+            flag = false
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Что надо сделать?"
+            textView.textColor = Colors.labelTeritary.value
+            flag = true
+        }
     }
 }

@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
         self.navigationController?.present(UINavigationController(rootViewController: assembler.createTodoViewController(with: loadItems())), animated: true)
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         setupbutton()
         view.addSubview(backButton)
         view.addSubview(emptyButton)

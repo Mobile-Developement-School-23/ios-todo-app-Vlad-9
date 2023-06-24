@@ -54,7 +54,6 @@ class PriorityView: UIView {
     private func configureSegmentedControl() {
         segmentedControl.insertSegment(with: Icon.LowIcon.image, at: 0, animated: false)
         segmentedControl.insertSegment(withTitle: "нет", at: 1, animated: false)
-     
         segmentedControl.insertSegment(with: Icon.HighIcon.image, at: 2, animated: false)
         segmentedControl.selectedSegmentIndex = 1
         segmentedControl.backgroundColor = Colors.supportOverlay.value
@@ -79,7 +78,7 @@ class PriorityView: UIView {
                                                   constant: Constraints.segmentedControlTopAnchorConstraintConstant),
             segmentedControl.bottomAnchor.constraint(equalTo: self.bottomAnchor,
                                                      constant: Constraints.segmentedControlBottomAnchorConstraintConstant),
-            segmentedControl.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
 }

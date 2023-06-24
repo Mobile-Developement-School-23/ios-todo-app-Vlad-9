@@ -145,7 +145,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
         saveButton.addTarget(self, action: #selector(saveTodo), for: .touchUpInside)
         saveButton.isEnabled = false
         saveButton.tintColor = Colors.colorBlue.value
-        saveButton.titleLabel?.font = .boldSystemFont(ofSize: Constants.navigationBarElementsFontSize)
+        saveButton.titleLabel?.font = .systemFont(ofSize: Constants.navigationBarElementsFontSize, weight: .semibold)
         
         
         let priorityLabel: UILabel = {

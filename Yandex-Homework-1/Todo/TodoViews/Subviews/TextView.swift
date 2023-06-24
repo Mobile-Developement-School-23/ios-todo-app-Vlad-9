@@ -35,6 +35,7 @@ class TextView: UIView {
         textView.allowsEditingTextAttributes = true
         textView.backgroundColor = Colors.backSecondary.value
         textView.isScrollEnabled = false
+        textView.font = .systemFont(ofSize: 17)
         return textView
     }()
     
@@ -96,6 +97,8 @@ extension TextView { //TODO: - Вынести в протокол
         if text == "" {
             textView.text = "Что надо сделать?"
             textView.textColor = Colors.labelTeritary.value
+        } else {
+            flag = false
         }
     }
     func getText() -> String {

@@ -25,10 +25,10 @@ enum TestCSVConstants {
 
     static let testCSVFileName = "TestCSV3"
     static let testCSVWithAllParameters = """
-    12345;Test;1681469040;false;0;1681469040;1681469040
+    12345;Test;1681469040;false;;0;1681469040;1681469040
     """
     static let testCSVWithoutAllParameters =  """
-    2B76FE70-ADC8-43BA-A586-17B7D7D66351;Test;;false;0;1681469040;
+    2B76FE70-ADC8-43BA-A586-17B7D7D66351;Test;;false;;0;1681469040;
     """
 
 }

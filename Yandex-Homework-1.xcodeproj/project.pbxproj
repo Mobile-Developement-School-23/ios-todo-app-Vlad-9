@@ -7,16 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		373349B82A41C6BA006BA9F6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373349B72A41C6BA006BA9F6 /* Colors.swift */; };
+		373349BA2A41CC3A006BA9F6 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373349B92A41CC3A006BA9F6 /* Fonts.swift */; };
 		374FFEFC2A3A5D1200B6EA5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFEFB2A3A5D1200B6EA5B /* AppDelegate.swift */; };
 		374FFEFE2A3A5D1200B6EA5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFEFD2A3A5D1200B6EA5B /* SceneDelegate.swift */; };
 		374FFF002A3A5D1200B6EA5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFEFF2A3A5D1200B6EA5B /* ViewController.swift */; };
-		374FFF032A3A5D1200B6EA5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374FFF012A3A5D1200B6EA5B /* Main.storyboard */; };
 		374FFF052A3A5D1400B6EA5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374FFF042A3A5D1400B6EA5B /* Assets.xcassets */; };
 		374FFF082A3A5D1400B6EA5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374FFF062A3A5D1400B6EA5B /* LaunchScreen.storyboard */; };
 		374FFF132A3A5D1400B6EA5B /* Yandex_Homework_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFF122A3A5D1400B6EA5B /* Yandex_Homework_1Tests.swift */; };
 		374FFF2C2A3A5D2200B6EA5B /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFF2B2A3A5D2200B6EA5B /* TodoItem.swift */; };
 		374FFF2E2A3A5D2F00B6EA5B /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFF2D2A3A5D2F00B6EA5B /* FileCache.swift */; };
 		375D55E32A3D20A100C11276 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D55E22A3D20A100C11276 /* TestConstants.swift */; };
+		37B18DF82A4336280061DC06 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18DF72A4336280061DC06 /* TextView.swift */; };
+		37B18DFA2A43481C0061DC06 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18DF92A43481C0061DC06 /* MainViewController.swift */; };
+		37B18DFC2A438BAE0061DC06 /* RemoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18DFB2A438BAE0061DC06 /* RemoveView.swift */; };
+		37B18DFE2A438E7A0061DC06 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18DFD2A438E7A0061DC06 /* SettingsView.swift */; };
+		37B18E012A438EFC0061DC06 /* DeadlineHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E002A438EFC0061DC06 /* DeadlineHelperView.swift */; };
+		37B18E042A4390590061DC06 /* PriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E032A4390590061DC06 /* PriorityView.swift */; };
+		37B18E062A4394F70061DC06 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E052A4394F70061DC06 /* DeadlineView.swift */; };
+		37B18E082A4395B70061DC06 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E072A4395B70061DC06 /* CalendarView.swift */; };
+		37B18E0F2A45D5530061DC06 /* TodoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E0E2A45D5530061DC06 /* TodoPresenter.swift */; };
+		37B18E112A45D5EF0061DC06 /* TodoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E102A45D5EF0061DC06 /* TodoAssembly.swift */; };
+		37B18E132A45D8B60061DC06 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E122A45D8B60061DC06 /* TodoViewModel.swift */; };
+		37B18E152A462CEC0061DC06 /* ColorPickerPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E142A462CEC0061DC06 /* ColorPickerPaletteView.swift */; };
+		37EC21AB2A464FD1000DE90B /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EC21AA2A464FD1000DE90B /* ColorView.swift */; };
+		37EC21AD2A465848000DE90B /* ColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EC21AC2A465848000DE90B /* ColorSelectionView.swift */; };
+		37EC21AF2A4676AB000DE90B /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EC21AE2A4676AB000DE90B /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,11 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		373349B72A41C6BA006BA9F6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		373349B92A41CC3A006BA9F6 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		374FFEF82A3A5D1200B6EA5B /* Yandex-Homework-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yandex-Homework-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		374FFEFB2A3A5D1200B6EA5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		374FFEFD2A3A5D1200B6EA5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		374FFEFF2A3A5D1200B6EA5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		374FFF022A3A5D1200B6EA5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		374FFF042A3A5D1400B6EA5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		374FFF072A3A5D1400B6EA5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		374FFF092A3A5D1400B6EA5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +60,21 @@
 		374FFF2B2A3A5D2200B6EA5B /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		374FFF2D2A3A5D2F00B6EA5B /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		375D55E22A3D20A100C11276 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
+		37B18DF72A4336280061DC06 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		37B18DF92A43481C0061DC06 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		37B18DFB2A438BAE0061DC06 /* RemoveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveView.swift; sourceTree = "<group>"; };
+		37B18DFD2A438E7A0061DC06 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		37B18E002A438EFC0061DC06 /* DeadlineHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineHelperView.swift; sourceTree = "<group>"; };
+		37B18E032A4390590061DC06 /* PriorityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityView.swift; sourceTree = "<group>"; };
+		37B18E052A4394F70061DC06 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
+		37B18E072A4395B70061DC06 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		37B18E0E2A45D5530061DC06 /* TodoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoPresenter.swift; sourceTree = "<group>"; };
+		37B18E102A45D5EF0061DC06 /* TodoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAssembly.swift; sourceTree = "<group>"; };
+		37B18E122A45D8B60061DC06 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
+		37B18E142A462CEC0061DC06 /* ColorPickerPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerPaletteView.swift; sourceTree = "<group>"; };
+		37EC21AA2A464FD1000DE90B /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
+		37EC21AC2A465848000DE90B /* ColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionView.swift; sourceTree = "<group>"; };
+		37EC21AE2A4676AB000DE90B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		373349B62A41C6AE006BA9F6 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				373349B72A41C6BA006BA9F6 /* Colors.swift */,
+				373349B92A41CC3A006BA9F6 /* Fonts.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
 		374FFEEF2A3A5D1200B6EA5B = {
 			isa = PBXGroup;
 			children = (
@@ -84,15 +125,15 @@
 		374FFEFA2A3A5D1200B6EA5B /* Yandex-Homework-1 */ = {
 			isa = PBXGroup;
 			children = (
-				374FFEFB2A3A5D1200B6EA5B /* AppDelegate.swift */,
-				374FFEFD2A3A5D1200B6EA5B /* SceneDelegate.swift */,
-				374FFEFF2A3A5D1200B6EA5B /* ViewController.swift */,
-				374FFF012A3A5D1200B6EA5B /* Main.storyboard */,
+				37EC21B42A467787000DE90B /* TodoList */,
+				37EC21B32A46776D000DE90B /* Models */,
+				37EC21B12A46771D000DE90B /* Services */,
+				37EC21B02A4676E8000DE90B /* Helpers */,
+				37B18E0D2A45D4F80061DC06 /* Todo */,
+				373349B62A41C6AE006BA9F6 /* Design */,
 				374FFF042A3A5D1400B6EA5B /* Assets.xcassets */,
 				374FFF062A3A5D1400B6EA5B /* LaunchScreen.storyboard */,
 				374FFF092A3A5D1400B6EA5B /* Info.plist */,
-				374FFF2B2A3A5D2200B6EA5B /* TodoItem.swift */,
-				374FFF2D2A3A5D2F00B6EA5B /* FileCache.swift */,
 			);
 			path = "Yandex-Homework-1";
 			sourceTree = "<group>";
@@ -104,6 +145,109 @@
 				375D55E22A3D20A100C11276 /* TestConstants.swift */,
 			);
 			path = "Yandex-Homework-1Tests";
+			sourceTree = "<group>";
+		};
+		37B18DF52A4335F30061DC06 /* TodoViews */ = {
+			isa = PBXGroup;
+			children = (
+				37B18DF62A4336070061DC06 /* Subviews */,
+			);
+			path = TodoViews;
+			sourceTree = "<group>";
+		};
+		37B18DF62A4336070061DC06 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				37B18DF72A4336280061DC06 /* TextView.swift */,
+				37B18DFB2A438BAE0061DC06 /* RemoveView.swift */,
+				37B18DFF2A438EE40061DC06 /* SettingsView */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		37B18DFF2A438EE40061DC06 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				37B18DFD2A438E7A0061DC06 /* SettingsView.swift */,
+				37EC21B52A4677AC000DE90B /* SettingsSubViews */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		37B18E0D2A45D4F80061DC06 /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				37B18DF52A4335F30061DC06 /* TodoViews */,
+				37B18E0E2A45D5530061DC06 /* TodoPresenter.swift */,
+				374FFEFF2A3A5D1200B6EA5B /* ViewController.swift */,
+				37B18E122A45D8B60061DC06 /* TodoViewModel.swift */,
+				37B18E102A45D5EF0061DC06 /* TodoAssembly.swift */,
+			);
+			path = Todo;
+			sourceTree = "<group>";
+		};
+		37EC21B02A4676E8000DE90B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				37EC21AE2A4676AB000DE90B /* UIColor+Extensions.swift */,
+				37B18E142A462CEC0061DC06 /* ColorPickerPaletteView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		37EC21B12A46771D000DE90B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				374FFEFB2A3A5D1200B6EA5B /* AppDelegate.swift */,
+				374FFEFD2A3A5D1200B6EA5B /* SceneDelegate.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		37EC21B32A46776D000DE90B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				374FFF2D2A3A5D2F00B6EA5B /* FileCache.swift */,
+				374FFF2B2A3A5D2200B6EA5B /* TodoItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		37EC21B42A467787000DE90B /* TodoList */ = {
+			isa = PBXGroup;
+			children = (
+				37B18DF92A43481C0061DC06 /* MainViewController.swift */,
+			);
+			path = TodoList;
+			sourceTree = "<group>";
+		};
+		37EC21B52A4677AC000DE90B /* SettingsSubViews */ = {
+			isa = PBXGroup;
+			children = (
+				37B18E032A4390590061DC06 /* PriorityView.swift */,
+				37B18E072A4395B70061DC06 /* CalendarView.swift */,
+				37EC21B72A4677BB000DE90B /* ColorPickerViews */,
+				37EC21B62A4677B4000DE90B /* DeadlineViews */,
+			);
+			path = SettingsSubViews;
+			sourceTree = "<group>";
+		};
+		37EC21B62A4677B4000DE90B /* DeadlineViews */ = {
+			isa = PBXGroup;
+			children = (
+				37B18E002A438EFC0061DC06 /* DeadlineHelperView.swift */,
+				37B18E052A4394F70061DC06 /* DeadlineView.swift */,
+			);
+			path = DeadlineViews;
+			sourceTree = "<group>";
+		};
+		37EC21B72A4677BB000DE90B /* ColorPickerViews */ = {
+			isa = PBXGroup;
+			children = (
+				37EC21AA2A464FD1000DE90B /* ColorView.swift */,
+				37EC21AC2A465848000DE90B /* ColorSelectionView.swift */,
+			);
+			path = ColorPickerViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,7 +334,6 @@
 			files = (
 				374FFF082A3A5D1400B6EA5B /* LaunchScreen.storyboard in Resources */,
 				374FFF052A3A5D1400B6EA5B /* Assets.xcassets in Resources */,
-				374FFF032A3A5D1200B6EA5B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,11 +371,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B18E012A438EFC0061DC06 /* DeadlineHelperView.swift in Sources */,
+				37B18E112A45D5EF0061DC06 /* TodoAssembly.swift in Sources */,
+				37EC21AB2A464FD1000DE90B /* ColorView.swift in Sources */,
+				37EC21AD2A465848000DE90B /* ColorSelectionView.swift in Sources */,
+				37B18E152A462CEC0061DC06 /* ColorPickerPaletteView.swift in Sources */,
+				373349BA2A41CC3A006BA9F6 /* Fonts.swift in Sources */,
+				37B18E082A4395B70061DC06 /* CalendarView.swift in Sources */,
+				37B18E042A4390590061DC06 /* PriorityView.swift in Sources */,
 				374FFF002A3A5D1200B6EA5B /* ViewController.swift in Sources */,
 				374FFEFC2A3A5D1200B6EA5B /* AppDelegate.swift in Sources */,
+				37B18E132A45D8B60061DC06 /* TodoViewModel.swift in Sources */,
 				374FFF2C2A3A5D2200B6EA5B /* TodoItem.swift in Sources */,
+				37B18E062A4394F70061DC06 /* DeadlineView.swift in Sources */,
+				37B18DFC2A438BAE0061DC06 /* RemoveView.swift in Sources */,
 				374FFF2E2A3A5D2F00B6EA5B /* FileCache.swift in Sources */,
 				374FFEFE2A3A5D1200B6EA5B /* SceneDelegate.swift in Sources */,
+				37B18DF82A4336280061DC06 /* TextView.swift in Sources */,
+				373349B82A41C6BA006BA9F6 /* Colors.swift in Sources */,
+				37EC21AF2A4676AB000DE90B /* UIColor+Extensions.swift in Sources */,
+				37B18E0F2A45D5530061DC06 /* TodoPresenter.swift in Sources */,
+				37B18DFE2A438E7A0061DC06 /* SettingsView.swift in Sources */,
+				37B18DFA2A43481C0061DC06 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,14 +416,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		374FFF012A3A5D1200B6EA5B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				374FFF022A3A5D1200B6EA5B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		374FFF062A3A5D1400B6EA5B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -325,7 +477,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -379,7 +531,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -396,11 +548,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5TK92WAY4H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Yandex-Homework-1/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -423,11 +577,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5TK92WAY4H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Yandex-Homework-1/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

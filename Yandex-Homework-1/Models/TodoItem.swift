@@ -28,6 +28,7 @@ struct TodoItem: Equatable {
         case keyText
         case keyDeadline
         case keyIsDone
+        case hexCode
         case keyPriority
         case keyDateCreated
         case keyDateChanged
@@ -42,6 +43,8 @@ struct TodoItem: Equatable {
                 return "deadline"
             case .keyIsDone:
                 return "isDone"
+            case .hexCode:
+                return "hexCode"
             case .keyPriority:
                 return "priority"
             case .keyDateCreated:
@@ -66,6 +69,7 @@ struct TodoItem: Equatable {
     let text: String
     let deadline: Date?
     let isDone: Bool
+    let hexCode: String?
     let priority: Priority
     let dateCreated: Date
     let dateChanged: Date?
@@ -77,6 +81,7 @@ struct TodoItem: Equatable {
         text: String,
         deadline: Date? = nil,
         isDone: Bool = false,
+        hexCode: String? = nil,
         priority: Priority,
         dateCreated: Date = Date(),
         dateChanged: Date? = nil
@@ -85,6 +90,7 @@ struct TodoItem: Equatable {
         self.text = text
         self.deadline = deadline
         self.isDone = isDone
+        self.hexCode = hexCode
         self.priority = priority
         self.dateCreated = dateCreated
         self.dateChanged = dateChanged
@@ -108,7 +114,12 @@ extension TodoItem {
 
         result += Constants.separatorCSV + String(isDone)
         result += Constants.separatorCSV
-
+        if hexCode != nil {
+            result += Constants.separatorCSV + "\(hexCode)"
+           
+        }
+        result += Constants.separatorCSV
+        
         if priority != .normal {
             result += String(priority.rawValue)
         }
@@ -142,7 +153,7 @@ extension TodoItem {
         else {
             return nil
         }
-
+        let hexCode = columns[Keys.hexCode.rawValue]
         let dateUpdated = TimeInterval(columns[Keys.keyDateChanged.rawValue])
             .flatMap { Date(timeIntervalSince1970: $0) }
         let deadline  = TimeInterval(columns[Keys.keyDeadline.rawValue])
@@ -155,6 +166,7 @@ extension TodoItem {
             text: text,
             deadline: deadline,
             isDone: isDone,
+            hexCode: hexCode,
             priority: priority,
             dateCreated: dateCreated,
             dateChanged: dateUpdated
@@ -171,7 +183,9 @@ extension TodoItem {
             Keys.keyIsDone.description: isDone,
             Keys.keyDateCreated.description: Int(dateCreated.timeIntervalSince1970)
         ]
-
+        if let hexCode {
+            result[Keys.hexCode.description] = hexCode
+        }
         if let deadline {
             result[Keys.keyDeadline.description] = Int(deadline.timeIntervalSince1970)
         }
@@ -203,7 +217,7 @@ extension TodoItem {
         else {
             return nil
         }
-
+        let hexCode = object[Keys.hexCode.description] as? String
         let dateUpdated = (object[Keys.keyDateChanged.description] as? TimeInterval)
             .flatMap { Date(timeIntervalSince1970: $0) }
         let deadline  = (object[Keys.keyDeadline.description] as? TimeInterval)
@@ -216,6 +230,7 @@ extension TodoItem {
             text: text,
             deadline: deadline,
             isDone: isDone,
+            hexCode: hexCode,
             priority: priority,
             dateCreated: dateCreated,
             dateChanged: dateUpdated

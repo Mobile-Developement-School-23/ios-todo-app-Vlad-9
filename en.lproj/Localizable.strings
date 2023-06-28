@@ -1,0 +1,11 @@
+"placeholder.title" = "What do you want to do?";
+"task.title" = "Task";
+"task.save" = "Save";
+"task.back" = "Back";
+"task.priority" = "Priority";
+"task.color" = "Task color";
+"task.remove" = "Delete";
+"task.priorityLow" = "normal";
+"task.newTask" = "Create new task";
+"task.goToTask" = "Show task";
+"task.hex" = "HEX code";

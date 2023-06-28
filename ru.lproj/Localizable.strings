@@ -1,0 +1,11 @@
+"placeholder.title" = "Что надо сделать?";
+"task.title" = "Дело";
+"task.save" = "Сохранить";
+"task.back" = "Отменить";
+"task.priority" = "Важность";
+"task.color" = "Цвет дела";
+"task.remove" = "Удалить";
+"task.priorityLow" = "нет";
+"task.newTask" = "Создать новое дело";
+"task.goToTask" = "Показать дело";
+"task.hex" = "HEX код";

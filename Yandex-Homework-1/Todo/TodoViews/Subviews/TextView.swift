@@ -2,6 +2,7 @@ import UIKit
 
 protocol ITextViewDelegate: AnyObject {
     func returnText()
+    func emptyText(flag: Bool)
 }
 class TextView: UIView {
     
@@ -82,7 +83,6 @@ class TextView: UIView {
     private func configureView() {
 
         self.textView.delegate = self
-       // textView.textColor = Colors.labelTeritary.value
         self.backgroundColor = Colors.backSecondary.value
         self.layer.cornerRadius = ViewConfiguration.viewCornerRadius
     }
@@ -100,6 +100,7 @@ extension TextView { //TODO: - Вынести в протокол
         } else {
             flag = false
         }
+        self.delegate?.emptyText(flag: flag).self
     }
     func getText() -> String {
         if !flag {
@@ -118,6 +119,13 @@ extension TextView { //TODO: - Вынести в протокол
     }
 }
 extension TextView: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.isEmpty  {
+            self.delegate?.emptyText(flag: true).self
+        } else {
+            self.delegate?.emptyText(flag: false).self
+        }
+    }
     func textViewDidBeginEditing(_ textView: UITextView) {
         if flag {
             textView.text = nil
@@ -131,5 +139,6 @@ extension TextView: UITextViewDelegate {
             textView.textColor = Colors.labelTeritary.value
             flag = true
         }
+        self.delegate?.emptyText(flag: flag).self
     }
 }

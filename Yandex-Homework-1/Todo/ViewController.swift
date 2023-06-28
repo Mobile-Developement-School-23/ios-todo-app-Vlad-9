@@ -10,6 +10,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
     }
     
     func emptyText(flag: Bool) {
+        removeView.changeState(flag: flag)
         if flag {
             self.navigationItem.rightBarButtonItem!.isEnabled = false
         } else {

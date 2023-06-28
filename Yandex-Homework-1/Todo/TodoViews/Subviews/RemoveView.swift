@@ -48,7 +48,7 @@ class RemoveView: UIView {
         self.layer.cornerRadius = Constants.viewCornerRadius
         self.backgroundColor = Colors.backSecondary.value
     }
-
+    
     private func setupButton() {
         removeButton.setTitle(Constants.buttonTitle, for: .normal)
         removeButton.addTarget(self, action: #selector(remove), for: .touchUpInside)
@@ -74,5 +74,14 @@ class RemoveView: UIView {
 
     @objc private func remove() {
         delegate.self?.userTappedRemove()
+    }
+}
+extension RemoveView {
+    func changeState(flag: Bool) {
+        if flag {
+            self.removeButton.isEnabled = false
+        } else {
+            self.removeButton.isEnabled = true
+        }
     }
 }

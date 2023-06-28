@@ -1,5 +1,8 @@
 import UIKit
 
+protocol ColorSelectionViewDelegate: AnyObject {
+    func userChangeColor(with color: UIColor)
+}
 
 class ColorSelectionView: UIView {
     
@@ -25,7 +28,7 @@ class ColorSelectionView: UIView {
     }
     
     // MARK: - Dependencies
-    
+    weak var delegate: ColorSelectionViewDelegate?
     private var color: UIColor?
     
     // MARK: - UI
@@ -110,6 +113,7 @@ extension ColorSelectionView {
         self.color = color?.addBrightness(with: CGFloat(value))
         self.hexLabel.text = self.color?.toHexString()
         self.hexLabel.textColor = self.color
+        delegate?.userChangeColor(with: self.color ?? Colors.labelPrimary.value).self
     }
 }
 
@@ -122,7 +126,7 @@ extension ColorSelectionView {
                 self?.color = color
                 self?.hexLabel.text = color.toHexString()
                 self?.hexLabel.textColor = color
-                
+                self?.delegate?.userChangeColor(with: color ?? Colors.labelPrimary.value).self
                 UIView.animate(withDuration: AnimationConfiguration.standardDuration,
                                animations: {
                     self?.mySlider.setValue(ViewConfiguration.sliderMaxValue,
@@ -141,6 +145,8 @@ extension ColorSelectionView { //TODO: - Вынести в протокол
         self.hexLabel.text = color
         mySlider.isEnabled = true
         self.hexLabel.textColor = self.color
+        delegate?.userChangeColor(with: self.color ?? Colors.labelPrimary.value).self
+        
     }
     
     func getHexColor() -> String? {

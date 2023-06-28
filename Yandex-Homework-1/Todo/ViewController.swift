@@ -4,7 +4,23 @@ protocol IViewControllerDelegate: AnyObject {
     func save(with: TodoViewModel)
     func remove(with: TodoViewModel)
 }
-class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
+class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, ISettingsColorDelegate, ITextViewDelegate {
+    func returnText() {
+        print("")
+    }
+    
+    func emptyText(flag: Bool) {
+        removeView.changeState(flag: flag)
+        if flag {
+            self.navigationItem.rightBarButtonItem!.isEnabled = false
+        } else {
+            self.navigationItem.rightBarButtonItem!.isEnabled = true
+        }
+    }
+    
+    func userChangeColor(color: UIColor) {
+        self.txtView.setColorText(color: color)
+    }
     
     //MARK: - Constants
     enum Constraints {
@@ -65,6 +81,9 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
     func setupWithViewModel(model: TodoViewModel) {
         self.todoViewModel = model
         self.txtView.configureText(with: model.text)
+        if model.text == "" {
+            self.navigationItem.rightBarButtonItem!.isEnabled = false
+        }
         self.settingsView.setPriority(with: model.priority.rawValue)
         if let deadline = model.deadline {
             self.settingsView.setDeadline(with: deadline)
@@ -104,9 +123,10 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.viewDidLoad()
+        self.settingsView.delegateColor = self
         configure()
         setupConstraints()
+        presenter.viewDidLoad()
     }
     
     // MARK: - Configuration
@@ -123,6 +143,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
     func setDelegate() {
         self.scrollView.delegate = self
         self.removeView.delegate = self
+
         settingsView.delegate = self
     }
     
@@ -143,7 +164,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
         
         saveButton.setTitle(NSLocalizedString("task.save", comment: "save"), for: .normal)
         saveButton.addTarget(self, action: #selector(saveTodo), for: .touchUpInside)
-        saveButton.isEnabled = false
+       // saveButton.isEnabled = false
         saveButton.tintColor = Colors.colorBlue.value
         saveButton.titleLabel?.font = .systemFont(ofSize: Constants.navigationBarElementsFontSize, weight: .semibold)
         
@@ -164,6 +185,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
         navigationItem.titleView = taskLabel
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cancelButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
+        self.txtView.delegate = self
     }
     
     

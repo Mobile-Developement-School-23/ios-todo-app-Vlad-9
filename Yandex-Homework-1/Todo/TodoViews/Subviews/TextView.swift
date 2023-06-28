@@ -109,6 +109,9 @@ extension TextView { //TODO: - Вынести в протокол
         }
        
     }
+    func setColorText(color: UIColor) {
+        self.textView.textColor = color
+    }
     func resign()
     {
         self.textView.resignFirstResponder()

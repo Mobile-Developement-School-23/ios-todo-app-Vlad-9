@@ -4,7 +4,11 @@ protocol IViewControllerDelegate: AnyObject {
     func save(with: TodoViewModel)
     func remove(with: TodoViewModel)
 }
-class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
+class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, ISettingsColorDelegate {
+    func userChangeColor(color: UIColor) {
+        self.txtView.setColorText(color: color)
+    }
+    
     
     //MARK: - Constants
     enum Constraints {
@@ -104,6 +108,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.settingsView.delegateColor = self
         presenter.viewDidLoad()
         configure()
         setupConstraints()
@@ -123,6 +128,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate {
     func setDelegate() {
         self.scrollView.delegate = self
         self.removeView.delegate = self
+
         settingsView.delegate = self
     }
     

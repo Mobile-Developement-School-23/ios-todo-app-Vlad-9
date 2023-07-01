@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372683782A4DBA4F005AA9BC /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372683772A4DBA4F005AA9BC /* TodoTableViewCell.swift */; };
+		3726837A2A4DE81B005AA9BC /* TodoDoneUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372683792A4DE81B005AA9BC /* TodoDoneUIView.swift */; };
+		3726837E2A4E45C5005AA9BC /* DeadlineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726837D2A4E45C5005AA9BC /* DeadlineCellView.swift */; };
+		372683802A4E63B7005AA9BC /* CreateNewTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726837F2A4E63B7005AA9BC /* CreateNewTaskTableViewCell.swift */; };
+		372683822A4F73DE005AA9BC /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372683812A4F73DE005AA9BC /* Animator.swift */; };
+		372683882A4FAA5F005AA9BC /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372683872A4FAA5F005AA9BC /* UIButton+Extension.swift */; };
 		373349B82A41C6BA006BA9F6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373349B72A41C6BA006BA9F6 /* Colors.swift */; };
 		373349BA2A41CC3A006BA9F6 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373349B92A41CC3A006BA9F6 /* Fonts.swift */; };
 		374FFEFC2A3A5D1200B6EA5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFEFB2A3A5D1200B6EA5B /* AppDelegate.swift */; };
@@ -47,6 +53,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		372683772A4DBA4F005AA9BC /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		372683792A4DE81B005AA9BC /* TodoDoneUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDoneUIView.swift; sourceTree = "<group>"; };
+		3726837D2A4E45C5005AA9BC /* DeadlineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineCellView.swift; sourceTree = "<group>"; };
+		3726837F2A4E63B7005AA9BC /* CreateNewTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskTableViewCell.swift; sourceTree = "<group>"; };
+		372683812A4F73DE005AA9BC /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		372683872A4FAA5F005AA9BC /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		373349B72A41C6BA006BA9F6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		373349B92A41CC3A006BA9F6 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		374FFEF82A3A5D1200B6EA5B /* Yandex-Homework-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yandex-Homework-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +233,12 @@
 			isa = PBXGroup;
 			children = (
 				37B18DF92A43481C0061DC06 /* MainViewController.swift */,
+				3726837F2A4E63B7005AA9BC /* CreateNewTaskTableViewCell.swift */,
+				3726837D2A4E45C5005AA9BC /* DeadlineCellView.swift */,
+				372683772A4DBA4F005AA9BC /* TodoTableViewCell.swift */,
+				372683792A4DE81B005AA9BC /* TodoDoneUIView.swift */,
+				372683812A4F73DE005AA9BC /* Animator.swift */,
+				372683872A4FAA5F005AA9BC /* UIButton+Extension.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -379,16 +397,21 @@
 			files = (
 				37B18E012A438EFC0061DC06 /* DeadlineHelperView.swift in Sources */,
 				37B18E112A45D5EF0061DC06 /* TodoAssembly.swift in Sources */,
+				372683802A4E63B7005AA9BC /* CreateNewTaskTableViewCell.swift in Sources */,
 				37EC21AB2A464FD1000DE90B /* ColorView.swift in Sources */,
 				37EC21AD2A465848000DE90B /* ColorSelectionView.swift in Sources */,
+				372683782A4DBA4F005AA9BC /* TodoTableViewCell.swift in Sources */,
 				37B18E152A462CEC0061DC06 /* ColorPickerPaletteView.swift in Sources */,
 				373349BA2A41CC3A006BA9F6 /* Fonts.swift in Sources */,
 				37B18E082A4395B70061DC06 /* CalendarView.swift in Sources */,
+				372683882A4FAA5F005AA9BC /* UIButton+Extension.swift in Sources */,
 				37B18E042A4390590061DC06 /* PriorityView.swift in Sources */,
 				374FFF002A3A5D1200B6EA5B /* ViewController.swift in Sources */,
+				372683822A4F73DE005AA9BC /* Animator.swift in Sources */,
 				374FFEFC2A3A5D1200B6EA5B /* AppDelegate.swift in Sources */,
 				37B18E132A45D8B60061DC06 /* TodoViewModel.swift in Sources */,
 				374FFF2C2A3A5D2200B6EA5B /* TodoItem.swift in Sources */,
+				3726837E2A4E45C5005AA9BC /* DeadlineCellView.swift in Sources */,
 				37B18E062A4394F70061DC06 /* DeadlineView.swift in Sources */,
 				37B18DFC2A438BAE0061DC06 /* RemoveView.swift in Sources */,
 				374FFF2E2A3A5D2F00B6EA5B /* FileCache.swift in Sources */,
@@ -396,6 +419,7 @@
 				37B18DF82A4336280061DC06 /* TextView.swift in Sources */,
 				373349B82A41C6BA006BA9F6 /* Colors.swift in Sources */,
 				37EC21AF2A4676AB000DE90B /* UIColor+Extensions.swift in Sources */,
+				3726837A2A4DE81B005AA9BC /* TodoDoneUIView.swift in Sources */,
 				37B18E0F2A45D5530061DC06 /* TodoPresenter.swift in Sources */,
 				37B18DFE2A438E7A0061DC06 /* SettingsView.swift in Sources */,
 				37B18DFA2A43481C0061DC06 /* MainViewController.swift in Sources */,

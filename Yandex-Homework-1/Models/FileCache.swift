@@ -37,7 +37,9 @@ class FileCache: IFileCache {
         }
         return path.appendingPathComponent(fileName).appendingPathExtension(format.rawValue)
     }
-
+    func getAll() -> [TodoItem] {
+        return todoItems.reversed()
+    }
     func add(todoItem: TodoItem) -> TodoItem? {
         if let index = todoItems.firstIndex(where: { $0.id == todoItem.id}) {
             todoItems[index] = todoItem

@@ -3,8 +3,8 @@ protocol IScrollDelegate: AnyObject {
     func userTapDate()
 }
 protocol ISettingsColorDelegate: AnyObject {
-    func userChangeColor(color: UIColor)
-}
+     func userChangeColor(color: UIColor)
+ }
 protocol ISettingsView {
     func setPriority(with value: Int)
     func setDeadline(with deadline: Date)
@@ -41,8 +41,8 @@ class SettingsView: UIView{
     private var dateFlag = false
     
     weak var delegate: IScrollDelegate?
-    weak var delegateColor: ISettingsColorDelegate?
     weak var delegateSwitcher: ISwitchDeadlineDelegate?
+    weak var delegateColor: ISettingsColorDelegate?
     private var detailContainerHideConstraint: [NSLayoutConstraint] = []
     
     private lazy var separator1 = createSeparator()
@@ -228,13 +228,14 @@ extension SettingsView: ISwitchColorDelegate {
 
 //MARK: - ColorSelectionViewDelegate
 
-extension SettingsView: ColorSelectionViewDelegate{
-    func userChangeColor(with color: UIColor) {
-        self.delegateColor?.userChangeColor(color: color).self
-    }
-    
-    
-}
+ extension SettingsView: ColorSelectionViewDelegate{
+     func userChangeColor(with color: UIColor) {
+         self.delegateColor?.userChangeColor(color: color).self
+     }
+
+
+ }
+
 
 //MARK: - ISwitchDeadlineDelegate
 

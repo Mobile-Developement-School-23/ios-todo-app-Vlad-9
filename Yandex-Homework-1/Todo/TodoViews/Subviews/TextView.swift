@@ -83,6 +83,7 @@ class TextView: UIView {
     private func configureView() {
 
         self.textView.delegate = self
+       // textView.textColor = Colors.labelTeritary.value
         self.backgroundColor = Colors.backSecondary.value
         self.layer.cornerRadius = ViewConfiguration.viewCornerRadius
     }
@@ -111,21 +112,14 @@ extension TextView { //TODO: - Вынести в протокол
        
     }
     func setColorText(color: UIColor) {
-        self.textView.textColor = color
-    }
+             self.textView.textColor = color
+         }
     func resign()
     {
         self.textView.resignFirstResponder()
     }
 }
 extension TextView: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.text.isEmpty  {
-            self.delegate?.emptyText(flag: true).self
-        } else {
-            self.delegate?.emptyText(flag: false).self
-        }
-    }
     func textViewDidBeginEditing(_ textView: UITextView) {
         if flag {
             textView.text = nil
@@ -133,12 +127,18 @@ extension TextView: UITextViewDelegate {
             flag = false
         }
     }
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = NSLocalizedString("placeholder.title", comment: "text for placeholder")
-            textView.textColor = Colors.labelTeritary.value
             flag = true
         }
         self.delegate?.emptyText(flag: flag).self
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+                   textView.text = NSLocalizedString("placeholder.title", comment: "text for placeholder")
+                   textView.textColor = Colors.labelTeritary.value
+                   flag = true
+               }
+               self.delegate?.emptyText(flag: flag).self
     }
 }

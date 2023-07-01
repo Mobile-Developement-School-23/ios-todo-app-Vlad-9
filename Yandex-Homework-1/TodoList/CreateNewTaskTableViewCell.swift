@@ -5,10 +5,9 @@ class CreateNewTaskTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
-        label.text = "Новое"
+        label.text = NSLocalizedString("task.newTaskShort", comment: " new task")
         label.font = .systemFont(ofSize: 17)
         label.textColor = Colors.labelTeritary.value
-        //   label.font = .systemFont(ofSize: C, weight: .semibold)
         
         return label
     }()
@@ -41,9 +40,6 @@ class CreateNewTaskTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //self.backgroundColor = .red
-        
-        // Initialization code
     }
 }
   

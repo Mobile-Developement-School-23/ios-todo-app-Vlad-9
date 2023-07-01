@@ -44,6 +44,7 @@ class TodoTableViewCell: UITableViewCell {
     // MARK: - UI
     
     var icon = UIImageView()
+    var chevron = UIImageView()
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -90,7 +91,7 @@ class TodoTableViewCell: UITableViewCell {
     //MARK: - Configure
     
     func conf() {
-
+        self.chevron.image = UIImage(named: "chevronIcon")
         radioButton.addTarget(self, action: #selector(radioButtonTapped), for: .touchUpInside)
         radioButton.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -123,6 +124,8 @@ class TodoTableViewCell: UITableViewCell {
                 self.radioButton.setImage(UIImage(named: "radioButtonHighPriorityIcon"), for: .normal)
             } else {
                 self.radioButton.setImage(UIImage(named: "radioButtonGrayIcon"), for: .normal)
+               // self.radioButton.
+              
             }
             let attributedText = NSAttributedString(
                 string: self.texts,
@@ -161,13 +164,19 @@ class TodoTableViewCell: UITableViewCell {
     private func setupUI() {
         conf()
         configueElem()
+        contentView.addSubview(chevron)
         contentView.addSubview(titleLabel)
         contentView.addSubview(dateView)
         contentView.addSubview(radioButton)
+        chevron.translatesAutoresizingMaskIntoConstraints = false
         icon.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(icon)
         
         NSLayoutConstraint.activate([
+            chevron.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -16),
+            chevron.widthAnchor.constraint(equalToConstant: 7),
+            chevron.heightAnchor.constraint(equalToConstant: 12),
+            chevron.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 52),
             icon.heightAnchor.constraint(equalToConstant: 20),
             icon.centerYAnchor.constraint(equalTo: radioButton.centerYAnchor),
@@ -188,6 +197,7 @@ extension TodoTableViewCell: TodoTableViewCellConfigurable {
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.chevron.alpha = 0
         self.icon.image = nil
         self.titleLabel.textColor = .blue
     }

@@ -10,10 +10,6 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
      func returnText() {
      }
 
-    
-    
-    
-    
      func emptyText(flag: Bool) {
          removeView.changeState(flag: flag)
          if flag {

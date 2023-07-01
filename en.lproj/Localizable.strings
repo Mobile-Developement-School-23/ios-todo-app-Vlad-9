@@ -9,3 +9,11 @@
 "task.newTask" = "Create new task";
 "task.goToTask" = "Show task";
 "task.hex" = "HEX code";
+"task.deadline" = "Set deadline";
+"task.myTasks" = "My tasks";
+"task.myTasksСompleted" = "Completed tasks — ";
+"task.myTasksEmptyСompleted" = "No completed tasks";
+"task.newtask" = "New task";
+"task.edit" = "Edit";
+"task.show" = "show";
+"task.hide" = "hide";

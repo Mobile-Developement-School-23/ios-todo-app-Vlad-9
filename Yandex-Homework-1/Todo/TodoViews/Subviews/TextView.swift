@@ -2,6 +2,7 @@ import UIKit
 
 protocol ITextViewDelegate: AnyObject {
     func returnText()
+    func emptyText(flag: Bool)
 }
 class TextView: UIView {
     
@@ -100,6 +101,7 @@ extension TextView { //TODO: - Вынести в протокол
         } else {
             flag = false
         }
+        self.delegate?.emptyText(flag: flag).self
     }
     func getText() -> String {
         if !flag {
@@ -109,6 +111,9 @@ extension TextView { //TODO: - Вынести в протокол
         }
        
     }
+    func setColorText(color: UIColor) {
+             self.textView.textColor = color
+         }
     func resign()
     {
         self.textView.resignFirstResponder()
@@ -122,11 +127,18 @@ extension TextView: UITextViewDelegate {
             flag = false
         }
     }
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = NSLocalizedString("placeholder.title", comment: "text for placeholder")
-            textView.textColor = Colors.labelTeritary.value
             flag = true
         }
+        self.delegate?.emptyText(flag: flag).self
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+                   textView.text = NSLocalizedString("placeholder.title", comment: "text for placeholder")
+                   textView.textColor = Colors.labelTeritary.value
+                   flag = true
+               }
+               self.delegate?.emptyText(flag: flag).self
     }
 }

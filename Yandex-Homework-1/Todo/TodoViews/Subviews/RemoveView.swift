@@ -76,3 +76,13 @@ class RemoveView: UIView {
         delegate.self?.userTappedRemove()
     }
 }
+
+extension RemoveView {
+     func changeState(flag: Bool) {
+         if flag {
+             self.removeButton.isEnabled = false
+         } else {
+             self.removeButton.isEnabled = true
+         }
+     }
+ }

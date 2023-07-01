@@ -1,5 +1,8 @@
 import UIKit
 
+protocol ColorSelectionViewDelegate: AnyObject {
+     func userChangeColor(with color: UIColor)
+ }
 
 class ColorSelectionView: UIView {
     
@@ -26,6 +29,7 @@ class ColorSelectionView: UIView {
     
     // MARK: - Dependencies
     
+    weak var delegate: ColorSelectionViewDelegate?
     private var color: UIColor?
     
     // MARK: - UI
@@ -65,7 +69,7 @@ class ColorSelectionView: UIView {
         mySlider.minimumValue = ViewConfiguration.sliderMinValue
         mySlider.maximumValue = ViewConfiguration.sliderMaxValue
         mySlider.value = ViewConfiguration.sliderMaxValue
-        mySlider.tintColor = Colors.colorGreen.value
+        mySlider.tintColor = Colors.colorGray.value
         mySlider.isEnabled = false
         mySlider.isContinuous = true
         mySlider.addTarget(self, action: #selector(self.sliderValueDidChange(_:)), for: .valueChanged)
@@ -110,6 +114,8 @@ extension ColorSelectionView {
         self.color = color?.addBrightness(with: CGFloat(value))
         self.hexLabel.text = self.color?.toHexString()
         self.hexLabel.textColor = self.color
+        self.mySlider.tintColor = self.color
+        delegate?.userChangeColor(with: self.color ?? Colors.labelPrimary.value).self
     }
 }
 
@@ -121,8 +127,9 @@ extension ColorSelectionView {
             DispatchQueue.main.async {
                 self?.color = color
                 self?.hexLabel.text = color.toHexString()
+                self?.delegate?.userChangeColor(with: color ?? Colors.labelPrimary.value).self
                 self?.hexLabel.textColor = color
-                
+                self?.mySlider.tintColor = color
                 UIView.animate(withDuration: AnimationConfiguration.standardDuration,
                                animations: {
                     self?.mySlider.setValue(ViewConfiguration.sliderMaxValue,
@@ -139,7 +146,9 @@ extension ColorSelectionView { //TODO: - Вынести в протокол
         self.color =  UIColor(hex: color) ?? Colors.labelPrimary.value
         self.mySlider.value = Float((self.color?.getBrightness() ?? 0) * Constants.brightnessMultiplier)
         self.hexLabel.text = color
+        delegate?.userChangeColor(with: self.color ?? Colors.labelPrimary.value).self
         mySlider.isEnabled = true
+        self.mySlider.tintColor = self.color
         self.hexLabel.textColor = self.color
     }
     

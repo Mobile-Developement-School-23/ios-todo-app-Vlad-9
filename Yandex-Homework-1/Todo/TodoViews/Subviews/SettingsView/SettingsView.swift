@@ -2,7 +2,9 @@ import UIKit
 protocol IScrollDelegate: AnyObject {
     func userTapDate()
 }
-
+protocol ISettingsColorDelegate: AnyObject {
+     func userChangeColor(color: UIColor)
+ }
 protocol ISettingsView {
     func setPriority(with value: Int)
     func setDeadline(with deadline: Date)
@@ -40,6 +42,7 @@ class SettingsView: UIView{
     
     weak var delegate: IScrollDelegate?
     weak var delegateSwitcher: ISwitchDeadlineDelegate?
+    weak var delegateColor: ISettingsColorDelegate?
     private var detailContainerHideConstraint: [NSLayoutConstraint] = []
     
     private lazy var separator1 = createSeparator()
@@ -117,6 +120,7 @@ class SettingsView: UIView{
         self.backgroundColor = Colors.backSecondary.value
         
         colorView.delegate = self
+        colorSelectionView.delegate = self
         calendar.delegate = self
         self.deadline.delegate = self
     }
@@ -222,6 +226,17 @@ extension SettingsView: ISwitchColorDelegate {
     }
 }
 
+//MARK: - ColorSelectionViewDelegate
+
+ extension SettingsView: ColorSelectionViewDelegate{
+     func userChangeColor(with color: UIColor) {
+         self.delegateColor?.userChangeColor(color: color).self
+     }
+
+
+ }
+
+
 //MARK: - ISwitchDeadlineDelegate
 
 extension SettingsView: ISwitchDeadlineDelegate {
@@ -246,6 +261,7 @@ extension SettingsView: ISwitchDeadlineDelegate {
                 self.calendar.alpha = 1
                 self.separator2.isHidden = false
                 self.calendar.isHidden = false
+                self.colorSelectionView.delegate = self
                 self.delegate?.userTapDate().self
             })
             dateFlag = true

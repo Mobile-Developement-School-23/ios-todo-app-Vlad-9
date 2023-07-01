@@ -68,7 +68,7 @@ struct TodoItem: Equatable {
     let id: String
     let text: String
     let deadline: Date?
-    let isDone: Bool
+    var isDone: Bool
     let hexCode: String?
     let priority: Priority
     let dateCreated: Date
@@ -95,6 +95,10 @@ struct TodoItem: Equatable {
         self.dateCreated = dateCreated
         self.dateChanged = dateChanged
     }
+ 
+    mutating func setDone(flag: Bool){
+          self.isDone = flag
+      }
 }
 
 // MARK: - TodoItem Extenison

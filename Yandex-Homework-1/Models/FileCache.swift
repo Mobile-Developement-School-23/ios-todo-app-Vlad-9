@@ -17,6 +17,13 @@ enum FileCacheErrors: Error {
     case pathError
 }
 
+  
+
+
+
+
+
+
 // MARK: - AvaliableFormats
 
 enum AvaliableFormats: String {

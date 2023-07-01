@@ -1,4 +1,11 @@
 import Foundation
+import TodoItem
+
+enum Constants {
+    static let separatorCSV = ";"
+    static let newlineCSV = "\n"
+    static let specialSymbolForCSV = "\u{1}"
+}
 
 // MARK: - FileCache protocol
 

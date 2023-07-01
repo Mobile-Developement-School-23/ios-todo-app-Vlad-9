@@ -1,5 +1,6 @@
 
 import UIKit
+import TodoItem
 
 protocol ITodoAssembly {
     func createTodoViewController(with model: TodoItem?) -> UIViewController

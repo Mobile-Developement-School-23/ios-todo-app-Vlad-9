@@ -59,15 +59,17 @@ class TodoDoneUIView: UIView {
     
     //MARK: - Configure
     func conf() {
+        showIsDone.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
         showIsDone.setTitle("показать", for: .normal)
         showIsDone.addTarget(self, action: #selector(showTodoItems), for: .touchUpInside)
     }
     func configure(with count: Int)  {
         if count > 0 {
             self.countLabel.text = "\(count)"
-            self.mainLabel.text = "Выполнено — "
+            self.mainLabel.text = NSLocalizedString("task.myTasksСompleted", comment: "amount task")
+        
         } else {
-            self.mainLabel.text = "Нет выполненных дел"
+            self.mainLabel.text = NSLocalizedString("task.myTasksEmptyСompleted", comment: "empty amount task")
             self.countLabel.text = ""
         }
        
@@ -75,14 +77,14 @@ class TodoDoneUIView: UIView {
     @objc func showTodoItems() {
         if !flag {
             self.showIsDone.alpha = 0
-            self.showIsDone.setTitle("скрыть", for: .normal)
+            self.showIsDone.setTitle(NSLocalizedString("task.hide", comment: "hide task"), for: .normal)
             UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveLinear, animations: {
                 self.showIsDone.alpha = 1
             })
  
         } else {
             self.showIsDone.alpha = 0
-            showIsDone.setTitle("показать", for: .normal)
+            showIsDone.setTitle(NSLocalizedString("task.show", comment: "show task"), for: .normal)
             UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveLinear, animations: {
                 self.showIsDone.alpha = 1
             })

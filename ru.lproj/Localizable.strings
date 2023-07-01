@@ -9,3 +9,15 @@
 "task.newTask" = "Создать новое дело";
 "task.goToTask" = "Показать дело";
 "task.hex" = "HEX код";
+"task.deadline" = "Сделать до";
+"task.myTasks" = "Мои дела";
+
+"task.myTasksСompleted" = "Выполнено — ";
+"task.myTasksEmptyСompleted" = "Нет выполненных дел";
+
+"task.newTaskShort" = "Новое";
+"task.edit" = "Изменить";
+
+"task.show" = "показать";
+"task.hide" = "скрыть";
+

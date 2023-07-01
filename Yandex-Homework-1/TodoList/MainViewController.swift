@@ -2,12 +2,12 @@ import UIKit
 import TodoItem
 
 class MainViewController: UIViewController, UISearchResultsUpdating, UINavigationControllerDelegate {
-
+    
     //MARK: - TODO
     
     func updateSearchResults(for searchController: UISearchController) {
-        
     }
+    
     //MARK: - Dependencies
 
     private var assembler = TodoAssembly()
@@ -17,11 +17,11 @@ class MainViewController: UIViewController, UISearchResultsUpdating, UINavigatio
     private var todoItems:FileCache = FileCache()
     
     //MARK: - UI
-
+    
     private let sectionView = TodoDoneUIView()
     private  var backButton =  UIButton(type: .system)
     private  var emptyButton =  UIButton(type: .system)
-
+    
     private lazy var tableView: UITableView = {
         var tableView = UITableView(frame: .zero, style: .insetGrouped
         )
@@ -34,13 +34,11 @@ class MainViewController: UIViewController, UISearchResultsUpdating, UINavigatio
         return tableView
     }()
     
-    // MARK: Floating button
-    
     private let plusButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0,
                                             y: 0,
-                                            width: 60,
-                                            height: 60))
+                                            width: 44,
+                                            height: 44))
         
         button.backgroundColor = Colors.colorBlue.value
         button.tintColor = .white
@@ -48,17 +46,13 @@ class MainViewController: UIViewController, UISearchResultsUpdating, UINavigatio
         let image = UIImage(systemName: "plus",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 32,
                                                                            weight: .medium))
-        
+
         button.setImage(image, for: .normal)
-      //  button.layer.shadowPath = cg
         button.layer.shadowRadius = 10
         button.layer.shadowOpacity = 0.3
         button.layer.cornerRadius = 25
         button.layer.shadowOffset = CGSize(width: 0, height: 8)
-//        self.layer.shadowOffset = CGSize(width: 0.5, height: 0.4)
         button.layer.shadowColor = Colors.colorBlue.cgColor
-//                self.layer.shadowOpacity = 0.5
-//                self.layer.shadowRadius = 1.5
         return button
     }()
     
@@ -72,7 +66,7 @@ class MainViewController: UIViewController, UISearchResultsUpdating, UINavigatio
         label.textColor = Colors.labelPrimary.value
         return label
     }()
-   
+    
     //MARK: - Init
     
     override func viewDidLoad() {
@@ -85,7 +79,7 @@ class MainViewController: UIViewController, UISearchResultsUpdating, UINavigatio
     }
     
     //MARK: - Configure
-
+    
     func configure() {
         loadItems()
         setupButton()
@@ -94,36 +88,35 @@ class MainViewController: UIViewController, UISearchResultsUpdating, UINavigatio
         self.assembler.setdelegate(item: self)
         setupLayout()
         sectionView.configure(with: todoItems.getAll().filter({$0.isDone == true}).count)
-        tableView.estimatedRowHeight = 100.0
-        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = 100.0
+//        tableView.rowHeight = UITableView.automaticDimension
     }
-
+    
     func setupButton() {
-
+        
         view.addSubview(tableView)
         self.view
             .addSubview(plusButton)
         plusButton.translatesAutoresizingMaskIntoConstraints = false
-            
-        plusButton.addTarget(self, action: #selector(createTask), for: .touchUpInside)
         
+        plusButton.addTarget(self, action: #selector(createTask), for: .touchUpInside)
         plusButton.widthAnchor.constraint(
-                equalToConstant: 50).isActive = true
+            equalToConstant: 50).isActive = true
         plusButton.heightAnchor.constraint(
-                equalToConstant: 50).isActive = true
+            equalToConstant: 50).isActive = true
         plusButton.centerXAnchor.constraint(
-                equalTo: self.view.centerXAnchor).isActive = true
+            equalTo: self.view.centerXAnchor).isActive = true
         plusButton.bottomAnchor.constraint(
-                equalTo: self.view.layoutMarginsGuide.bottomAnchor,
-                constant: -10).isActive = true
-
+            equalTo: self.view.layoutMarginsGuide.bottomAnchor,
+            constant: -10).isActive = true
     }
+
     @objc func createTask() {
         presentViewWithNewTask()
     }
-
+    
     private func confNav() {
-        self.navigationController?.navigationBar.topItem?.title = "Мои дела"
+        self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("task.myTasks", comment: " task")
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.layoutMargins.left = 32
         self.navigationItem.largeTitleDisplayMode = .automatic
@@ -132,22 +125,15 @@ class MainViewController: UIViewController, UISearchResultsUpdating, UINavigatio
     //MARK: - Layout
     
     private func setupLayout() {
-     
+        
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 52, bottom: 0, right: 0)
         tableView.layoutMargins = .init(top: 0, left: 16, bottom: 0, right: 16)
-       // setupbutton()
         
-    //    view.addSubview(emptyButton)
-        
-//        backButton.translatesAutoresizingMaskIntoConstraints = false
-//        emptyButton.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            //emptyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tableView.topAnchor.constraint(equalTo: view.topAnchor,constant: 0),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 0),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-           // emptyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -10),
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -157,43 +143,40 @@ class MainViewController: UIViewController, UISearchResultsUpdating, UINavigatio
 
 private extension MainViewController {
     private func loadItems() {
-       
         do {
             try todoItems.loadTodoItems(from: "SavedJsonItems", with: .json)
             
         } catch {
-    
         }
     }
     
     private func saveAll() {
         do {
             try todoItems.saveTodoItems(to: "SavedJsonItems", with: .json)
-           
+            
         } catch {
         }
-
+        
     }
 }
 
 //MARK: - ITodoPresenterDelegate
 
 extension MainViewController: ITodoPresenterDelegate {
-
+    
     func saveTodo(item: TodoItem) {
         todoItems.add(todoItem: item)
         self.saveAll()
-                DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     func removeTodo(item: TodoItem) {
         todoItems.removeTodoItem(by: item.id)
         self.saveAll()
-                DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-       // sectionView.configure(with: todoItems.getAll().filter({$0.isDone == true}).count)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         sectionView.configure(with: todoItems.getAll().filter({$0.isDone == true}).count)
     }
 }
@@ -203,24 +186,16 @@ extension MainViewController: ITodoPresenterDelegate {
 extension MainViewController {
     @objc func presentViewWithNewTask() {
         var newVc = UINavigationController(rootViewController: assembler.createTodoViewController(with: nil))
-         newVc.transitioningDelegate = self
-         self.navigationController?.present(newVc, animated: true)
-
+        newVc.transitioningDelegate = self
+        self.navigationController?.present(newVc, animated: true)
     }
     func presentViewWith(id: String) {
-     
         let newItem =  todoItems.getAll().first(where: {$0.id == id})
-       var newVc = UINavigationController(rootViewController: assembler.createTodoViewController(with: newItem))
-  
+        var newVc = UINavigationController(rootViewController: assembler.createTodoViewController(with: newItem))
+        
         newVc.transitioningDelegate = self
-
         self.navigationController?.present(newVc, animated: true)
-
     }
-//    @objc func presentView() {
-//        let model = todoItems.getAll().last
-//        self.navigationController?.present(UINavigationController(rootViewController: assembler.createTodoViewController(with: loadItems())), animated: true)
-//    }
 }
 
 //MARK: -  UITableViewDelegate,UITableViewDataSource
@@ -238,7 +213,7 @@ extension MainViewController: UITableViewDelegate,UITableViewDataSource {
         super.viewWillTransition(to: size, with: coordinator)
         self.tableView.reloadData()
     }
-
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
         let cornerRadius = 16
@@ -298,6 +273,7 @@ extension MainViewController: UITableViewDelegate,UITableViewDataSource {
                 cell.configure(model: model)
                 cell.setButtonImage(flag: todomodel.isDone, priority: todomodel.priority)
             }
+            cell.chevron.alpha = 1
             return cell
         }
         
@@ -332,7 +308,7 @@ extension MainViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if indexPath.row != tableView.numberOfRows(inSection: indexPath.section) - 1 {
             let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
-   
+                
                 if let todomodel = self.getTodoItem(parameter: self.showisDone, path: indexPath) {
                     self.removeTodo(item: todomodel)
                     self.tableView.reloadData()
@@ -356,29 +332,29 @@ extension MainViewController: UITableViewDelegate,UITableViewDataSource {
         }
         return nil
     }
-
-        func tableView(
-            _ tableView: UITableView,
-            leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-                if indexPath.row != tableView.numberOfRows(inSection: indexPath.section) - 1  {
-                    
-                    let title = ""
-                    let action = UIContextualAction(
-                        style: .normal,
-                        title: title
-                    )
-                    { [weak self] action, view, completionHandler in
-                        if let todomodel = self?.getTodoItem(parameter: self!.showisDone,
-                                                             path: indexPath){
-                            self?.setIsDone(id: (todomodel.id),
-                                            indexPath: indexPath,
-                                            animation: false)
-                        }
-                        completionHandler(true)
+    
+    func tableView(
+        _ tableView: UITableView,
+        leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            if indexPath.row != tableView.numberOfRows(inSection: indexPath.section) - 1  {
+                
+                let title = ""
+                let action = UIContextualAction(
+                    style: .normal,
+                    title: title
+                )
+                { [weak self] action, view, completionHandler in
+                    if let todomodel = self?.getTodoItem(parameter: self!.showisDone,
+                                                         path: indexPath){
+                        self?.setIsDone(id: (todomodel.id),
+                                        indexPath: indexPath,
+                                        animation: false)
                     }
-                    action.image = UIImage(named: "actionRadioButtonIcon")
-                    if let todomodel = getTodoItem(parameter: self.showisDone, path: indexPath) {
-                        if todomodel.isDone {
+                    completionHandler(true)
+                }
+                action.image = UIImage(named: "actionRadioButtonIcon")
+                if let todomodel = getTodoItem(parameter: self.showisDone, path: indexPath) {
+                    if todomodel.isDone {
                         action.backgroundColor = Colors.colorGrayLight.value
                     } else {
                         action.backgroundColor = Colors.colorGreen.value
@@ -386,8 +362,8 @@ extension MainViewController: UITableViewDelegate,UITableViewDataSource {
                 }
                 return UISwipeActionsConfiguration(actions: [action])
             }
-        return nil
-    }
+            return nil
+        }
 }
 
 //MARK: - TodoTableViewCellDelegate
@@ -434,7 +410,7 @@ extension MainViewController: TodoDoneUIViewdelegate {
     func showIsDone(done: Bool) {
         self.showisDone = done
         UIView.transition(with: tableView, duration: 0.7, options: .transitionFlipFromLeft, animations: {self.tableView.reloadData()
-          //  self.view.setNeedsLayout()
+            //  self.view.setNeedsLayout()
         }, completion: nil)
     }
 }
@@ -442,9 +418,8 @@ extension MainViewController: TodoDoneUIViewdelegate {
 // MARK: Preview
 
 extension MainViewController {
-
+    
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-
         
         let previewProvider: () -> UIViewController? = {
             if indexPath.row != tableView.numberOfRows(inSection: indexPath.section) - 1  {
@@ -458,8 +433,8 @@ extension MainViewController {
         
         let actionsProvider: ([UIMenuElement]) -> UIMenu? = { _ in
             
-            let editAction = UIAction(title: "Изменить дело", image: UIImage(systemName: "pencil")) { [weak self] _ in
-
+            let editAction = UIAction(title: NSLocalizedString("task.edit", comment: "edit task"), image: UIImage(systemName: "pencil")) { [weak self] _ in
+                
                 if let todomodel = self?.getTodoItem(parameter: self!.showisDone, path: indexPath){
                     let newVc = UINavigationController(rootViewController: (self?.assembler.createTodoViewController(with: todomodel))!)
                     newVc.transitioningDelegate = self
@@ -467,7 +442,7 @@ extension MainViewController {
                 }
             }
             
-            let deleteAction = UIAction(title: "Удалить дело", image: UIImage(systemName: "trash.fill"), attributes: .destructive) { [weak self] _ in
+            let deleteAction = UIAction(title: NSLocalizedString("task.remove", comment: "remove task"), image: UIImage(systemName: "trash.fill"), attributes: .destructive) { [weak self] _ in
                 
                 if let todomodel = self?.getTodoItem(parameter: self!.showisDone, path: indexPath) {
                     self?.removeTodo(item: todomodel)
@@ -476,7 +451,6 @@ extension MainViewController {
             }
             if indexPath.row != tableView.numberOfRows(inSection: indexPath.section) - 1  {  return UIMenu(title: "", children: [editAction, deleteAction]) }
             return nil
-          
         }
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider, actionProvider: actionsProvider)
@@ -485,9 +459,9 @@ extension MainViewController {
     func tableView(_ tableView: UITableView,
                    willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,
                    animator: UIContextMenuInteractionCommitAnimating) {
-      guard let detailsVC = animator.previewViewController as? ViewController else {
-                return
-            }
+        guard let detailsVC = animator.previewViewController as? ViewController else {
+            return
+        }
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
@@ -495,31 +469,31 @@ extension MainViewController {
 // MARK: Transition
 
 extension MainViewController: UIViewControllerTransitioningDelegate {
-
-  func animationController(forPresented presented: UIViewController,
-                           presenting: UIViewController,
-                           source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-    guard
-      let selectedIndexPathCell = tableView.indexPathForSelectedRow,
-      let selectedCell = tableView.cellForRow(at: selectedIndexPathCell),
-      let selectedCellSuperview = selectedCell.superview
-      else {
-        return nil
+    
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        guard
+            let selectedIndexPathCell = tableView.indexPathForSelectedRow,
+            let selectedCell = tableView.cellForRow(at: selectedIndexPathCell),
+            let selectedCellSuperview = selectedCell.superview
+        else {
+            return nil
+        }
+        transition.originFrame = selectedCellSuperview.convert(selectedCell.frame, to: nil)
+        transition.originFrame = CGRect(
+            x: transition.originFrame.origin.x + 20,
+            y: transition.originFrame.origin.y + 20,
+            width: transition.originFrame.size.width - 40,
+            height: transition.originFrame.size.height - 40
+        )
+        transition.presenting = true
+        return transition
     }
-    transition.originFrame = selectedCellSuperview.convert(selectedCell.frame, to: nil)
-    transition.originFrame = CGRect(
-      x: transition.originFrame.origin.x + 20,
-      y: transition.originFrame.origin.y + 20,
-      width: transition.originFrame.size.width - 40,
-      height: transition.originFrame.size.height - 40
-    )
-    transition.presenting = true
-    return transition
-  }
-  
-  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    transition.presenting = false
-    return transition
-  }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.presenting = false
+        return transition
+    }
 }

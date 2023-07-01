@@ -28,7 +28,7 @@ class DeadlineHelperView: UIView {
        let label = UILabel()
        label.translatesAutoresizingMaskIntoConstraints = false
        label.numberOfLines = 1
-       label.text = "Сделать до"
+       label.text = NSLocalizedString("task.deadline", comment: "deadline")
        label.adjustsFontSizeToFitWidth = false
        label.textAlignment = .left
        label.textColor = Colors.labelPrimary.value

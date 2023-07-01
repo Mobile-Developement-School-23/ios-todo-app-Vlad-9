@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FC623AAD09FA1F07DD0265D /* Pods_Yandex_Homework_1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D494CECFC6BB481990CBB722 /* Pods_Yandex_Homework_1Tests.framework */; };
+		280AC39918151E3C532900B1 /* Pods_Yandex_Homework_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47CD805A746A3E0469EDD0E /* Pods_Yandex_Homework_1.framework */; };
 		372683782A4DBA4F005AA9BC /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372683772A4DBA4F005AA9BC /* TodoTableViewCell.swift */; };
 		3726837A2A4DE81B005AA9BC /* TodoDoneUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372683792A4DE81B005AA9BC /* TodoDoneUIView.swift */; };
 		3726837E2A4E45C5005AA9BC /* DeadlineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726837D2A4E45C5005AA9BC /* DeadlineCellView.swift */; };
 		372683802A4E63B7005AA9BC /* CreateNewTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726837F2A4E63B7005AA9BC /* CreateNewTaskTableViewCell.swift */; };
 		372683822A4F73DE005AA9BC /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372683812A4F73DE005AA9BC /* Animator.swift */; };
 		372683882A4FAA5F005AA9BC /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372683872A4FAA5F005AA9BC /* UIButton+Extension.swift */; };
+		3726839F2A4FCB61005AA9BC /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 3726839E2A4FCB61005AA9BC /* CocoaLumberjack */; };
+		372683A12A4FCB61005AA9BC /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 372683A02A4FCB61005AA9BC /* CocoaLumberjackSwift */; };
+		372683A32A4FCB61005AA9BC /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 372683A22A4FCB61005AA9BC /* CocoaLumberjackSwiftLogBackend */; };
 		373349B82A41C6BA006BA9F6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373349B72A41C6BA006BA9F6 /* Colors.swift */; };
 		373349BA2A41CC3A006BA9F6 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373349B92A41CC3A006BA9F6 /* Fonts.swift */; };
 		374FFEFC2A3A5D1200B6EA5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFEFB2A3A5D1200B6EA5B /* AppDelegate.swift */; };
@@ -24,6 +29,7 @@
 		374FFF2C2A3A5D2200B6EA5B /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFF2B2A3A5D2200B6EA5B /* TodoItem.swift */; };
 		374FFF2E2A3A5D2F00B6EA5B /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFF2D2A3A5D2F00B6EA5B /* FileCache.swift */; };
 		375D55E32A3D20A100C11276 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D55E22A3D20A100C11276 /* TestConstants.swift */; };
+		37AA2BBC2A4FDADF00DB7CF7 /* TodoItem in Frameworks */ = {isa = PBXBuildFile; productRef = 37AA2BBB2A4FDADF00DB7CF7 /* TodoItem */; };
 		37B18DF82A4336280061DC06 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18DF72A4336280061DC06 /* TextView.swift */; };
 		37B18DFA2A43481C0061DC06 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18DF92A43481C0061DC06 /* MainViewController.swift */; };
 		37B18DFC2A438BAE0061DC06 /* RemoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18DFB2A438BAE0061DC06 /* RemoveView.swift */; };
@@ -53,12 +59,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		056E60E349D40E5A5FDE655A /* Pods-Yandex-Homework-1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yandex-Homework-1Tests.release.xcconfig"; path = "Target Support Files/Pods-Yandex-Homework-1Tests/Pods-Yandex-Homework-1Tests.release.xcconfig"; sourceTree = "<group>"; };
+		2252BE019F90998D2CEEE742 /* Pods-Yandex-Homework-1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yandex-Homework-1Tests.debug.xcconfig"; path = "Target Support Files/Pods-Yandex-Homework-1Tests/Pods-Yandex-Homework-1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		372683772A4DBA4F005AA9BC /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		372683792A4DE81B005AA9BC /* TodoDoneUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDoneUIView.swift; sourceTree = "<group>"; };
 		3726837D2A4E45C5005AA9BC /* DeadlineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineCellView.swift; sourceTree = "<group>"; };
 		3726837F2A4E63B7005AA9BC /* CreateNewTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskTableViewCell.swift; sourceTree = "<group>"; };
 		372683812A4F73DE005AA9BC /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		372683872A4FAA5F005AA9BC /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		372683A62A4FD672005AA9BC /* TodoItem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TodoItem; path = ../../../Desktop/TodoItem; sourceTree = "<group>"; };
 		373349B72A41C6BA006BA9F6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		373349B92A41CC3A006BA9F6 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		374FFEF82A3A5D1200B6EA5B /* Yandex-Homework-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yandex-Homework-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +99,10 @@
 		37EC21AE2A4676AB000DE90B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		37EC21BC2A46AA15000DE90B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		37EC21BF2A46AA2E000DE90B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		44C95FD9B32CC08D2FD29D68 /* Pods-Yandex-Homework-1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yandex-Homework-1.debug.xcconfig"; path = "Target Support Files/Pods-Yandex-Homework-1/Pods-Yandex-Homework-1.debug.xcconfig"; sourceTree = "<group>"; };
+		A47CD805A746A3E0469EDD0E /* Pods_Yandex_Homework_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yandex_Homework_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0FED164ED13E5D1DD60122B /* Pods-Yandex-Homework-1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yandex-Homework-1.release.xcconfig"; path = "Target Support Files/Pods-Yandex-Homework-1/Pods-Yandex-Homework-1.release.xcconfig"; sourceTree = "<group>"; };
+		D494CECFC6BB481990CBB722 /* Pods_Yandex_Homework_1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yandex_Homework_1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +110,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				372683A12A4FCB61005AA9BC /* CocoaLumberjackSwift in Frameworks */,
+				372683A32A4FCB61005AA9BC /* CocoaLumberjackSwiftLogBackend in Frameworks */,
+				37AA2BBC2A4FDADF00DB7CF7 /* TodoItem in Frameworks */,
+				3726839F2A4FCB61005AA9BC /* CocoaLumberjack in Frameworks */,
+				280AC39918151E3C532900B1 /* Pods_Yandex_Homework_1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FC623AAD09FA1F07DD0265D /* Pods_Yandex_Homework_1Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +145,8 @@
 				374FFEFA2A3A5D1200B6EA5B /* Yandex-Homework-1 */,
 				374FFF112A3A5D1400B6EA5B /* Yandex-Homework-1Tests */,
 				374FFEF92A3A5D1200B6EA5B /* Products */,
+				EECDD905B5338C3918027CFE /* Pods */,
+				7ADB6B281BEC2A745CACB767 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +214,7 @@
 		37B18E0D2A45D4F80061DC06 /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				372683A62A4FD672005AA9BC /* TodoItem */,
 				37B18DF52A4335F30061DC06 /* TodoViews */,
 				37B18E0E2A45D5530061DC06 /* TodoPresenter.swift */,
 				374FFEFF2A3A5D1200B6EA5B /* ViewController.swift */,
@@ -272,6 +294,26 @@
 			path = ColorPickerViews;
 			sourceTree = "<group>";
 		};
+		7ADB6B281BEC2A745CACB767 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A47CD805A746A3E0469EDD0E /* Pods_Yandex_Homework_1.framework */,
+				D494CECFC6BB481990CBB722 /* Pods_Yandex_Homework_1Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EECDD905B5338C3918027CFE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				44C95FD9B32CC08D2FD29D68 /* Pods-Yandex-Homework-1.debug.xcconfig */,
+				C0FED164ED13E5D1DD60122B /* Pods-Yandex-Homework-1.release.xcconfig */,
+				2252BE019F90998D2CEEE742 /* Pods-Yandex-Homework-1Tests.debug.xcconfig */,
+				056E60E349D40E5A5FDE655A /* Pods-Yandex-Homework-1Tests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -279,16 +321,23 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 374FFF222A3A5D1400B6EA5B /* Build configuration list for PBXNativeTarget "Yandex-Homework-1" */;
 			buildPhases = (
+				E15D33626DEAA6DA366B54E9 /* [CP] Check Pods Manifest.lock */,
 				374FFEF42A3A5D1200B6EA5B /* Sources */,
 				374FFEF52A3A5D1200B6EA5B /* Frameworks */,
 				374FFEF62A3A5D1200B6EA5B /* Resources */,
-				375D55E12A3CCB8F00C11276 /* ShellScript */,
+				372683A42A4FCFAC005AA9BC /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Yandex-Homework-1";
+			packageProductDependencies = (
+				3726839E2A4FCB61005AA9BC /* CocoaLumberjack */,
+				372683A02A4FCB61005AA9BC /* CocoaLumberjackSwift */,
+				372683A22A4FCB61005AA9BC /* CocoaLumberjackSwiftLogBackend */,
+				37AA2BBB2A4FDADF00DB7CF7 /* TodoItem */,
+			);
 			productName = "Yandex-Homework-1";
 			productReference = 374FFEF82A3A5D1200B6EA5B /* Yandex-Homework-1.app */;
 			productType = "com.apple.product-type.application";
@@ -297,6 +346,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 374FFF252A3A5D1400B6EA5B /* Build configuration list for PBXNativeTarget "Yandex-Homework-1Tests" */;
 			buildPhases = (
+				99AE077610BDA3F9C0A8236F /* [CP] Check Pods Manifest.lock */,
 				374FFF0A2A3A5D1400B6EA5B /* Sources */,
 				374FFF0B2A3A5D1400B6EA5B /* Frameworks */,
 				374FFF0C2A3A5D1400B6EA5B /* Resources */,
@@ -340,6 +390,9 @@
 				ru,
 			);
 			mainGroup = 374FFEEF2A3A5D1200B6EA5B;
+			packageReferences = (
+				3726839D2A4FCB61005AA9BC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+			);
 			productRefGroup = 374FFEF92A3A5D1200B6EA5B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -371,7 +424,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		375D55E12A3CCB8F00C11276 /* ShellScript */ = {
+		372683A42A4FCFAC005AA9BC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -386,7 +439,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#if which swiftlint > /dev/null; then\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from #https://github.com/realm/SwiftLint\"\n#fi\n";
+			shellScript = "lint=\"${PODS_ROOT}/SwiftLint/swiftlint\"\nif which $lint >/dev/null; then\n    $lint \nelse\n    echo \"warning: SwiftLint not installed in cocoapods\"\n    exit 1\nfi\n";
+		};
+		99AE077610BDA3F9C0A8236F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Yandex-Homework-1Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E15D33626DEAA6DA366B54E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Yandex-Homework-1-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -584,6 +681,7 @@
 		};
 		374FFF232A3A5D1400B6EA5B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44C95FD9B32CC08D2FD29D68 /* Pods-Yandex-Homework-1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -613,6 +711,7 @@
 		};
 		374FFF242A3A5D1400B6EA5B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0FED164ED13E5D1DD60122B /* Pods-Yandex-Homework-1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -642,6 +741,7 @@
 		};
 		374FFF262A3A5D1400B6EA5B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2252BE019F90998D2CEEE742 /* Pods-Yandex-Homework-1Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -661,6 +761,7 @@
 		};
 		374FFF272A3A5D1400B6EA5B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 056E60E349D40E5A5FDE655A /* Pods-Yandex-Homework-1Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -709,6 +810,39 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3726839D2A4FCB61005AA9BC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3726839E2A4FCB61005AA9BC /* CocoaLumberjack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3726839D2A4FCB61005AA9BC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjack;
+		};
+		372683A02A4FCB61005AA9BC /* CocoaLumberjackSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3726839D2A4FCB61005AA9BC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjackSwift;
+		};
+		372683A22A4FCB61005AA9BC /* CocoaLumberjackSwiftLogBackend */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3726839D2A4FCB61005AA9BC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjackSwiftLogBackend;
+		};
+		37AA2BBB2A4FDADF00DB7CF7 /* TodoItem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TodoItem;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 374FFEF02A3A5D1200B6EA5B /* Project object */;
 }

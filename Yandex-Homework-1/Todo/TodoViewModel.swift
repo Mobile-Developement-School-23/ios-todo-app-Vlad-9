@@ -1,4 +1,6 @@
 import Foundation
+import TodoItem
+
 struct TodoViewModel {
 
     // MARK: - Properties

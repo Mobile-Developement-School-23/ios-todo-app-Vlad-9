@@ -1,4 +1,8 @@
 import Foundation
+import CocoaLumberjack
+import TodoItem
+
+
 protocol ITodoPresenterDelegate: AnyObject {
     func saveTodo(item: TodoItem)
     func removeTodo(item: TodoItem)
@@ -8,7 +12,7 @@ final class TodoPresenter {
     weak var delegate: ITodoPresenterDelegate?
     var viewModel: TodoViewModel?
     var todoItem: TodoItem?
-    
+
     func createViewModel(todoItem: TodoItem) -> TodoViewModel{
         return TodoViewModel(id: todoItem.id,
                              text: todoItem.text,

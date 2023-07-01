@@ -1,4 +1,6 @@
 import UIKit
+import CocoaLumberjack
+import TodoItem
 
 protocol IViewControllerDelegate: AnyObject {
     func save(with: TodoViewModel)
@@ -8,6 +10,10 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
      func returnText() {
      }
 
+    
+    
+    
+    
      func emptyText(flag: Bool) {
          removeView.changeState(flag: flag)
          if flag {

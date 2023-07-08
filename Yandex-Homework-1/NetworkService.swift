@@ -22,7 +22,6 @@ final class NetworkService {
     
     var revisionVersion = 0
 
-    ///
     enum Endpoints {
         static let baseurl = "https://beta.mrdekk.ru/todobackend"
         static let list = "list"
@@ -71,6 +70,7 @@ private extension NetworkService {
             request.httpBody = httpBody
         }
         Endpoints.headers[Endpoints.headerRevision] = String(revision ?? 0)
+        request.timeoutInterval = 0
         request.allHTTPHeaderFields = Endpoints.headers
         return request
     }

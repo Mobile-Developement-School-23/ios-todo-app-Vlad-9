@@ -213,20 +213,6 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
     }
 }
 
-////MARK: - MainViewController private
-//
-//private extension MainViewController {
-//
-//    private func saveAll() {
-//        do {
-//            //            try presenter.todoItems.saveTodoItems(to: "SavedJsonItems", with: .json)
-//
-//        } catch {
-//        }
-//
-//    }
-//}
-
 //MARK: - TodoDoneUIViewdelegate
 
 extension MainViewController: TodoDoneUIViewdelegate {

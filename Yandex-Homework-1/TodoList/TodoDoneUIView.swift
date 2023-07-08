@@ -60,7 +60,7 @@ class TodoDoneUIView: UIView {
     //MARK: - Configure
     func conf() {
         showIsDone.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
-        showIsDone.setTitle("показать", for: .normal)
+        showIsDone.setTitle(NSLocalizedString("task.show", comment: "show task"), for: .normal)
         showIsDone.addTarget(self, action: #selector(showTodoItems), for: .touchUpInside)
     }
     func configure(with count: Int)  {

@@ -18,6 +18,5 @@ extension UIButton {
                 image.alpha = 1
             }, completion: nil)
         }
-        
     }
 }

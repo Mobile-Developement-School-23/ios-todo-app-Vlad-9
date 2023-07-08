@@ -20,7 +20,7 @@ class TodoAssembly: ITodoAssembly {
         if let model{
             presenter.initialize(todoItem: model)
         } else {
-            presenter.initialize(todoItem: TodoItem(text: "", priority: .normal))
+            presenter.initialize(todoItem: TodoItem(text: "", priority: .basic))
         }
         let view = ViewController(presenter: presenter)
         presenter.view = view

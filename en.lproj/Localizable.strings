@@ -15,5 +15,6 @@
 "task.myTasksEmptyСompleted" = "No completed tasks";
 "task.newtask" = "New task";
 "task.edit" = "Edit";
-"task.show" = "show";
-"task.hide" = "hide";
+"task.newTaskShort" = "New";
+"task.show" = "Show";
+"task.hide" = "Hide";

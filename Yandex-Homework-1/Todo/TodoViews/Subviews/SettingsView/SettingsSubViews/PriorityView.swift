@@ -84,8 +84,14 @@ class PriorityView: UIView {
 }
 
 extension PriorityView { //TODO: - Вынести в протокол
-    func setPriority(with value: Int) {
-        self.segmentedControl.selectedSegmentIndex = value
+    func setPriority(with value: String) {
+        var index = 1
+        if value == "low" {
+            index = 0
+        } else if value == "important" {
+            index = 2
+        }
+        self.segmentedControl.selectedSegmentIndex = index//value
     }
     func getPriorityRawValue() -> Int {
         return segmentedControl.selectedSegmentIndex

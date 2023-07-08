@@ -6,7 +6,7 @@ protocol ISettingsColorDelegate: AnyObject {
      func userChangeColor(color: UIColor)
  }
 protocol ISettingsView {
-    func setPriority(with value: Int)
+    func setPriority(with value: String)
     func setDeadline(with deadline: Date)
     func getPriorityRawValue() -> Int
     func getDeadline() -> Date?
@@ -148,7 +148,7 @@ class SettingsView: UIView{
 
 extension SettingsView: ISettingsView { //TODO: - Использовать протокол при обращении к SettingsView
     
-    func setPriority(with value: Int) {
+    func setPriority(with value: String) {
         self.priority.setPriority(with: value)
     }
     func setDeadline(with deadline: Date) {

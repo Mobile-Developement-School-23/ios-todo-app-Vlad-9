@@ -39,7 +39,7 @@ class TodoTableViewCell: UITableViewCell {
     var id: String  = ""
     var texts = ""
     var color = UIColor()
-    var priority: TodoItem.Priority = .normal
+    var priority: TodoItem.Priority = .basic
 
     // MARK: - UI
     
@@ -101,7 +101,7 @@ class TodoTableViewCell: UITableViewCell {
         
         NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChangeNotification), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
-    //
+    
     @objc func deviceOrientationDidChangeNotification(_ notification: Any) {
         setNeedsLayout()
     }
@@ -120,7 +120,7 @@ class TodoTableViewCell: UITableViewCell {
             self.titleLabel.attributedText = attributedText1
             
         } else {
-            if priority == .high {
+            if priority == .important {
                 self.radioButton.setImage(UIImage(named: "radioButtonHighPriorityIcon"), for: .normal)
             } else {
                 self.radioButton.setImage(UIImage(named: "radioButtonGrayIcon"), for: .normal)
@@ -131,7 +131,7 @@ class TodoTableViewCell: UITableViewCell {
                 string: self.texts,
                 attributes: [.strikethroughStyle: NSUnderlineStyle.patternDot.rawValue]
             )
-            if priority != .normal{
+            if priority != .basic{
                 self.PriorityIconToggle(flag: true)
             }
             if self.deadline != nil {
@@ -216,16 +216,18 @@ extension TodoTableViewCell: TodoTableViewCellConfigurable {
         self.deadline = model.date
         self.titleLabel.text = model.text
         if let deadline = model.date {
+            dateView.isHidden = false
             dateView.configureView(text: dateFormatter.string(from: deadline))
             NSLayoutConstraint.deactivate(constraintWithoutDeadline)
             NSLayoutConstraint.activate(constraintWithDeadline)
         } else {
+            dateView.isHidden = true
             dateView.configureView(text: nil)
             dateView.icon.image = nil
             NSLayoutConstraint.deactivate(constraintWithDeadline)
             NSLayoutConstraint.activate(constraintWithoutDeadline)
         }
-        if priority == .high {
+        if priority == .important {
             icon.image = Icon.HighIcon.image
             
             NSLayoutConstraint.deactivate(constrWithoutIcon)

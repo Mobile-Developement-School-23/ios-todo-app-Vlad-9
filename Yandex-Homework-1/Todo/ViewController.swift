@@ -2,6 +2,7 @@ import UIKit
 import CocoaLumberjack
 import TodoItem
 
+
 protocol IViewControllerDelegate: AnyObject {
     func save(with: TodoViewModel)
     func remove(with: TodoViewModel)
@@ -9,7 +10,6 @@ protocol IViewControllerDelegate: AnyObject {
 class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, ISettingsColorDelegate, ITextViewDelegate {
      func returnText() {
      }
-
      func emptyText(flag: Bool) {
          removeView.changeState(flag: flag)
          if flag {
@@ -99,7 +99,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
                                            text: "", deadline: nil,
                                            isDone: false,
                                            hexCode: nil,
-                                           priority: .normal,
+                                           priority: .basic,
                                            dateCreated: Date(),
                                            dateChanged: nil)
     }
@@ -110,9 +110,16 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
     }
     func saveState()
     {
+        var priorityRaw = settingsView.getPriorityRawValue()
+        var priorityString = "basic"
+        if priorityRaw == 0 {
+            priorityString = "low"
+        } else if priorityRaw == 2 {
+            priorityString = "important"
+        }
         self.todoViewModel?.text =  txtView.getText()
         self.todoViewModel?.deadline = settingsView.getDeadline()
-        self.todoViewModel?.priority = TodoItem.Priority(rawValue: settingsView.getPriorityRawValue()) ?? .normal
+        self.todoViewModel?.priority = TodoItem.Priority(rawValue: priorityString) ?? .basic
         self.todoViewModel?.dateChanged = Date()
         self.todoViewModel?.hexCode = settingsView.getHexCode()
         if let todoViewModel {
@@ -125,8 +132,6 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
     override func viewDidLoad() {
         super.viewDidLoad()
         self.settingsView.delegateColor = self
-      //  self.removeView.isHidden = true
-  
         configure()
         setupConstraints()
         presenter.viewDidLoad()
@@ -162,7 +167,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
         cancelButton.setTitle(  NSLocalizedString("task.back", comment: "back"), for: .normal)
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         cancelButton.tintColor = Colors.colorBlue.value
-        saveButton.titleLabel?.font = .systemFont(ofSize: Constants.navigationBarElementsFontSize)
+        cancelButton.titleLabel?.font = .systemFont(ofSize: Constants.navigationBarElementsFontSize,weight: .regular)
         
         saveButton.setTitle(NSLocalizedString("task.save", comment: "save"), for: .normal)
         saveButton.addTarget(self, action: #selector(saveTodo), for: .touchUpInside)

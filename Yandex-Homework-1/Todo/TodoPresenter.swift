@@ -32,12 +32,13 @@ final class TodoPresenter {
     }
 
     weak var view: ViewController?
-    func viewDidLoad() {
+    @MainActor func viewDidLoad() {
         if todoItem != nil {
             view?.setupWithViewModel(model: viewModel!)
         } else {
             view?.setupWithNewModel()
         }
+
     }
 }
 
@@ -50,9 +51,11 @@ extension TodoPresenter: IViewControllerDelegate {
     }
     
     func save(with: TodoViewModel) {
+        
         self.todoItem = TodoItem(id: with.id, text: with.text, deadline: with.deadline, isDone: with.isDone,hexCode: with.hexCode, priority: with.priority, dateCreated: with.dateCreated, dateChanged: with.dateChanged)
         if let todoItem {
             delegate?.saveTodo(item: todoItem).self
+            
         }
     }
 }

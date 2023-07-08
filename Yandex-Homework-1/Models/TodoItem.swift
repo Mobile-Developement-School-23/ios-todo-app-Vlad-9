@@ -5,15 +5,15 @@
 //
 //// MARK: - TodoItem ext. for Equatable
 //
-//extension TodoItem {
-//    static  func == (lhs: TodoItem, rhs: TodoItem) -> Bool {
+//extension TodoIter {
+//    static  func == (lhs: TodoIter, rhs: TodoIter) -> Bool {
 //        return lhs.id == rhs.id
 //    }
 //}
 //
 //// MARK: - TodoItem
 //
-//struct TodoItem: Equatable {
+//struct TodoIter: Equatable,Codable {
 //    
 //    enum Constants {
 //        static let separatorCSV = ";"
@@ -58,7 +58,7 @@
 //
 //    // MARK: - Priority enum
 //
-//    enum Priority: Int {
+//    enum Priority: Int, Codable {
 //        case low
 //        case normal
 //        case high
@@ -104,7 +104,7 @@
 //
 //// MARK: - TodoItem Extenison
 //
-//extension TodoItem {
+//extension TodoIter {
 //
 //    // MARK: - CSV
 //
@@ -139,7 +139,7 @@
 //
 //    // MARK: - CSV parsing
 //
-//    static func parse(csv: Any) -> TodoItem? {
+//    static func parse(csv: Any) -> TodoIter? {
 //
 //        guard let object = csv as? String else {
 //            return nil
@@ -166,7 +166,7 @@
 //        let priority = Int(columns[Keys.keyPriority.rawValue])
 //            .flatMap(Priority.init(rawValue:)) ?? .normal
 //
-//        return TodoItem(
+//        return TodoIter(
 //            id: id,
 //            text: text,
 //            deadline: deadline,
@@ -207,7 +207,7 @@
 //
 //    // MARK: - JSON parsing
 //
-//    static func parse(json: Any) -> TodoItem? {
+//    static func parse(json: Any) -> TodoIter? {
 //
 //        guard let object = json as? [String: Any] else {
 //            return nil
@@ -230,7 +230,7 @@
 //        let priority = (object[Keys.keyPriority.description] as? Int)
 //            .flatMap(Priority.init(rawValue:)) ?? .normal
 //
-//        return TodoItem(
+//        return TodoIter(
 //            id: id,
 //            text: text,
 //            deadline: deadline,

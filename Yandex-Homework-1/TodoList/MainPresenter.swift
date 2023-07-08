@@ -10,6 +10,8 @@ extension MainPresenter {
         static let fileCacheName = "SavedJsonItems"
         static let unsynchronizedErrorCode = "unsynchronized data"
         static let duplicateErrorCode = "duplicate item"
+        static let maxRetryCount = 5
+        static let secondInNanoSeconds:Double = 1_000_000_000
     }
 }
 
@@ -22,6 +24,14 @@ final class MainPresenter {
     private var todoItems:FileCache = FileCache()
     weak var view: MainViewController?
     
+    private var retryCount = 0
+    private let maxRetryCount = 5
+    private var fetchRequestStart = false
+    private let minDelay: Double = 2
+    private let maxDelay: Double = 120
+    private let factor: Double = 1.5
+    private let jitter: Double = 0.05
+    private var currentDelay: Double = 2
     //MARK: - Init
     
     func initialize() {
@@ -70,7 +80,7 @@ extension MainPresenter {
         self.view?.navigationController?.present(newVc, animated: true)
     }
     func updateDone(item:TodoItem) {
-        self.updateDoneToNetworkService(item: item)
+        self.updateDoneToNetworkService(item: item,retryCount: 0, delay: minDelay)
     }
 }
 
@@ -134,8 +144,7 @@ private extension MainPresenter {
         }
     }
 
-    private func removeFromNetworkService(item: TodoItem) {
-        
+    private func removeFromNetworkService(item: TodoItem, retryCount: Int, delay: Double) {
         Task {
             do {
                 await syncIfDirty()
@@ -144,13 +153,18 @@ private extension MainPresenter {
             } catch URLErrors.errorCode(Constants.unsynchronizedErrorCode) {
                 try await syncWithServer()
                 todoItems.removeTodoItem(by: item.id)
-                removeFromNetworkService(item: item)
+                removeFromNetworkService(item: item, retryCount: retryCount, delay: delay)
             } catch URLErrors.noFound {
                 print(URLErrors.noFound, "Can't find element")
             }
             catch {
-                print(error, "Cant't save to server. Trying save to file")
-                self.saveAll(withError: true)
+                if retryCount <= Constants.maxRetryCount {
+                    try await Task.sleep(nanoseconds: UInt64(delay*Constants.secondInNanoSeconds))
+                    removeFromNetworkService(item: item, retryCount: retryCount + 1, delay: getNextDelay(currentDelay: delay))
+                } else {
+                    print(error, "Cant't save to server. Trying save to file")
+                    self.saveAll(withError: true)
+                }
             }
             DispatchQueue.main.async {
                 self.view?.updateActivityIndicator(isAnimating: false)
@@ -159,7 +173,7 @@ private extension MainPresenter {
             }
         }
     }
-    
+
     private func updateItemWithNetworkService(item: Todomodel) async {
         do {
             try await networkService.updateElement(elment: item)
@@ -171,7 +185,7 @@ private extension MainPresenter {
         }
     }
     
-    private func updateDoneToNetworkService(item: TodoItem){
+    private func updateDoneToNetworkService(item: TodoItem, retryCount: Int, delay: Double){
         Task {
             do {
                 await syncIfDirty()
@@ -185,10 +199,15 @@ private extension MainPresenter {
                 updateDone(item:  item2)
             } catch URLErrors.noFound {
                 print(URLErrors.noFound, "Can't find element")
-            }catch {
-                
-                print(error, "Cant't save to server. Trying save to file")
-                self.saveAll(withError: true)
+            } catch {
+                if retryCount <= Constants.maxRetryCount {
+                    try await Task.sleep(nanoseconds: UInt64(delay*Constants.secondInNanoSeconds))
+                    updateDoneToNetworkService(item: item, retryCount: retryCount + 1, delay: getNextDelay(currentDelay: delay))
+                } else {
+                    print(error, "Cant't save to server. Trying save to file")
+                    self.saveAll(withError: true)
+                }
+            
             }
             DispatchQueue.main.async {
                 self.view?.setSectionViewCount(with:  self.todoItems.getAll().filter({$0.isDone == true}).count)
@@ -199,7 +218,7 @@ private extension MainPresenter {
         }
     }
     
-    private func uploadItemToNetworkService(item: TodoItem) {
+    private func uploadItemToNetworkService(item: TodoItem, retryCount: Int, delay: Double) {
         Task {
             do {
                 await syncIfDirty()
@@ -207,14 +226,19 @@ private extension MainPresenter {
                 try await networkService.uploadItem(item: Todomodel(item: item))
             } catch URLErrors.errorCode(Constants.unsynchronizedErrorCode) {
                 try await syncWithServer()
-                uploadItemToNetworkService(item: item)
+                uploadItemToNetworkService(item: item,retryCount: retryCount,delay: delay)
             } catch URLErrors.errorCode(Constants.duplicateErrorCode) {
                 var newItem = Todomodel(item: item)
                 newItem.updateID()
                 try await updateItemWithNetworkService(item: newItem)
             } catch {
-                print(error, "Cant't save to server. Trying save to file")
-                saveAll(withError: true)
+                if retryCount <= Constants.maxRetryCount {
+                    try await Task.sleep(nanoseconds: UInt64(delay*Constants.secondInNanoSeconds))
+                    uploadItemToNetworkService(item: item, retryCount: retryCount + 1, delay: getNextDelay(currentDelay: delay))
+                } else {
+                    print(error, "Cant't save to server. Trying save to file")
+                    self.saveAll(withError: true)
+                }
             }
             DispatchQueue.main.async {
                 self.view?.updateActivityIndicator(isAnimating: false)
@@ -261,13 +285,21 @@ private extension MainPresenter {
 extension MainPresenter: ITodoPresenterDelegate {
     func saveTodo(item: TodoItem) {
         todoItems.add(todoItem: item)
-        uploadItemToNetworkService(item: item)
+        uploadItemToNetworkService(item: item,retryCount: 0,delay: minDelay)
     }
     
     func removeTodo(item: TodoItem) {
         todoItems.removeTodoItem(by: item.id)
-        removeFromNetworkService(item: item)
+        removeFromNetworkService(item: item, retryCount: 0, delay: minDelay)
         view?.setSectionViewCount(with:  todoItems.getAll().filter({$0.isDone == true}).count)
         view?.reloadTable()
+    }
+}
+
+//MARK: - Delay
+extension MainPresenter {
+    private func getNextDelay(currentDelay: Double) -> Double {
+        let randomJitter = Double.random(in: 0...(jitter * currentDelay))
+        return min(maxDelay, factor * currentDelay) + randomJitter
     }
 }

@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //         nav1.viewControllers = [mainView]
 //        window?.rootViewController = nav1
 //        window?.makeKeyAndVisible()
-    
+
         return true
     }
 }

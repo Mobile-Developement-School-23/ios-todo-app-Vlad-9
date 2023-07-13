@@ -6,10 +6,9 @@ protocol IRemoveDelegate: AnyObject {
 
 class RemoveView: UIView {
 
-    //MARK: - Constants
+    // MARK: - Constants
 
     enum Constraints {
-        
         static let removeButtonTopAnchorConstraintConstant: CGFloat = 17
         static let removeButtonLeadingAnchorConstraintConstant: CGFloat = 16
         static let removeButtonTrailingAnchorConstraintConstant: CGFloat = -16
@@ -20,16 +19,16 @@ class RemoveView: UIView {
         static let buttonFontSize: CGFloat = 17
         static let buttonTitle = NSLocalizedString("task.remove", comment: "remove task")
     }
-    
-    //MARK: - Dependencies
+
+    // MARK: - Dependencies
 
     weak var delegate: IRemoveDelegate?
 
-    //MARK: - UI
+    // MARK: - UI
 
     private  var removeButton =  UIButton(type: .system)
 
-    //MARK: - Initializer
+    // MARK: - Initializer
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -41,7 +40,7 @@ class RemoveView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    //MARK: - Configuration
+    // MARK: - Configuration
 
     private func configureView() {
         setupButton()
@@ -56,21 +55,25 @@ class RemoveView: UIView {
         removeButton.titleLabel?.font = .systemFont(ofSize: Constants.buttonFontSize)
     }
 
-    //MARK: - Constraints
+    // MARK: - Constraints
 
     private func setupConstraints() {
         self.addSubview(removeButton)
         removeButton.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            removeButton.topAnchor.constraint(equalTo: self.topAnchor,constant: Constraints.removeButtonTopAnchorConstraintConstant),
-            removeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: Constraints.removeButtonLeadingAnchorConstraintConstant),
-            removeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: Constraints.removeButtonTrailingAnchorConstraintConstant),
-            removeButton.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: Constraints.removeButtonBottomAnchorConstraintConstant)
+            removeButton.topAnchor.constraint(equalTo: self.topAnchor,
+                                              constant: Constraints.removeButtonTopAnchorConstraintConstant),
+            removeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor,
+                                                  constant: Constraints.removeButtonLeadingAnchorConstraintConstant),
+            removeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor,
+                                                   constant: Constraints.removeButtonTrailingAnchorConstraintConstant),
+            removeButton.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                 constant: Constraints.removeButtonBottomAnchorConstraintConstant)
         ]
         NSLayoutConstraint.activate(constraints)
     }
 
-    //MARK: - Button handler
+    // MARK: - Button handler
 
     @objc private func remove() {
         delegate.self?.userTappedRemove()

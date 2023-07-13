@@ -7,6 +7,8 @@ enum Constants {
     static let specialSymbolForCSV = "\u{1}"
 }
 
+//
+
 // MARK: - FileCache protocol
 
 protocol IFileCache {
@@ -31,6 +33,12 @@ enum AvaliableFormats: String {
     case json
     case csv
 }
+enum saveType {
+    case update
+    case add
+    case upsert
+    case delete
+}
 
 // MARK: - FileCache
 
@@ -47,6 +55,16 @@ class FileCache: IFileCache {
     }
     func getAll() -> [TodoItem] {
         return todoItems.reversed()
+    }
+    func clearLocalDB() {
+        TodoDB.instance.clearTable()
+    }
+    func setAll(items: [TodoItem], fromDB: Bool) {
+        if fromDB {
+            self.todoItems = TodoDB.instance.getAllTodoItems()
+        } else {
+            self.todoItems = items
+        }
     }
     
     @discardableResult
@@ -71,6 +89,7 @@ class FileCache: IFileCache {
         self.todoItems = []
     }
     func saveTodoItems(to fileName: String, with format: AvaliableFormats) throws {
+       //TodoDB.instance.addContact(cname: "12d13", cphone: "1111", caddress: "aksdd")
         let path = try getPath(with: fileName, with: format)
         var savedData = Data()
         switch format {
@@ -107,4 +126,27 @@ class FileCache: IFileCache {
             self.todoItems = rowsCSV.compactMap { TodoItem.parse(csv: $0) }
         }
     }
+    func itemToDB(_ action: saveType,item: TodoItem) {
+      
+        do {
+           // TodoDB.instance.saveAll(items: getAllItems())
+           // try todoItems.saveTodoItems(to: Constants.fileCacheName, with: .json)
+            switch action {
+            case .update:
+                TodoDB.instance.updateTodo(item: item)
+            case .add:
+                TodoDB.instance.addTodo(item: item)
+            case .delete:
+                TodoDB.instance.deleteTodo(id: item.id)
+            case .upsert:
+                TodoDB.instance.saveOrUpdate(item: item)
+            }
+        } catch {
+            print (error,"Can't save to file")
+        }
+//        DispatchQueue.main.async {
+//            self.view?.reloadTable()
+//        }
+    
+}
 }

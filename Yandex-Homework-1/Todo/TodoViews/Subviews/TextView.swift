@@ -5,9 +5,9 @@ protocol ITextViewDelegate: AnyObject {
     func emptyText(flag: Bool)
 }
 class TextView: UIView {
-    
+
     // MARK: - Constraints
-    
+
     enum Constraints {
         static let heightAnchorConstraintConstant: CGFloat = 120
         static let textViewTopAnchorConstraintConstant: CGFloat = 12
@@ -18,17 +18,17 @@ class TextView: UIView {
     enum ViewConfiguration {
         static let viewCornerRadius: CGFloat = 16
     }
-    
+
     enum Constants {
         static let textViewFontSize: CGFloat = 15
     }
-    
+
     // MARK: - Dependencies
-    
+
     weak var delegate: ITextViewDelegate?
     private var flag = true
     // MARK: - UI
-    
+
     private lazy var textView: UITextView = {
         let textView = UITextView()
         textView.font = .systemFont(ofSize: Constants.textViewFontSize)
@@ -39,30 +39,28 @@ class TextView: UIView {
         textView.font = .systemFont(ofSize: 17)
         return textView
     }()
-    
-    //MARK: - Initializer
-    
+
+    // MARK: - Initializer
+
     override init(frame: CGRect) {
-        
+
         super.init(frame: .zero)
-       
+
         configureView()
         setupConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: - Constraints
-    
+
+    // MARK: - Constraints
+
     private func setupConstraints() {
-        
+
         self.addSubview(textView)
         translatesAutoresizingMaskIntoConstraints = false
-        
         let constraints = [
-            
             self.heightAnchor.constraint(greaterThanOrEqualToConstant:
                                             Constraints.heightAnchorConstraintConstant),
             textView.topAnchor.constraint(equalTo: self.topAnchor,
@@ -74,12 +72,11 @@ class TextView: UIView {
             textView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
                                              constant: Constraints.textViewBottomAnchorConstraintConstant)
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
-    
-    //MARK: - Configure
-    
+
+    // MARK: - Configure
+
     private func configureView() {
 
         self.textView.delegate = self
@@ -89,10 +86,10 @@ class TextView: UIView {
     }
 }
 
-//MARK: - Configuration
+// MARK: - Configuration
 
-extension TextView { //TODO: - Вынести в протокол
-    
+extension TextView { // TODO: - Вынести в протокол
+
     func configureText(with text: String) {
         self.textView.text = text
         if text == "" {
@@ -109,13 +106,11 @@ extension TextView { //TODO: - Вынести в протокол
         } else {
             return String()
         }
-       
     }
     func setColorText(color: UIColor) {
              self.textView.textColor = color
          }
-    func resign()
-    {
+    func resign() {
         self.textView.resignFirstResponder()
     }
 }

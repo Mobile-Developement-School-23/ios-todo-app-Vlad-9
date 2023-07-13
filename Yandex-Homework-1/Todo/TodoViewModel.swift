@@ -16,14 +16,14 @@ struct TodoViewModel {
 
     // MARK: - Initializer
 
-    init(
-        id: String ,
+    init (
+        id: String,
         text: String,
         deadline: Date?,
         isDone: Bool,
         hexCode: String?,
         priority: TodoItem.Priority,
-        dateCreated: Date ,
+        dateCreated: Date,
         dateChanged: Date?
     ) {
         self.id = id

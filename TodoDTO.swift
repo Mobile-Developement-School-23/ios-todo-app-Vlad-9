@@ -2,8 +2,7 @@ import Foundation
 import TodoItem
 import UIKit
 extension TodoItem {
-    init(fromDTO model: Todomodel){
-        
+    init(fromDTO model: Todomodel) {
         let name = TodoItem.Priority(rawValue: model.importance) ?? .basic
         self.init(id: model.id,
                   text: model.text,
@@ -11,12 +10,10 @@ extension TodoItem {
                   isDone: model.done,
                   hexCode: model.color,
                   priority: name,
-                  dateCreated:  Date(timeIntervalSince1970: TimeInterval(model.dateCreated)),
+                  dateCreated: Date(timeIntervalSince1970: TimeInterval(model.dateCreated)),
                   dateChanged: (model.dateChanged != nil) ? Date(timeIntervalSince1970: TimeInterval(model.dateChanged!)) : nil)
-        
     }
 }
-
 
 struct ServerTodoListResponseDTO: Codable {
     let status: String
@@ -47,8 +44,8 @@ struct Todomodel: Codable {
     let color: String?
     let dateCreated: Int
     let dateChanged: Int?
-    var updatedID:String
-    
+    var updatedID: String
+
     enum CodingKeys: String, CodingKey {
         case id
         case text
@@ -60,8 +57,16 @@ struct Todomodel: Codable {
         case dateChanged = "changed_at"
         case updatedID = "last_updated_by"
     }
-    
-    init(id: String, text: String, importance: String, deadline: Int?, done: Bool, color: String?, dateCreated: Int, dateChanged: Int?, updatedID: String) {
+
+    init(id: String,
+         text: String,
+         importance: String,
+         deadline: Int?,
+         done: Bool,
+         color: String?,
+         dateCreated: Int,
+         dateChanged: Int?,
+         updatedID: String) {
         self.id = id
         self.text = text
         self.importance = importance
@@ -72,12 +77,12 @@ struct Todomodel: Codable {
         self.dateChanged = dateChanged
         self.updatedID = updatedID
     }
-    
+
     init(item: TodoItem) {
         self.id = item.id
         self.text = item.text
         self.importance = item.priority.rawValue
-        if let dedln = item.deadline{
+        if let dedln = item.deadline {
             self.deadline = Int(dedln.timeIntervalSince1970)
         } else {
             self.deadline = nil
@@ -85,7 +90,7 @@ struct Todomodel: Codable {
         self.done = item.isDone
         self.color = item.hexCode
         self.dateCreated = Int(item.dateCreated.timeIntervalSince1970)
-        if let dateChangedd = item.dateChanged{
+        if let dateChangedd = item.dateChanged {
             self.dateChanged = Int(dateChangedd.timeIntervalSince1970)
         } else {
             self.dateChanged = nil
@@ -95,13 +100,13 @@ struct Todomodel: Codable {
     mutating func updateID() {
         self.updatedID = UIDevice.current.identifierForVendor!.uuidString
     }
-    func convertToTodoItem() -> TodoItem{
+    func convertToTodoItem() -> TodoItem {
         let name = TodoItem.Priority(rawValue: self.importance) ?? .basic
         return TodoItem(id: self.id,
                         text: self.text,
                         deadline: (deadline != nil) ? Date(timeIntervalSince1970: TimeInterval(deadline!)) : nil,
                         isDone: self.done,
-                        hexCode: color,//(color != nil) ? colo : nil,
+                        hexCode: color, // (color != nil) ? colo : nil,
                         priority: name,
                         dateCreated: Date(timeIntervalSince1970: TimeInterval(dateCreated)),
                         dateChanged: (deadline != nil) ? Date(timeIntervalSince1970: TimeInterval(deadline!)) : nil)

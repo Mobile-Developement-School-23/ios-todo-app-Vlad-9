@@ -5,35 +5,35 @@ protocol ColorSelectionViewDelegate: AnyObject {
  }
 
 class ColorSelectionView: UIView {
-    
+
     // MARK: - Constants
-    
+
     enum Constants {
-        static let brightnessMultiplier:CGFloat = 100
+        static let brightnessMultiplier: CGFloat = 100
     }
-    
+
     enum AnimationConfiguration {
         static let standardDuration: TimeInterval = 0.30
     }
-    
+
     enum ViewConfiguration {
         static let paletteCornerRadius: CGFloat = 10
-        static let sliderMinValue:Float = 25
-        static let sliderMaxValue:Float = 100
+        static let sliderMinValue: Float = 25
+        static let sliderMaxValue: Float = 100
     }
-    
+
     enum Constraints {
         static let paletteHeightConstraint: CGFloat = 45
         static let standardVerticalConstraint: CGFloat = 12.5
     }
-    
+
     // MARK: - Dependencies
-    
+
     weak var delegate: ColorSelectionViewDelegate?
     private var color: UIColor?
-    
+
     // MARK: - UI
-    
+
     private var colorPalette = ColorPickerPaletteView()
     private let mySlider = UISlider()
     private lazy var hexLabel: UILabel = {
@@ -44,13 +44,13 @@ class ColorSelectionView: UIView {
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .left
         label.textColor = Colors.labelPrimary.value
-        label.font = .systemFont(ofSize:17, weight: .regular) 
-        
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+
         return label
     }()
-    
-    //MARK: - Initializer
-    
+
+    // MARK: - Initializer
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         handlePaletteTap()
@@ -61,10 +61,9 @@ class ColorSelectionView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+
     // MARK: - Configuration
-    
+
     private func configureView() {
         mySlider.minimumValue = ViewConfiguration.sliderMinValue
         mySlider.maximumValue = ViewConfiguration.sliderMaxValue
@@ -75,41 +74,36 @@ class ColorSelectionView: UIView {
         mySlider.addTarget(self, action: #selector(self.sliderValueDidChange(_:)), for: .valueChanged)
         colorPalette.layer.cornerRadius = ViewConfiguration.paletteCornerRadius
     }
-    
-    //MARK: - Constraints
-    
+
+    // MARK: - Constraints
+
     private func setupConstraints() {
-        
         self.addSubview(colorPalette)
         self.addSubview(hexLabel)
         self.addSubview(mySlider)
-        
+
         hexLabel.translatesAutoresizingMaskIntoConstraints = false
         colorPalette.translatesAutoresizingMaskIntoConstraints = false
         mySlider.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             hexLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constraints.standardVerticalConstraint),
             hexLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            
             colorPalette.heightAnchor.constraint(equalToConstant: Constraints.paletteHeightConstraint),
-            colorPalette.topAnchor.constraint(equalTo:hexLabel.bottomAnchor,constant: Constraints.standardVerticalConstraint),
+            colorPalette.topAnchor.constraint(equalTo: hexLabel.bottomAnchor, constant: Constraints.standardVerticalConstraint),
             colorPalette.leadingAnchor.constraint(equalTo: leadingAnchor),
             colorPalette.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
-            mySlider.topAnchor.constraint(equalTo:colorPalette.bottomAnchor,constant: Constraints.standardVerticalConstraint),
+            mySlider.topAnchor.constraint(equalTo: colorPalette.bottomAnchor, constant: Constraints.standardVerticalConstraint),
             mySlider.leadingAnchor.constraint(equalTo: leadingAnchor),
             mySlider.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mySlider.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -Constraints.standardVerticalConstraint),
+            mySlider.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constraints.standardVerticalConstraint)
         ])
     }
 }
 
-//MARK: - Slider handler
+// MARK: - Slider handler
 
 extension ColorSelectionView {
-    @objc func sliderValueDidChange(_ sender:UISlider!)
-    {
+    @objc func sliderValueDidChange(_ sender: UISlider!) {
         let value = sender.value / Float(Constants.brightnessMultiplier)
         self.color = color?.addBrightness(with: CGFloat(value))
         self.hexLabel.text = self.color?.toHexString()
@@ -119,7 +113,7 @@ extension ColorSelectionView {
     }
 }
 
-//MARK: - Palette tap handler
+// MARK: - Palette tap handler
 
 extension ColorSelectionView {
     func handlePaletteTap() {
@@ -141,7 +135,7 @@ extension ColorSelectionView {
     }
 }
 
-extension ColorSelectionView { //TODO: - Вынести в протокол
+extension ColorSelectionView { // TODO: - Вынести в протокол
     func setHexColor(color: String) {
         self.color =  UIColor(hex: color) ?? Colors.labelPrimary.value
         self.mySlider.value = Float((self.color?.getBrightness() ?? 0) * Constants.brightnessMultiplier)
@@ -151,7 +145,6 @@ extension ColorSelectionView { //TODO: - Вынести в протокол
         self.mySlider.tintColor = self.color
         self.hexLabel.textColor = self.color
     }
-    
     func getHexColor() -> String? {
             return self.color?.toHexString()
     }

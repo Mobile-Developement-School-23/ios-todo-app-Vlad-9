@@ -14,11 +14,10 @@ struct CellModel {
 }
 
 protocol TodoTableViewCellDelegate: AnyObject {
-    func setIsDone(id: String,indexPath: IndexPath, animation: Bool)
+    func setIsDone(id: String, indexPath: IndexPath, animation: Bool)
 }
 
 protocol TodoTableViewCellConfigurable {
-    
     func configure(model: CellModel)
 }
 
@@ -29,7 +28,7 @@ class TodoTableViewCell: UITableViewCell {
         
         var image: UIImage? {return UIImage(named: rawValue)}
     }
-    
+
     // MARK: - Dependencies
 
     weak var delegate: TodoTableViewCellDelegate?
@@ -42,7 +41,6 @@ class TodoTableViewCell: UITableViewCell {
     var priority: TodoItem.Priority = .basic
 
     // MARK: - UI
-    
     var icon = UIImageView()
     var chevron = UIImageView()
     let titleLabel: UILabel = {
@@ -56,52 +54,57 @@ class TodoTableViewCell: UITableViewCell {
     var dateView = DeadlineCellView()
     var radioButton = UIButton(type: .custom)
 
-    //MARK: - Constraints
-    
-    lazy var constraintWithIcon = [icon.widthAnchor.constraint(equalTo: icon.heightAnchor, multiplier: (Icon.HighIcon.image?.size.width)! / ((Icon.HighIcon.image?.size.height)!)),
-                                   titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 2),
-                                   dateView.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 2),]
-    
+    // MARK: - Constraints
+
+    lazy var constraintWithIcon = [icon.widthAnchor.constraint(equalTo: icon.heightAnchor,
+                                                               multiplier: (Icon.HighIcon.image?.size.width)! / ((Icon.HighIcon.image?.size.height)!)),
+                                   titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor,
+                                                                       constant: 2),
+                                   dateView.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 2)]
     lazy var constrWithoutIcon = [icon.widthAnchor.constraint(equalToConstant: 0),
-                                  titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 52),
-                                  dateView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 52),]
-    
+                                  titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor,
+                                                                      constant: 52),
+                                  dateView.leadingAnchor.constraint(equalTo: self.leadingAnchor,
+                                                                    constant: 52)]
     lazy var constraintWithDeadline = [        dateView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-                                               dateView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -17),
-                                               titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 17),
-                                               titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -39),]
+                                               dateView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -17),
+                                               titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 17),
+                                               titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -39)]
     
     lazy var constraintWithoutDeadline = [
 
-        titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -17),
-        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 17),
-        titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -39),]
+        titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -17),
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 17),
+        titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -39)]
 
-    //MARK: - Inits
-    
+    // MARK: - Inits
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: - Configure
-    
+
+    // MARK: - Configure
+
     func conf() {
         self.chevron.image = UIImage(named: "chevronIcon")
         radioButton.addTarget(self, action: #selector(radioButtonTapped), for: .touchUpInside)
         radioButton.translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChangeNotification), name: UIDevice.orientationDidChangeNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(deviceOrientationDidChangeNotification),
+                                               name: UIDevice.orientationDidChangeNotification,
+                                               object: nil)
     }
-    
+
     @objc func deviceOrientationDidChangeNotification(_ notification: Any) {
         setNeedsLayout()
     }
@@ -114,28 +117,28 @@ class TodoTableViewCell: UITableViewCell {
                 attributes: [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
             )
 
-            self.PriorityIconToggle(flag: false)
-            self.DeadlineToggle(flag: false)
+            self.priorityIconToggle(flag: false)
+            self.deadlineToggle(flag: false)
             self.titleLabel.textColor = Colors.labelTeritary.value
             self.titleLabel.attributedText = attributedText1
-            
+
         } else {
             if priority == .important {
                 self.radioButton.setImage(UIImage(named: "radioButtonHighPriorityIcon"), for: .normal)
             } else {
                 self.radioButton.setImage(UIImage(named: "radioButtonGrayIcon"), for: .normal)
                // self.radioButton.
-              
+
             }
             let attributedText = NSAttributedString(
                 string: self.texts,
                 attributes: [.strikethroughStyle: NSUnderlineStyle.patternDot.rawValue]
             )
-            if priority != .basic{
-                self.PriorityIconToggle(flag: true)
+            if priority != .basic {
+                self.priorityIconToggle(flag: true)
             }
             if self.deadline != nil {
-                self.DeadlineToggle(flag: true)
+                self.deadlineToggle(flag: true)
             }
             self.titleLabel.attributedText = attributedText
             self.titleLabel.textColor = self.color
@@ -149,18 +152,22 @@ class TodoTableViewCell: UITableViewCell {
         radioButton.checkboxAnimation {
             self.setButtonImage(flag: self.isDone, priority: self.priority)
         }
-        delegate?.setIsDone(id: self.id,indexPath: self.indexp!,animation: true).self
+        delegate?.setIsDone(id: self.id,
+                            indexPath: self.indexp!,
+                            animation: true).self
     }
-    
+
     func configueElem() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         dateView.translatesAutoresizingMaskIntoConstraints = false
-        dateView.setContentHuggingPriority(.defaultHigh , for: .horizontal)
-        dateView.setContentCompressionResistancePriority(.defaultHigh , for: .horizontal)
+        dateView.setContentHuggingPriority(.defaultHigh,
+                                           for: .horizontal)
+        dateView.setContentCompressionResistancePriority(.defaultHigh,
+                                                         for: .horizontal)
     }
-    
+
     // MARK: - Layout
-    
+
     private func setupUI() {
         conf()
         configueElem()
@@ -171,24 +178,23 @@ class TodoTableViewCell: UITableViewCell {
         chevron.translatesAutoresizingMaskIntoConstraints = false
         icon.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(icon)
-        
+
         NSLayoutConstraint.activate([
-            chevron.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -16),
+            chevron.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             chevron.widthAnchor.constraint(equalToConstant: 7),
             chevron.heightAnchor.constraint(equalToConstant: 12),
             chevron.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 52),
             icon.heightAnchor.constraint(equalToConstant: 20),
-            icon.centerYAnchor.constraint(equalTo: radioButton.centerYAnchor),
+            icon.centerYAnchor.constraint(equalTo: radioButton.centerYAnchor)
         ])
         NSLayoutConstraint.activate(constraintWithoutDeadline)
         NSLayoutConstraint.activate(constrWithoutIcon)
         NSLayoutConstraint.activate([
-            radioButton.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 16),
-            radioButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            radioButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            radioButton.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
-    
 }
 
 // MARK: - NoteTableViewCellConfigurable
@@ -205,7 +211,7 @@ extension TodoTableViewCell: TodoTableViewCellConfigurable {
     func configure(model: CellModel) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM"
-        
+
         self.isDone = model.isDone
         self.id = model.id
         self.isDone = model.isDone
@@ -229,22 +235,22 @@ extension TodoTableViewCell: TodoTableViewCellConfigurable {
         }
         if priority == .important {
             icon.image = Icon.HighIcon.image
-            
+
             NSLayoutConstraint.deactivate(constrWithoutIcon)
             NSLayoutConstraint.activate(constraintWithIcon)
-            
+
         } else if priority == .low {
             icon.image = Icon.LowIcon.image
             NSLayoutConstraint.deactivate(constrWithoutIcon)
             NSLayoutConstraint.activate(constraintWithIcon)
-            
+
         } else {
             NSLayoutConstraint.deactivate(constraintWithIcon)
             NSLayoutConstraint.activate(constrWithoutIcon)
         }
-        //setupUI()
+        // setupUI()
     }
-    func PriorityIconToggle(flag: Bool) {
+    func priorityIconToggle(flag: Bool) {
         if flag {
             NSLayoutConstraint.deactivate(constrWithoutIcon)
             NSLayoutConstraint.activate(constraintWithIcon)
@@ -253,7 +259,7 @@ extension TodoTableViewCell: TodoTableViewCellConfigurable {
             NSLayoutConstraint.activate(constrWithoutIcon)
         }
     }
-    func DeadlineToggle(flag: Bool) {
+    func deadlineToggle(flag: Bool) {
         if flag {
             dateView.isHidden = false
             NSLayoutConstraint.deactivate(constraintWithoutDeadline)

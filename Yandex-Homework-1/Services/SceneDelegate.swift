@@ -6,7 +6,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let nav1 = UINavigationController()
-        let mainView = MainAssembly().createMainViewController()//MainViewController(nibName: nil, bundle: nil)
+        let mainView = MainAssembly().createMainViewController() //MainViewController(nibName: nil, bundle: nil)
          nav1.viewControllers = [mainView]
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = nav1

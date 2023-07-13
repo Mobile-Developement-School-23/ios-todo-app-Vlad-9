@@ -14,43 +14,42 @@ protocol ISettingsView {
     func setHexCode(code: String)
 }
 
-class SettingsView: UIView{
-    
-    //MARK: - Configurations
-    
+class SettingsView: UIView {
+
+    // MARK: - Configurations
+
     enum AnimationConfiguration {
         static let standardDuration: TimeInterval = 0.40
         static let standardDelay: TimeInterval = 0.01
     }
-    
+
     enum StackViewConfiguration {
         static let stackViewSpacing: CGFloat = 16
     }
     enum ViewConfiguration {
         static let cornerRadius: CGFloat = 16
     }
-    
+
     enum Constraints {
         static let separatorHeightConstraintConstant: CGFloat = 1.0 / UIScreen.main.scale// contentScaleFactor//
         static let stackViewLeadingAnchorConstraintConstant: CGFloat = 16
         static let stackViewTrailingAnchorConstraintConstant: CGFloat = -16
     }
 
-    //MARK: - Dependencies
+    // MARK: - Dependencies
 
     private var dateFlag = false
-    
+
     weak var delegate: IScrollDelegate?
     weak var delegateSwitcher: ISwitchDeadlineDelegate?
     weak var delegateColor: ISettingsColorDelegate?
     private var detailContainerHideConstraint: [NSLayoutConstraint] = []
-    
     private lazy var separator1 = createSeparator()
     private lazy var separator2 = createSeparator()
     private lazy var separator3 = createSeparator()
     private lazy var separator4 = createSeparator()
 
-    //MARK: - UI
+    // MARK: - UI
 
     private lazy var priority: PriorityView = PriorityView()
     private lazy var deadline: DeadlineView = DeadlineView()
@@ -65,10 +64,9 @@ class SettingsView: UIView{
         return stackView
     }()
 
-    //MARK: - Initializer
+    // MARK: - Initializer
 
     override init(frame: CGRect) {
-        
         super.init(frame: .zero)
         self.configureView()
         self.setupConstraints()
@@ -83,7 +81,7 @@ class SettingsView: UIView{
         fatalError("init(coder:) has not been implemented")
     }
 
-    //MARK: - Configuration
+    // MARK: - Configuration
 
     private func configureStackView() {
         stackView.addArrangedSubview(priority)
@@ -110,30 +108,23 @@ class SettingsView: UIView{
         self.calendar.alpha = 0
     }
 
-    private func configureView(){
+    private func configureView() {
         configureStackView()
         initialCalendarConfiguration()
         initialSeparatorsConfiguration()
         initialColorSelectionViewConfiguration()
-        
         self.layer.cornerRadius = ViewConfiguration.cornerRadius
         self.backgroundColor = Colors.backSecondary.value
-        
         colorView.delegate = self
         colorSelectionView.delegate = self
         calendar.delegate = self
         self.deadline.delegate = self
     }
-    
-    //MARK: - Set constraints
-    
+    // MARK: - Set constraints
     private func setupConstraints() {
-        
         self.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
-            
             stackView.topAnchor.constraint(equalTo: self.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor,
                                                constant: Constraints.stackViewLeadingAnchorConstraintConstant),
@@ -144,17 +135,17 @@ class SettingsView: UIView{
     }
 }
 
-//MARK: -  ISettingsView protocol
+// MARK: -  ISettingsView protocol
 
-extension SettingsView: ISettingsView { //TODO: - Использовать протокол при обращении к SettingsView
-    
+extension SettingsView: ISettingsView { // TODO: - Использовать протокол при обращении к SettingsView
+
     func setPriority(with value: String) {
         self.priority.setPriority(with: value)
     }
     func setDeadline(with deadline: Date) {
         self.deadline.setupDeadline(with: deadline)
     }
-    
+
     func getPriorityRawValue() -> Int {
         return priority.getPriorityRawValue()
     }
@@ -170,24 +161,24 @@ extension SettingsView: ISettingsView { //TODO: - Использовать пр�
     }
 }
 
-//MARK: -  Create separator
+// MARK: -  Create separator
 
 extension SettingsView {
 
-    private func createSeparator() -> UIView{
+    private func createSeparator() -> UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Colors.supportSeparator.value
-        let constraint =  view.heightAnchor.constraint(equalToConstant:Constraints.separatorHeightConstraintConstant)
+        let constraint = view.heightAnchor.constraint(equalToConstant: Constraints.separatorHeightConstraintConstant)
         NSLayoutConstraint.activate([constraint])
         return view
     }
 }
 
-//MARK: - ISwitchColorDelegate
+// MARK: - ISwitchColorDelegate
 
 extension SettingsView: ISwitchColorDelegate {
-    
+
     func userTapSwitch(in position: Bool) {
         if position {
             self.stackView.insertArrangedSubview(self.colorSelectionView, at: 4)
@@ -202,8 +193,7 @@ extension SettingsView: ISwitchColorDelegate {
                 self.separator4.isHidden = false
                 self.colorSelectionView.isHidden = false
             })
-            
-        } else  {
+        } else {
             self.colorSelectionView.resetColor()
             var t = CGAffineTransform.identity
             t = CGAffineTransform(scaleX: 1.0, y: 0.01)
@@ -226,23 +216,21 @@ extension SettingsView: ISwitchColorDelegate {
     }
 }
 
-//MARK: - ColorSelectionViewDelegate
+// MARK: - ColorSelectionViewDelegate
 
- extension SettingsView: ColorSelectionViewDelegate{
+ extension SettingsView: ColorSelectionViewDelegate {
      func userChangeColor(with color: UIColor) {
          self.delegateColor?.userChangeColor(color: color).self
      }
 
-
  }
 
-
-//MARK: - ISwitchDeadlineDelegate
+// MARK: - ISwitchDeadlineDelegate
 
 extension SettingsView: ISwitchDeadlineDelegate {
-    
+
     func userTapDate(with date: Date?) {
-        
+
         if let date {
             self.calendar.setupCalendarDate(with: date)
         }
@@ -252,7 +240,6 @@ extension SettingsView: ISwitchDeadlineDelegate {
         if !dateFlag {
             self.stackView.addArrangedSubview(self.separator2)
             self.stackView.addArrangedSubview(self.calendar)
-            
             UIView.animate(withDuration: AnimationConfiguration.standardDuration,
                            delay: AnimationConfiguration.standardDelay,
                            options: .curveEaseInOut,
@@ -265,7 +252,7 @@ extension SettingsView: ISwitchDeadlineDelegate {
                 self.delegate?.userTapDate().self
             })
             dateFlag = true
-        } else  {
+        } else {
             UIView.animate(withDuration: AnimationConfiguration.standardDuration,
                            delay: AnimationConfiguration.standardDelay,
                            options: .curveEaseInOut,
@@ -285,11 +272,10 @@ extension SettingsView: ISwitchDeadlineDelegate {
     }
 }
 
-//MARK: - ICalendarViewDelegate
+// MARK: - ICalendarViewDelegate
 
 extension SettingsView: ICalendarViewDelegate {
     func updateDate(with date: Date) {
         self.setDeadline(with: date)
     }
-    
 }

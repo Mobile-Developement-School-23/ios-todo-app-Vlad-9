@@ -47,6 +47,7 @@
 		37B18E112A45D5EF0061DC06 /* TodoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E102A45D5EF0061DC06 /* TodoAssembly.swift */; };
 		37B18E132A45D8B60061DC06 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E122A45D8B60061DC06 /* TodoViewModel.swift */; };
 		37B18E152A462CEC0061DC06 /* ColorPickerPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18E142A462CEC0061DC06 /* ColorPickerPaletteView.swift */; };
+		37EAB3092A5E017A00AFA801 /* TodoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EAB3082A5E017A00AFA801 /* TodoDB.swift */; };
 		37EC21AB2A464FD1000DE90B /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EC21AA2A464FD1000DE90B /* ColorView.swift */; };
 		37EC21AD2A465848000DE90B /* ColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EC21AC2A465848000DE90B /* ColorSelectionView.swift */; };
 		37EC21AF2A4676AB000DE90B /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EC21AE2A4676AB000DE90B /* UIColor+Extensions.swift */; };
@@ -104,6 +105,7 @@
 		37B18E102A45D5EF0061DC06 /* TodoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAssembly.swift; sourceTree = "<group>"; };
 		37B18E122A45D8B60061DC06 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		37B18E142A462CEC0061DC06 /* ColorPickerPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerPaletteView.swift; sourceTree = "<group>"; };
+		37EAB3082A5E017A00AFA801 /* TodoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDB.swift; sourceTree = "<group>"; };
 		37EC21AA2A464FD1000DE90B /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		37EC21AC2A465848000DE90B /* ColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionView.swift; sourceTree = "<group>"; };
 		37EC21AE2A4676AB000DE90B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		374FFEEF2A3A5D1200B6EA5B = {
 			isa = PBXGroup;
 			children = (
+				37EAB3072A5E014700AFA801 /* Database */,
 				37A5C4BC2A578659003A7173 /* TodoDTO.swift */,
 				37EC21BD2A46AA15000DE90B /* Localizable.strings */,
 				374FFEFA2A3A5D1200B6EA5B /* Yandex-Homework-1 */,
@@ -235,6 +238,14 @@
 				37B18E102A45D5EF0061DC06 /* TodoAssembly.swift */,
 			);
 			path = Todo;
+			sourceTree = "<group>";
+		};
+		37EAB3072A5E014700AFA801 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				37EAB3082A5E017A00AFA801 /* TodoDB.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		37EC21B02A4676E8000DE90B /* Helpers */ = {
@@ -341,6 +352,7 @@
 				374FFEF52A3A5D1200B6EA5B /* Frameworks */,
 				374FFEF62A3A5D1200B6EA5B /* Resources */,
 				372683A42A4FCFAC005AA9BC /* ShellScript */,
+				8071A9550F805B9C5A13EB92 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -454,7 +466,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "lint=\"${PODS_ROOT}/SwiftLint/swiftlint\"\nif which $lint >/dev/null; then\n    $lint \nelse\n    echo \"warning: SwiftLint not installed in cocoapods\"\n    exit 1\nfi\n";
+			shellScript = "#if which swiftlint > /dev/null; then\n#  swiftlint\n#else\n # echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
+		};
+		8071A9550F805B9C5A13EB92 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yandex-Homework-1/Pods-Yandex-Homework-1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yandex-Homework-1/Pods-Yandex-Homework-1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yandex-Homework-1/Pods-Yandex-Homework-1-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		99AE077610BDA3F9C0A8236F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -522,6 +551,7 @@
 				37A5C4BF2A585C01003A7173 /* MainPresenter.swift in Sources */,
 				37B18E042A4390590061DC06 /* PriorityView.swift in Sources */,
 				37A5C4B92A5716E0003A7173 /* URLSession+Extension.swift in Sources */,
+				37EAB3092A5E017A00AFA801 /* TodoDB.swift in Sources */,
 				374FFF002A3A5D1200B6EA5B /* ViewController.swift in Sources */,
 				372683822A4F73DE005AA9BC /* Animator.swift in Sources */,
 				374FFEFC2A3A5D1200B6EA5B /* AppDelegate.swift in Sources */,

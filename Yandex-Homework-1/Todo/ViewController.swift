@@ -2,12 +2,11 @@ import UIKit
 import CocoaLumberjack
 import TodoItem
 
-
 protocol IViewControllerDelegate: AnyObject {
     func save(with: TodoViewModel)
     func remove(with: TodoViewModel)
 }
-class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, ISettingsColorDelegate, ITextViewDelegate {
+class ViewController: UIViewController, UIScrollViewDelegate, IRemoveDelegate, ISettingsColorDelegate, ITextViewDelegate {
      func returnText() {
      }
      func emptyText(flag: Bool) {
@@ -22,17 +21,14 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
      func userChangeColor(color: UIColor) {
          self.txtView.setColorText(color: color)
      }
-    
-    //MARK: - Constants
+    // MARK: - Constants
     enum Constraints {
         static let scrollViewTopAnchorConstraintConstant: CGFloat = 16
     }
     enum Constants {
         static let navigationBarElementsFontSize: CGFloat = 17
     }
-    
-    //MARK: - Initializer
-    
+    // MARK: - Initializer
     init(presenter: TodoPresenter) {
         self.presenter = presenter
         self.delegate = presenter
@@ -41,8 +37,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    //MARK: - Configuration
-    
+    // MARK: - Configuration
     enum StackViewConfiguration {
         static let stackViewLayoutLeftMargin: CGFloat = 16
         static let stactViewLayoutRightMargin: CGFloat = 16
@@ -50,17 +45,16 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
         static let stackViewLayoutBottomMargin: CGFloat = 0
         static let stackViewSpacing: CGFloat = 16
     }
-    
+
     // MARK: - Dependencies
-    
+
     private let presenter:  TodoPresenter
     var todoViewModel: TodoViewModel?
     weak var delegate: IViewControllerDelegate?
     private var scrollConstraint: [NSLayoutConstraint] = []
     private lazy var tapGesture = UITapGestureRecognizer(target: self,
                                                          action: #selector(self.dismissKeyboard (_:)))
-    //MARK: - UI
-    
+    // MARK: - UI
     private var scrollView = UIScrollView()
     private let txtView: TextView = TextView(frame: .zero)
     private let removeView: RemoveView = RemoveView(frame: .zero)
@@ -71,14 +65,13 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
         let stackView   = UIStackView()
         stackView.axis  = NSLayoutConstraint.Axis.vertical
         stackView.distribution  = UIStackView.Distribution.equalSpacing
-        stackView.alignment = .fill //UIStackView.Alignment.center
+        stackView.alignment = .fill // UIStackView.Alignment.center
         stackView.spacing   = StackViewConfiguration.stackViewSpacing
         return stackView
-        
     }()
-    
+
     // MARK: - Configuration
-    
+
     func setupWithViewModel(model: TodoViewModel) {
         self.todoViewModel = model
         self.txtView.configureText(with: model.text)
@@ -92,7 +85,6 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
         if let hexCode = model.hexCode {
             self.settingsView.setHexCode(code: hexCode)
         }
-        
     }
     func setupWithNewModel() {
         self.todoViewModel = TodoViewModel(id: UUID().uuidString,
@@ -108,8 +100,7 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
             delegate?.remove(with: todoViewModel).self
         }
     }
-    func saveState()
-    {
+    func saveState() {
         var priorityRaw = settingsView.getPriorityRawValue()
         var priorityString = "basic"
         if priorityRaw == 0 {
@@ -126,9 +117,9 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
             delegate?.save(with: todoViewModel).self
         }
     }
-    
+
     // MARK: - Viewdidload
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.settingsView.delegateColor = self
@@ -136,46 +127,43 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
         setupConstraints()
         presenter.viewDidLoad()
     }
-    
+
     // MARK: - Configuration
-    
+
     func configure() {
-        
+
         self.view.backgroundColor = Colors.backPrimary.value
         setupNavigationBar()
         configureStackView()
         registerKeyboardNotifications()
         setDelegate()
     }
-    
+
     func setDelegate() {
         self.scrollView.delegate = self
         self.removeView.delegate = self
         settingsView.delegate = self
     }
-    
+
     func addGestureRecognizer() {
         self.view.addGestureRecognizer(tapGesture)
     }
     func removeGesture() {
         self.view.removeGestureRecognizer(tapGesture)
     }
-    
+
     // MARK: - Setup NavBar
-  
+
     func setupNavigationBar() {
         cancelButton.setTitle(  NSLocalizedString("task.back", comment: "back"), for: .normal)
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         cancelButton.tintColor = Colors.colorBlue.value
         cancelButton.titleLabel?.font = .systemFont(ofSize: Constants.navigationBarElementsFontSize,weight: .regular)
-        
         saveButton.setTitle(NSLocalizedString("task.save", comment: "save"), for: .normal)
         saveButton.addTarget(self, action: #selector(saveTodo), for: .touchUpInside)
         saveButton.isEnabled = false
         saveButton.tintColor = Colors.colorBlue.value
         saveButton.titleLabel?.font = .systemFont(ofSize: Constants.navigationBarElementsFontSize, weight: .semibold)
-        
-        
         let taskLabel: UILabel = {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -185,7 +173,6 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
             label.textAlignment = .center
             label.textColor = Colors.labelPrimary.value
             label.font = .systemFont(ofSize: Constants.navigationBarElementsFontSize, weight: .semibold)
-            
             return label
         }()
 
@@ -194,46 +181,37 @@ class ViewController: UIViewController,UIScrollViewDelegate, IRemoveDelegate, IS
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
         self.txtView.delegate = self
     }
-    
-    
     // MARK: - Setup StackView
-    
     func configureStackView() {
-        
         stackView.layoutMargins = UIEdgeInsets(top: StackViewConfiguration.stackViewLayoutTopMargin,
                                                left: StackViewConfiguration.stackViewLayoutLeftMargin,
                                                bottom: StackViewConfiguration.stackViewLayoutBottomMargin,
                                                right: StackViewConfiguration.stactViewLayoutRightMargin)
         stackView.isLayoutMarginsRelativeArrangement = true
-        
         stackView.addArrangedSubview(txtView)
         stackView.addArrangedSubview(settingsView)
         stackView.addArrangedSubview(removeView)
     }
-    
     // MARK: - Setup Constraints
-    
     func setupConstraints() {
-        
+
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         setupScrollViewConstraints()
         setupStackViewConstraints()
     }
-    
     func setupScrollViewConstraints() {
         scrollConstraint =  [
-            scrollView.bottomAnchor.constraint(equalTo: (view.bottomAnchor)),
+            scrollView.bottomAnchor.constraint(equalTo: (view.bottomAnchor))
         ]
         NSLayoutConstraint.activate(scrollConstraint)
         let constraints = [
             scrollView.widthAnchor.constraint(equalTo: stackView.widthAnchor),
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: (view.leadingAnchor)),
-            scrollView.trailingAnchor.constraint(equalTo: (view.trailingAnchor)),
+            scrollView.trailingAnchor.constraint(equalTo: (view.trailingAnchor))
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -286,8 +264,7 @@ extension ViewController {
                 if scrollView.contentSize.height
                     + self.view.safeAreaInsets.bottom
                     + self.view.safeAreaInsets.top
-                    > scrollView.visibleSize.height{
-
+                    > scrollView.visibleSize.height {
                     let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + self.view.safeAreaInsets.bottom)
                     scrollView.setContentOffset(bottomOffset, animated: true)
                 }
@@ -300,9 +277,12 @@ extension ViewController {
         scrollView.removeObserver(self, forKeyPath: "contentSize")
     }
     private func registerKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIControl.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(_:)),
+                                               name: UIControl.keyboardWillShowNotification,
+                                               object: nil)
     }
-    
+
     @objc func keyboardWillShow(_ notification: Notification) {
         addGestureRecognizer()
         guard notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] is NSValue else { return }

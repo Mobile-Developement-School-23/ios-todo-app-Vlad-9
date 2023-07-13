@@ -53,7 +53,7 @@ private extension NetworkService {
                        id: String? = nil,
                        httpBody: Data? = nil) -> URLRequest?
     {
-        
+        var headerRevision = Endpoints.headers
         var string = "/\(Endpoints.list)"
         if let id {
             string.append("/\(id)")
@@ -69,9 +69,12 @@ private extension NetworkService {
         if let httpBody {
             request.httpBody = httpBody
         }
-        Endpoints.headers[Endpoints.headerRevision] = String(revision ?? 0)
+        if let revision {
+            headerRevision[Endpoints.headerRevision] = String(revision)
+        }
+        //Endpoints.headers[Endpoints.headerRevision] = String(revision ?? 0)
         request.timeoutInterval = 0
-        request.allHTTPHeaderFields = Endpoints.headers
+        request.allHTTPHeaderFields = headerRevision//Endpoints.headers
         return request
     }
 }
@@ -99,7 +102,7 @@ extension NetworkService: INetworkService {
         revisionVersion = response.revision
         return response.element
     }
-
+ 
     func removeElement(by id: String) async throws -> Todomodel {
         guard let urlRequest = NetworkService().makeURLReques(withHttpType: .delete,revision:   revisionVersion, id: id) else {
             throw ((NetworkServiceError.unableToMakeRequestURL))

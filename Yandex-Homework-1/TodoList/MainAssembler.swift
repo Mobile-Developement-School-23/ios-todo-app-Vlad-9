@@ -7,10 +7,10 @@ protocol IMainAssembly {
 }
 
 class MainAssembly: IMainAssembly {
-  
+
     let presenter = MainPresenter()
     func createMainViewController() -> UIViewController {
-    
+
         let view = MainViewController(presenter: presenter)
         presenter.view = view
         let navController = UINavigationController()

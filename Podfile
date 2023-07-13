@@ -7,6 +7,7 @@ target 'Yandex-Homework-1' do
 
   # Pods for Yandex-Homework-1
 pod 'SwiftLint'
+    pod 'SQLite.swift', '~> 0.14.0'
   target 'Yandex-Homework-1Tests' do
     inherit! :search_paths
     # Pods for testing

@@ -3,9 +3,9 @@ protocol DeadlineHelperViewDelegate: AnyObject {
     func userTapDate()
 }
 class DeadlineHelperView: UIView {
-    
-    //MARK: - Constants
-    
+
+    // MARK: - Constants
+
     enum AnimationConfiguration {
         static let standardDuration: TimeInterval = 0.40
         static let standardDelay: TimeInterval = 0.01
@@ -14,15 +14,15 @@ class DeadlineHelperView: UIView {
         static let dateButtonFontSize: CGFloat = 13
         static let deadlineLabelFontSize: CGFloat = 17
     }
-    
-    //MARK: - Dependencies
+
+    // MARK: - Dependencies
     
     weak var delegate: DeadlineHelperViewDelegate?
     private var constraintWithDate: [NSLayoutConstraint] = []
     private var constraintWithoutDate: [NSLayoutConstraint] = []
-    
-    //MARK: - UI
-    
+
+    // MARK: - UI
+
     private lazy  var dateButton =  UIButton(type: .system)
     private lazy var deadlineLabel: UILabel = {
        let label = UILabel()
@@ -35,9 +35,9 @@ class DeadlineHelperView: UIView {
         label.font = .systemFont(ofSize: Constants.deadlineLabelFontSize, weight: .regular)
        return label
    }()
-    
-    //MARK: - Initializer
-    
+
+    // MARK: - Initializer
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         configureView()
@@ -48,13 +48,13 @@ class DeadlineHelperView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    //MARK: - setDate Handler
+    // MARK: - setDate Handler
 
-    @objc func setDate (){
+    @objc func setDate () {
         delegate.self?.userTapDate()
     }
-    
-    //MARK: - Configure constraints
+
+    // MARK: - Configure constraints
 
     private func configureConstraints() {
         deadlineLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -75,9 +75,9 @@ class DeadlineHelperView: UIView {
             dateButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
     }
-    
-    //MARK: - Configure view
-    
+
+    // MARK: - Configure view
+
     private func configureView() {
         setupButton()
     }
@@ -87,9 +87,9 @@ class DeadlineHelperView: UIView {
         dateButton.tintColor = Colors.colorBlue.value
         dateButton.titleLabel?.font = .boldSystemFont(ofSize: Constants.dateButtonFontSize)
     }
-    
-    //MARK: - Set constraints
-    
+
+    // MARK: - Set constraints
+
     private func setupConstraints(){
         configureConstraints()
         self.addSubview(deadlineLabel)
@@ -98,19 +98,20 @@ class DeadlineHelperView: UIView {
 }
 
 extension DeadlineHelperView {
-    func addDateSubView(with date: Date,firstTime: Bool) {
+    func addDateSubView(with date: Date, firstTime: Bool) {
         var datUpdated =  Date()
             datUpdated = date
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "d MMM y"
-        
         dateButton.setTitle(formatter1.string(from: datUpdated), for: .normal)
         self.addSubview(dateButton)
-        
         NSLayoutConstraint.deactivate(constraintWithoutDate)
         NSLayoutConstraint.activate(constraintWithDate)
         if !firstTime {
-            UIView.animate(withDuration: AnimationConfiguration.standardDuration, delay: AnimationConfiguration.standardDelay, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: AnimationConfiguration.standardDuration,
+                           delay: AnimationConfiguration.standardDelay,
+                           options: .curveEaseOut,
+                           animations: {
                 self.dateButton.alpha = 1
                 self.layoutIfNeeded()
             })
@@ -120,10 +121,12 @@ extension DeadlineHelperView {
     func removeDateSubView() {
         NSLayoutConstraint.deactivate(self.constraintWithDate)
         NSLayoutConstraint.activate(self.constraintWithoutDate)
-        UIView.animate(withDuration: AnimationConfiguration.standardDuration, delay: AnimationConfiguration.standardDelay, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: AnimationConfiguration.standardDuration,
+                       delay: AnimationConfiguration.standardDelay,
+                       options: .curveEaseIn,
+                       animations: {
             self.dateButton.alpha = 0
             self.layoutIfNeeded()
-    
         }) { _ in
             self.dateButton.removeFromSuperview()
         }

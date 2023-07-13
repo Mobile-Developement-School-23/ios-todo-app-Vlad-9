@@ -2,10 +2,10 @@ import UIKit
 
 class DeadlineCellView: UIView {
 
-    //MARK: - Constants
+    // MARK: - Constants
 
     enum Constraints {
-        
+
         static let removeButtonTopAnchorConstraintConstant: CGFloat = 17
         static let removeButtonLeadingAnchorConstraintConstant: CGFloat = 16
         static let removeButtonTrailingAnchorConstraintConstant: CGFloat = -16
@@ -16,12 +16,12 @@ class DeadlineCellView: UIView {
         static let buttonFontSize: CGFloat = 17
         static let buttonTitle = NSLocalizedString("task.remove", comment: "remove task")
     }
-    
-    //MARK: - Dependencies
+
+    // MARK: - Dependencies
 
     weak var delegate: IRemoveDelegate?
 
-    //MARK: - UI
+    // MARK: - UI
     var icon = UIImageView()
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -31,8 +31,8 @@ class DeadlineCellView: UIView {
         label.textColor = Colors.labelTeritary.value
         return label
     }()
-   
-    //MARK: - Initializer
+
+    // MARK: - Initializer
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -42,30 +42,30 @@ class DeadlineCellView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    //MARK: - Configuration
+    // MARK: - Configuration
 
     func configureView(text: String?) {
-        icon.image = UIImage(named: "calendarIcon")?.withTintColor(Colors.labelTeritary.value, renderingMode: .alwaysOriginal)
+        icon.image = UIImage(named: "calendarIcon")?.withTintColor(Colors.labelTeritary.value,
+                                                                   renderingMode: .alwaysOriginal)
         self.titleLabel.text = text
         setupConstraints()
     }
 
-    //MARK: - Constraints
+    // MARK: - Constraints
 
     private func setupConstraints() {
         self.addSubview(titleLabel)
         self.addSubview(icon)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         icon.translatesAutoresizingMaskIntoConstraints = false
-       
         let constraints = [
             icon.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor,constant: 2),
+            titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 2),
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            icon.topAnchor.constraint(equalTo: self.topAnchor,constant: 2),
+            icon.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
             titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            icon.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -2),
+            icon.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2)
         ]
         NSLayoutConstraint.activate(constraints)
     }

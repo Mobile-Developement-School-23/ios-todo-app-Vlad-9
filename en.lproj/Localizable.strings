@@ -18,3 +18,12 @@
 "task.newTaskShort" = "New";
 "task.show" = "Show";
 "task.hide" = "Hide";
+
+"message.syncWithServer" = "Data is synchronized with server";
+"message.syncWithLocalDB" = "Data loaded from local database";
+"message.errorGetDataFromServer" = "Couldn't get data from server";
+"message.errorGetDataFromLocalDB" = "Couldn't get data from  local database";
+"message.warningDelayNetwork" = "Sending data to the server may take longer";
+"message.errorSendDataToServer" = "Couldn't save on server. Data saved locally";
+"message.warningElementAlreadyDeleted" = "Element already deleted on server";
+"message.warningRefreshList" = "Please, wait. Todolist updating";

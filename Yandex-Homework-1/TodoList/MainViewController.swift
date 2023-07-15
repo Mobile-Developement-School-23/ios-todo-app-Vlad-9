@@ -34,13 +34,20 @@ private extension MainViewController {
         static let iconActionRadioButtonImageName = "actionRadioButtonIcon"
         static let cell1Id = "cellId"
         static let cell2Id = "cellId2"
-
     }
 }
+
 // MARK: - Public
 
 extension MainViewController {
-
+    func stopRefresh() {
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
+        let seconds = 6.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            self.refreshFlag = false
+        }
+    }
     func reloadTable() {
         self.tableView.reloadData()
     }
@@ -53,7 +60,7 @@ extension MainViewController {
     }
     func setSectionViewCount(with count: Int) {
         sectionView.configure(with: count)
-        tableView.reloadData()
+        //     tableView.reloadData()
     }
     func updateActivityIndicator(isAnimating: Bool) {
         if isAnimating {
@@ -88,12 +95,13 @@ private extension MainViewController {
     }
 
     private func setupButton() {
+        self.tableView.addSubview(self.refreshControl)
         view.addSubview(tableView)
         self.view
             .addSubview(plusButton)
         self.navigationController?.navigationBar.addSubview(activityIndicator)
 
-        activityIndicator.color = Colors.colorBlue.value
+        activityIndicator.color = Colors.labelTeritary.value
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         plusButton.translatesAutoresizingMaskIntoConstraints = false
         plusButton.addTarget(self, action: #selector(createTask), for: .touchUpInside)
@@ -136,15 +144,31 @@ private extension MainViewController {
         ]
         NSLayoutConstraint.activate(constraints)
     }
+    @objc private func handleRefresh(_ refreshControl: UIRefreshControl) {
+        if !refreshFlag {
+            refreshFlag = true
+            presenter.refresh()
+        } else {
+            self.showbanner(text: NSLocalizedString("message.warningRefreshList",
+                                                   comment: ""),
+                            color: .orange)
+            self.refreshControl.endRefreshing()
+        }
+    }
 }
 
 class MainViewController: UIViewController, UINavigationControllerDelegate {
+ 
     // MARK: - Dependencies
+
     var showisDone = false
+    var refreshFlag = false
     let transition = Animator()
     var selectedCell: UITableViewCell?
     private var presenter: MainPresenter
+
     // MARK: - Initializer
+
     init(presenter: MainPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -152,11 +176,22 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     // MARK: - UI
+
     private lazy var activityIndicator = UIActivityIndicatorView(style: .medium)
     private let sectionView = TodoDoneUIView()
+    private lazy var viewBanner = NotificationBanner()
     private var backButton =  UIButton(type: .system)
     private var emptyButton =  UIButton(type: .system)
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+                                    #selector(handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = Colors.labelTeritary.value
+        return refreshControl
+    }()
     private lazy var tableView: UITableView = {
         var tableView = UITableView(frame: .zero, style: .insetGrouped
         )
@@ -193,19 +228,24 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         label.textColor = Colors.labelPrimary.value
         return label
     }()
+    
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
     }
+    
+    lazy var viewBannerConstraints = [
+        viewBanner.topAnchor.constraint(equalTo: (self.navigationController?.view.safeAreaLayoutGuide.topAnchor)!),
+        viewBanner.heightAnchor.constraint(equalToConstant: 15),
+        viewBanner.centerXAnchor.constraint(equalTo: (self.navigationController?.view.centerXAnchor)!)
+    ]
 }
 
 // MARK: - TodoDoneUIViewdelegate
 
 extension MainViewController: TodoDoneUIViewdelegate {
     func showIsDone(done: Bool) {
-        print("todoitems",presenter.getAllItems(),presenter.getAllItemsCount())
-        print("dirty", defaults.bool(forKey: "isDirty"))
         self.showisDone = done
         UIView.transition(with: tableView,
                           duration: Constants.showDoneAnimationDuration,
@@ -215,7 +255,7 @@ extension MainViewController: TodoDoneUIViewdelegate {
     }
 }
 
-// MARK: -  UITableViewDelegate,UITableViewDataSource
+// MARK: - UITableViewDelegate,UITableViewDataSource
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView,
@@ -240,7 +280,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         if indexPath.row != tableView.numberOfRows(inSection: indexPath.section) - 1 {
             var todomodel: TodoItem?
             if showisDone {
@@ -272,6 +311,40 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         return tableView.dequeueReusableCell(withIdentifier: Constants.cell2Id, for: indexPath) as! CreateNewTaskTableViewCell
+    }
+ 
+    func showbanner(text: String, color: UIColor? = nil) {
+        viewBanner.setValue(text: text)
+        if let color {
+            viewBanner.setColor(color: color.withAlphaComponent(0.9))
+        }
+        self.viewBanner.alpha = 0
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       options: .curveEaseIn,
+                       animations: {
+            self.viewBanner.alpha = 1
+            self.navigationController?.view.addSubview(self.viewBanner)
+            NSLayoutConstraint.activate(self.viewBannerConstraints)
+        })
+        viewBanner.translatesAutoresizingMaskIntoConstraints = false
+        Timer.scheduledTimer(timeInterval: (3.0),
+                             target: self,
+                             selector: #selector(timeExpired),
+                             userInfo: nil,
+                             repeats: false)
+    }
+    @objc func timeExpired() {
+        self.viewBanner.alpha = 1
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       options: .curveEaseIn,
+                       animations: {
+            self.viewBanner.alpha = 0
+        }){(success) in
+            NSLayoutConstraint.deactivate(self.viewBannerConstraints)
+            self.viewBanner.removeFromSuperview()
+        }
     }
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
@@ -367,7 +440,7 @@ extension MainViewController: TodoTableViewCellDelegate {
         newItem?.setDone(flag: !value)
         presenter.addItem(item: newItem!)
         presenter.updateDone(item:  newItem!)
-        //saveAll()
+        self.setSectionViewCount(with: presenter.getAllItems().filter({$0.isDone == true}).count)
         if !showisDone {
             if let index  =  newItem2 {
                 let indexPth = IndexPath(row: index, section: 0)
@@ -393,7 +466,6 @@ extension MainViewController {
     func tableView(_ tableView: UITableView,
                    contextMenuConfigurationForRowAt indexPath: IndexPath,
                    point: CGPoint) -> UIContextMenuConfiguration? {
-
         let previewProvider: () -> UIViewController? = {
             if indexPath.row != tableView.numberOfRows(inSection: indexPath.section) - 1 {
                 if let todomodel = self.getTodoItem(parameter: self.showisDone, path: indexPath) {
@@ -403,15 +475,12 @@ extension MainViewController {
             }
             return nil
         }
-
         let actionsProvider: ([UIMenuElement]) -> UIMenu? = { _ in
-
             let editAction = UIAction(title: NSLocalizedString("task.edit",
                                                                comment: "edit task"),
                                       image: UIImage(systemName: Constants.editIconImageName)) { [weak self] _ in
-
                 if let todomodel = self?.getTodoItem(parameter: self!.showisDone, path: indexPath) {
-                    let newVc = UINavigationController(rootViewController: (self?.presenter.assemblyWith(item: todomodel))!) // (self?.presenter.assembler.createTodoViewController(with: todomodel))!)
+                    let newVc = UINavigationController(rootViewController: (self?.presenter.assemblyWith(item: todomodel))!)
                     newVc.transitioningDelegate = self
                     self?.navigationController?.present(newVc, animated: true)
                 }
@@ -425,10 +494,10 @@ extension MainViewController {
                     //  self?.tableView.reloadData()
                 }
             }
-            if indexPath.row != tableView.numberOfRows(inSection: indexPath.section) - 1 { return UIMenu(title: "", children: [editAction, deleteAction]) }
+            if indexPath.row != tableView.numberOfRows(inSection: indexPath.section) - 1 { return UIMenu(title: "",
+                                                                                                         children: [editAction, deleteAction]) }
             return nil
         }
-
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: previewProvider,
                                           actionProvider: actionsProvider)
@@ -451,7 +520,6 @@ extension MainViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController,
                              source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
         guard
             let selectedIndexPathCell = tableView.indexPathForSelectedRow,
             let selectedCell = tableView.cellForRow(at: selectedIndexPathCell),
@@ -484,7 +552,6 @@ extension MainViewController {
                    forRowAt indexPath: IndexPath) {
         let cornerRadius = Constants.tableViewCornerRadius
         var corners: UIRectCorner = []
-
         if indexPath.row == 0 {
             corners.update(with: .topLeft)
             corners.update(with: .topRight)

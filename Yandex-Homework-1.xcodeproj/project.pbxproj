@@ -29,12 +29,16 @@
 		374FFF2C2A3A5D2200B6EA5B /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFF2B2A3A5D2200B6EA5B /* TodoItem.swift */; };
 		374FFF2E2A3A5D2F00B6EA5B /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFF2D2A3A5D2F00B6EA5B /* FileCache.swift */; };
 		375D55E32A3D20A100C11276 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D55E22A3D20A100C11276 /* TestConstants.swift */; };
+		3762A74C2A61949B00FC739E /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762A74B2A61949B00FC739E /* NotificationBanner.swift */; };
+		3762A74E2A62092D00FC739E /* TodoLocalDBProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762A74D2A62092D00FC739E /* TodoLocalDBProtocol.swift */; };
+		3762A7522A62185D00FC739E /* TodoItem in Frameworks */ = {isa = PBXBuildFile; productRef = 3762A7512A62185D00FC739E /* TodoItem */; };
+		379FEF862A60D313005B56A3 /* Yandex-Homework-1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 379FEF842A60D313005B56A3 /* Yandex-Homework-1.xcdatamodeld */; };
+		379FEF882A60D4A5005B56A3 /* TodoCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FEF872A60D4A5005B56A3 /* TodoCoreData.swift */; };
 		37A5C4B92A5716E0003A7173 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5C4B82A5716E0003A7173 /* URLSession+Extension.swift */; };
 		37A5C4BB2A578582003A7173 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5C4BA2A578582003A7173 /* NetworkService.swift */; };
 		37A5C4BD2A578659003A7173 /* TodoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5C4BC2A578659003A7173 /* TodoDTO.swift */; };
 		37A5C4BF2A585C01003A7173 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5C4BE2A585C01003A7173 /* MainPresenter.swift */; };
 		37A5C4C12A585C0B003A7173 /* MainAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5C4C02A585C0B003A7173 /* MainAssembler.swift */; };
-		37AA2BBC2A4FDADF00DB7CF7 /* TodoItem in Frameworks */ = {isa = PBXBuildFile; productRef = 37AA2BBB2A4FDADF00DB7CF7 /* TodoItem */; };
 		37B18DF82A4336280061DC06 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18DF72A4336280061DC06 /* TextView.swift */; };
 		37B18DFA2A43481C0061DC06 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18DF92A43481C0061DC06 /* MainViewController.swift */; };
 		37B18DFC2A438BAE0061DC06 /* RemoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B18DFB2A438BAE0061DC06 /* RemoveView.swift */; };
@@ -73,7 +77,6 @@
 		3726837F2A4E63B7005AA9BC /* CreateNewTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskTableViewCell.swift; sourceTree = "<group>"; };
 		372683812A4F73DE005AA9BC /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		372683872A4FAA5F005AA9BC /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		372683A62A4FD672005AA9BC /* TodoItem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TodoItem; path = ../../../Desktop/TodoItem; sourceTree = "<group>"; };
 		373349B72A41C6BA006BA9F6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		373349B92A41CC3A006BA9F6 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		374FFEF82A3A5D1200B6EA5B /* Yandex-Homework-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yandex-Homework-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +91,10 @@
 		374FFF2B2A3A5D2200B6EA5B /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		374FFF2D2A3A5D2F00B6EA5B /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		375D55E22A3D20A100C11276 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
+		3762A74B2A61949B00FC739E /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
+		3762A74D2A62092D00FC739E /* TodoLocalDBProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoLocalDBProtocol.swift; sourceTree = "<group>"; };
+		379FEF852A60D313005B56A3 /* Yandex-Homework-1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Yandex-Homework-1.xcdatamodel"; sourceTree = "<group>"; };
+		379FEF872A60D4A5005B56A3 /* TodoCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCoreData.swift; sourceTree = "<group>"; };
 		37A5C4B82A5716E0003A7173 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		37A5C4BA2A578582003A7173 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		37A5C4BC2A578659003A7173 /* TodoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDTO.swift; sourceTree = "<group>"; };
@@ -124,7 +131,7 @@
 			files = (
 				372683A12A4FCB61005AA9BC /* CocoaLumberjackSwift in Frameworks */,
 				372683A32A4FCB61005AA9BC /* CocoaLumberjackSwiftLogBackend in Frameworks */,
-				37AA2BBC2A4FDADF00DB7CF7 /* TodoItem in Frameworks */,
+				3762A7522A62185D00FC739E /* TodoItem in Frameworks */,
 				3726839F2A4FCB61005AA9BC /* CocoaLumberjack in Frameworks */,
 				280AC39918151E3C532900B1 /* Pods_Yandex_Homework_1.framework in Frameworks */,
 			);
@@ -153,8 +160,6 @@
 		374FFEEF2A3A5D1200B6EA5B = {
 			isa = PBXGroup;
 			children = (
-				37EAB3072A5E014700AFA801 /* Database */,
-				37A5C4BC2A578659003A7173 /* TodoDTO.swift */,
 				37EC21BD2A46AA15000DE90B /* Localizable.strings */,
 				374FFEFA2A3A5D1200B6EA5B /* Yandex-Homework-1 */,
 				374FFF112A3A5D1400B6EA5B /* Yandex-Homework-1Tests */,
@@ -176,6 +181,8 @@
 		374FFEFA2A3A5D1200B6EA5B /* Yandex-Homework-1 */ = {
 			isa = PBXGroup;
 			children = (
+				3762A7532A621B8600FC739E /* NetworkService */,
+				37EAB3072A5E014700AFA801 /* Database */,
 				37EC21B42A467787000DE90B /* TodoList */,
 				37EC21B32A46776D000DE90B /* Models */,
 				37EC21B12A46771D000DE90B /* Services */,
@@ -185,8 +192,6 @@
 				374FFF042A3A5D1400B6EA5B /* Assets.xcassets */,
 				374FFF062A3A5D1400B6EA5B /* LaunchScreen.storyboard */,
 				374FFF092A3A5D1400B6EA5B /* Info.plist */,
-				37A5C4B82A5716E0003A7173 /* URLSession+Extension.swift */,
-				37A5C4BA2A578582003A7173 /* NetworkService.swift */,
 			);
 			path = "Yandex-Homework-1";
 			sourceTree = "<group>";
@@ -198,6 +203,16 @@
 				375D55E22A3D20A100C11276 /* TestConstants.swift */,
 			);
 			path = "Yandex-Homework-1Tests";
+			sourceTree = "<group>";
+		};
+		3762A7532A621B8600FC739E /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				37A5C4B82A5716E0003A7173 /* URLSession+Extension.swift */,
+				37A5C4BA2A578582003A7173 /* NetworkService.swift */,
+				37A5C4BC2A578659003A7173 /* TodoDTO.swift */,
+			);
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		37B18DF52A4335F30061DC06 /* TodoViews */ = {
@@ -230,7 +245,6 @@
 		37B18E0D2A45D4F80061DC06 /* Todo */ = {
 			isa = PBXGroup;
 			children = (
-				372683A62A4FD672005AA9BC /* TodoItem */,
 				37B18DF52A4335F30061DC06 /* TodoViews */,
 				37B18E0E2A45D5530061DC06 /* TodoPresenter.swift */,
 				374FFEFF2A3A5D1200B6EA5B /* ViewController.swift */,
@@ -244,6 +258,9 @@
 			isa = PBXGroup;
 			children = (
 				37EAB3082A5E017A00AFA801 /* TodoDB.swift */,
+				379FEF872A60D4A5005B56A3 /* TodoCoreData.swift */,
+				3762A74D2A62092D00FC739E /* TodoLocalDBProtocol.swift */,
+				379FEF842A60D313005B56A3 /* Yandex-Homework-1.xcdatamodeld */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -252,6 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				37EC21AE2A4676AB000DE90B /* UIColor+Extensions.swift */,
+				372683872A4FAA5F005AA9BC /* UIButton+Extension.swift */,
+				3762A74B2A61949B00FC739E /* NotificationBanner.swift */,
 				37B18E142A462CEC0061DC06 /* ColorPickerPaletteView.swift */,
 			);
 			path = Helpers;
@@ -284,7 +303,6 @@
 				372683772A4DBA4F005AA9BC /* TodoTableViewCell.swift */,
 				372683792A4DE81B005AA9BC /* TodoDoneUIView.swift */,
 				372683812A4F73DE005AA9BC /* Animator.swift */,
-				372683872A4FAA5F005AA9BC /* UIButton+Extension.swift */,
 				37A5C4BE2A585C01003A7173 /* MainPresenter.swift */,
 				37A5C4C02A585C0B003A7173 /* MainAssembler.swift */,
 			);
@@ -363,7 +381,7 @@
 				3726839E2A4FCB61005AA9BC /* CocoaLumberjack */,
 				372683A02A4FCB61005AA9BC /* CocoaLumberjackSwift */,
 				372683A22A4FCB61005AA9BC /* CocoaLumberjackSwiftLogBackend */,
-				37AA2BBB2A4FDADF00DB7CF7 /* TodoItem */,
+				3762A7512A62185D00FC739E /* TodoItem */,
 			);
 			productName = "Yandex-Homework-1";
 			productReference = 374FFEF82A3A5D1200B6EA5B /* Yandex-Homework-1.app */;
@@ -419,6 +437,7 @@
 			mainGroup = 374FFEEF2A3A5D1200B6EA5B;
 			packageReferences = (
 				3726839D2A4FCB61005AA9BC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+				3762A7502A62185D00FC739E /* XCRemoteSwiftPackageReference "TodoItem" */,
 			);
 			productRefGroup = 374FFEF92A3A5D1200B6EA5B /* Products */;
 			projectDirPath = "";
@@ -466,7 +485,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#if which swiftlint > /dev/null; then\n#  swiftlint\n#else\n # echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
+			shellScript = "#if which swiftlint > /dev/null; then\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
 		};
 		8071A9550F805B9C5A13EB92 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -547,16 +566,19 @@
 				37B18E152A462CEC0061DC06 /* ColorPickerPaletteView.swift in Sources */,
 				373349BA2A41CC3A006BA9F6 /* Fonts.swift in Sources */,
 				37B18E082A4395B70061DC06 /* CalendarView.swift in Sources */,
+				379FEF862A60D313005B56A3 /* Yandex-Homework-1.xcdatamodeld in Sources */,
 				372683882A4FAA5F005AA9BC /* UIButton+Extension.swift in Sources */,
 				37A5C4BF2A585C01003A7173 /* MainPresenter.swift in Sources */,
 				37B18E042A4390590061DC06 /* PriorityView.swift in Sources */,
 				37A5C4B92A5716E0003A7173 /* URLSession+Extension.swift in Sources */,
+				3762A74C2A61949B00FC739E /* NotificationBanner.swift in Sources */,
 				37EAB3092A5E017A00AFA801 /* TodoDB.swift in Sources */,
 				374FFF002A3A5D1200B6EA5B /* ViewController.swift in Sources */,
 				372683822A4F73DE005AA9BC /* Animator.swift in Sources */,
 				374FFEFC2A3A5D1200B6EA5B /* AppDelegate.swift in Sources */,
 				37B18E132A45D8B60061DC06 /* TodoViewModel.swift in Sources */,
 				374FFF2C2A3A5D2200B6EA5B /* TodoItem.swift in Sources */,
+				3762A74E2A62092D00FC739E /* TodoLocalDBProtocol.swift in Sources */,
 				3726837E2A4E45C5005AA9BC /* DeadlineCellView.swift in Sources */,
 				37B18E062A4394F70061DC06 /* DeadlineView.swift in Sources */,
 				37B18DFC2A438BAE0061DC06 /* RemoveView.swift in Sources */,
@@ -570,6 +592,7 @@
 				37B18E0F2A45D5530061DC06 /* TodoPresenter.swift in Sources */,
 				37B18DFE2A438E7A0061DC06 /* SettingsView.swift in Sources */,
 				37B18DFA2A43481C0061DC06 /* MainViewController.swift in Sources */,
+				379FEF882A60D4A5005B56A3 /* TodoCoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,6 +895,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		3762A7502A62185D00FC739E /* XCRemoteSwiftPackageReference "TodoItem" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Vlad-9/TodoItem.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -890,11 +921,25 @@
 			package = 3726839D2A4FCB61005AA9BC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
 			productName = CocoaLumberjackSwiftLogBackend;
 		};
-		37AA2BBB2A4FDADF00DB7CF7 /* TodoItem */ = {
+		3762A7512A62185D00FC739E /* TodoItem */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 3762A7502A62185D00FC739E /* XCRemoteSwiftPackageReference "TodoItem" */;
 			productName = TodoItem;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		379FEF842A60D313005B56A3 /* Yandex-Homework-1.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				379FEF852A60D313005B56A3 /* Yandex-Homework-1.xcdatamodel */,
+			);
+			currentVersion = 379FEF852A60D313005B56A3 /* Yandex-Homework-1.xcdatamodel */;
+			path = "Yandex-Homework-1.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 374FFEF02A3A5D1200B6EA5B /* Project object */;
 }

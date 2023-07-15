@@ -11,13 +11,18 @@
 "task.hex" = "HEX код";
 "task.deadline" = "Сделать до";
 "task.myTasks" = "Мои дела";
-
 "task.myTasksСompleted" = "Выполнено — ";
 "task.myTasksEmptyСompleted" = "Нет выполненных дел";
-
 "task.newTaskShort" = "Новое";
 "task.edit" = "Изменить";
-
 "task.show" = "Показать";
 "task.hide" = "Скрыть";
 
+"message.syncWithServer" = "Данные синхронизированы с сервером";
+"message.syncWithLocalDB" = "Данные загружены из локальной базы данных";
+"message.errorGetDataFromServer" = "Не удалось получить данные с сервера";
+"message.errorGetDataFromLocalDB" = "Не удалось загрузить данные из локальной БД";
+"message.warningDelayNetwork" = "Отправка данных в сеть может занять дольше времени";
+"message.errorSendDataToServer" = "Не удалось отправить данные на сервер. Сохранено локально";
+"message.warningElementAlreadyDeleted" = "Элемент уже удалён на сервере";
+"message.warningRefreshList" = "Подождите, пока обновится список";

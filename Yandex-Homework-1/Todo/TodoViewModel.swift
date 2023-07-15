@@ -13,6 +13,7 @@ struct TodoViewModel {
     var priority: TodoItem.Priority
     var dateCreated: Date
     var dateChanged: Date?
+    var updatedID: String
 
     // MARK: - Initializer
 
@@ -24,7 +25,8 @@ struct TodoViewModel {
         hexCode: String?,
         priority: TodoItem.Priority,
         dateCreated: Date,
-        dateChanged: Date?
+        dateChanged: Date?,
+        updatedID: String
     ) {
         self.id = id
         self.text = text
@@ -34,5 +36,6 @@ struct TodoViewModel {
         self.priority = priority
         self.dateCreated = dateCreated
         self.dateChanged = dateChanged
+        self.updatedID = updatedID
     }
 }

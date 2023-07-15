@@ -61,6 +61,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, IRemoveDelegate, I
     private let settingsView: SettingsView = SettingsView(frame: .zero)
     private  var cancelButton =  UIButton(type: .system)
     private  var saveButton =  UIButton(type: .system)
+  
     private lazy var stackView: UIStackView = {
         let stackView   = UIStackView()
         stackView.axis  = NSLayoutConstraint.Axis.vertical
@@ -77,7 +78,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, IRemoveDelegate, I
         self.txtView.configureText(with: model.text)
         self.settingsView.setPriority(with: model.priority.rawValue)
         if model.text == "" {
-                  self.navigationItem.rightBarButtonItem!.isEnabled = false
+                  self.navigationItem.rightBarButtonItem?.isEnabled = false
               }
         if let deadline = model.deadline {
             self.settingsView.setDeadline(with: deadline)
@@ -93,7 +94,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, IRemoveDelegate, I
                                            hexCode: nil,
                                            priority: .basic,
                                            dateCreated: Date(),
-                                           dateChanged: nil)
+                                           dateChanged: nil, updatedID: UIDevice.current.identifierForVendor!.uuidString)
     }
     func removeItem() {
         if let todoViewModel {

@@ -1,13 +1,14 @@
 import Foundation
 import TodoItem
+
 let defaults = UserDefaults.standard
+
 enum Constants {
     static let separatorCSV = ";"
     static let newlineCSV = "\n"
     static let specialSymbolForCSV = "\u{1}"
+    static let dbType: dbType = .coreData
 }
-
-//
 
 // MARK: - FileCache protocol
 
@@ -40,12 +41,32 @@ enum saveType {
     case delete
 }
 
+enum dbType {
+    case coreData
+    case SQLite
+}
+
 // MARK: - FileCache
 
 class FileCache: IFileCache {
-
+    
+    // MARK: - Dependencies
+    
+    var dbController: TodoLocalDBProtocol?
     private(set) var todoItems: [TodoItem] = []
     var isDirty = defaults.bool(forKey: "isDirty")
+    
+    // MARK: - Init
+    
+    init() {
+        switch Constants.dbType {
+        case .coreData:
+            self.dbController = TodoCoreData.shared
+        case .SQLite:
+            self.dbController = TodoDB.instance
+        }
+    }
+    
     private func getPath(with fileName: String, with format: AvaliableFormats) throws -> URL {
 
         guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
@@ -53,20 +74,19 @@ class FileCache: IFileCache {
         }
         return path.appendingPathComponent(fileName).appendingPathExtension(format.rawValue)
     }
+    
     func getAll() -> [TodoItem] {
         return todoItems.reversed()
     }
-    func clearLocalDB() {
-        TodoDB.instance.clearTable()
-    }
+
     func setAll(items: [TodoItem], fromDB: Bool) {
         if fromDB {
-            self.todoItems = TodoDB.instance.getAllTodoItems()
+            self.todoItems = (dbController?.getAllTodoItems())!//TodoDB.instance.getAllTodoItems()
         } else {
             self.todoItems = items
         }
     }
-    
+
     @discardableResult
     func add(todoItem: TodoItem) -> TodoItem? {
         if let index = todoItems.firstIndex(where: { $0.id == todoItem.id}) {
@@ -78,18 +98,19 @@ class FileCache: IFileCache {
         }
         return todoItem
     }
-
+    
     func removeTodoItem(by id: String) -> TodoItem? {
         if let index = todoItems.firstIndex(where: { $0.id == id}) {
             return todoItems.remove(at: index)
         }
         return nil
     }
+
     func removeAll() {
         self.todoItems = []
     }
+
     func saveTodoItems(to fileName: String, with format: AvaliableFormats) throws {
-       //TodoDB.instance.addContact(cname: "12d13", cphone: "1111", caddress: "aksdd")
         let path = try getPath(with: fileName, with: format)
         var savedData = Data()
         switch format {
@@ -115,8 +136,8 @@ class FileCache: IFileCache {
         switch format {
 
         case .json:
-             let savedData = try Data(contentsOf: path)
-        guard let jsonArray = try JSONSerialization.jsonObject(with: savedData) as? [[String: Any]] else {
+            let savedData = try Data(contentsOf: path)
+            guard let jsonArray = try JSONSerialization.jsonObject(with: savedData) as? [[String: Any]] else {
                 throw FileCacheErrors.parsingJSONError
             }
             self.todoItems = jsonArray.compactMap { TodoItem.parse(json: $0) }
@@ -126,27 +147,26 @@ class FileCache: IFileCache {
             self.todoItems = rowsCSV.compactMap { TodoItem.parse(csv: $0) }
         }
     }
-    func itemToDB(_ action: saveType,item: TodoItem) {
-      
-        do {
-           // TodoDB.instance.saveAll(items: getAllItems())
-           // try todoItems.saveTodoItems(to: Constants.fileCacheName, with: .json)
+}
+
+// MARK: - Working with DB
+
+extension FileCache {
+
+    func clearLocalDB() {
+        dbController?.clearTable()
+    }
+
+    func itemToDB(_ action: saveType, item: TodoItem) {
             switch action {
             case .update:
-                TodoDB.instance.updateTodo(item: item)
+                dbController?.updateTodo(with: item)
             case .add:
-                TodoDB.instance.addTodo(item: item)
+                dbController?.addTodo(item)
             case .delete:
-                TodoDB.instance.deleteTodo(id: item.id)
+                dbController?.deleteTodo(id: item.id)
             case .upsert:
-                TodoDB.instance.saveOrUpdate(item: item)
+                dbController?.saveOrUpdate(item: item)
             }
-        } catch {
-            print (error,"Can't save to file")
-        }
-//        DispatchQueue.main.async {
-//            self.view?.reloadTable()
-//        }
-    
-}
+    }
 }

@@ -73,7 +73,7 @@ private extension NetworkService {
             headerRevision[Endpoints.headerRevision] = String(revision)
         }
         //Endpoints.headers[Endpoints.headerRevision] = String(revision ?? 0)
-        request.timeoutInterval = 0
+        request.timeoutInterval = 30
         request.allHTTPHeaderFields = headerRevision//Endpoints.headers
         return request
     }

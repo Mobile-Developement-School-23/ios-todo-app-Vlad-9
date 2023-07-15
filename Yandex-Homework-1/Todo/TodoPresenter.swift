@@ -20,7 +20,7 @@ final class TodoPresenter {
                              hexCode: todoItem.hexCode,
                              priority: todoItem.priority,
                              dateCreated: todoItem.dateCreated,
-                             dateChanged: todoItem.dateChanged)
+                             dateChanged: todoItem.dateChanged, updatedID: todoItem.updatedID)
     }
 
     func initialize(todoItem: TodoItem?) {
@@ -50,7 +50,7 @@ extension TodoPresenter: IViewControllerDelegate {
                                  hexCode: with.hexCode,
                                  priority: with.priority,
                                  dateCreated: with.dateCreated,
-                                 dateChanged: with.dateChanged)
+                                 dateChanged: with.dateChanged, updatedID: with.updatedID)
         if let todoItem {
             delegate?.removeTodo(item: todoItem).self
         }
@@ -64,7 +64,7 @@ extension TodoPresenter: IViewControllerDelegate {
                                  hexCode: with.hexCode,
                                  priority: with.priority,
                                  dateCreated: with.dateCreated,
-                                 dateChanged: with.dateChanged)
+                                 dateChanged: with.dateChanged, updatedID: with.updatedID)
         if let todoItem {
             delegate?.saveTodo(item: todoItem).self
         }

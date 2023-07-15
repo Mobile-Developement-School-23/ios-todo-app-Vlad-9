@@ -1,6 +1,7 @@
 import Foundation
 import TodoItem
 import UIKit
+
 extension TodoItem {
     init(fromDTO model: Todomodel) {
         let name = TodoItem.Priority(rawValue: model.importance) ?? .basic
@@ -11,7 +12,7 @@ extension TodoItem {
                   hexCode: model.color,
                   priority: name,
                   dateCreated: Date(timeIntervalSince1970: TimeInterval(model.dateCreated)),
-                  dateChanged: (model.dateChanged != nil) ? Date(timeIntervalSince1970: TimeInterval(model.dateChanged!)) : nil)
+                  dateChanged: (model.dateChanged != nil) ? Date(timeIntervalSince1970: TimeInterval(model.dateChanged!)) : nil, updatedID: model.updatedID)
     }
 }
 
@@ -97,9 +98,11 @@ struct Todomodel: Codable {
         }
         self.updatedID = UIDevice.current.identifierForVendor!.uuidString
     }
+
     mutating func updateID() {
         self.updatedID = UIDevice.current.identifierForVendor!.uuidString
     }
+
     func convertToTodoItem() -> TodoItem {
         let name = TodoItem.Priority(rawValue: self.importance) ?? .basic
         return TodoItem(id: self.id,
@@ -109,6 +112,7 @@ struct Todomodel: Codable {
                         hexCode: color, // (color != nil) ? colo : nil,
                         priority: name,
                         dateCreated: Date(timeIntervalSince1970: TimeInterval(dateCreated)),
-                        dateChanged: (deadline != nil) ? Date(timeIntervalSince1970: TimeInterval(deadline!)) : nil)
+                        dateChanged: (deadline != nil) ? Date(timeIntervalSince1970: TimeInterval(deadline!)) : nil,
+                        updatedID: self.updatedID)
     }
 }

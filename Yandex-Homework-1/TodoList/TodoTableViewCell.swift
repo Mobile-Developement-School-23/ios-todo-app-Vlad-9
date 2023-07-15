@@ -25,7 +25,6 @@ class TodoTableViewCell: UITableViewCell {
     enum Icon: String {
         case LowIcon = "lowPriorityIcon"
         case HighIcon = "highPriorityIcon"
-        
         var image: UIImage? {return UIImage(named: rawValue)}
     }
 
@@ -70,7 +69,6 @@ class TodoTableViewCell: UITableViewCell {
                                                dateView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -17),
                                                titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 17),
                                                titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -39)]
-    
     lazy var constraintWithoutDeadline = [
 
         titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -17),

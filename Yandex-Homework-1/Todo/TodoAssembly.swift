@@ -17,7 +17,7 @@ class TodoAssembly: ITodoAssembly {
         if let model {
             presenter.initialize(todoItem: model)
         } else {
-            presenter.initialize(todoItem: TodoItem(text: "", priority: .basic))
+            presenter.initialize(todoItem: TodoItem(text: "", priority: .basic, updatedID: UIDevice.current.identifierForVendor!.uuidString))
         }
         let view = ViewController(presenter: presenter)
         presenter.view = view

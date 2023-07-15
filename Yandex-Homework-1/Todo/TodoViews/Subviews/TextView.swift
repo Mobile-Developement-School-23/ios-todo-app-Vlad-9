@@ -126,6 +126,9 @@ extension TextView: UITextViewDelegate {
         if textView.text.isEmpty {
             flag = true
         }
+        else {
+            flag = false
+        }
         self.delegate?.emptyText(flag: flag).self
     }
     func textViewDidEndEditing(_ textView: UITextView) {

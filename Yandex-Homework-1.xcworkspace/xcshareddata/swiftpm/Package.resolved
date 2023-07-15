@@ -17,6 +17,15 @@
         "revision" : "32e8d724467f8fe623624570367e3d50c5638e46",
         "version" : "1.5.2"
       }
+    },
+    {
+      "identity" : "todoitem",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Vlad-9/TodoItem.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "c27e407495c23aadb465e1b73ef7b92ae463878f"
+      }
     }
   ],
   "version" : 2

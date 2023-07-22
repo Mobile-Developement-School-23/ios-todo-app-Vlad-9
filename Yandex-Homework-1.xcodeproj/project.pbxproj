@@ -18,6 +18,13 @@
 		3726839F2A4FCB61005AA9BC /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 3726839E2A4FCB61005AA9BC /* CocoaLumberjack */; };
 		372683A12A4FCB61005AA9BC /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 372683A02A4FCB61005AA9BC /* CocoaLumberjackSwift */; };
 		372683A32A4FCB61005AA9BC /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 372683A22A4FCB61005AA9BC /* CocoaLumberjackSwiftLogBackend */; };
+		372B09812A6AB96A008E847E /* SwipeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372B09802A6AB96A008E847E /* SwipeActions.swift */; };
+		372B09832A6AB9A7008E847E /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372B09822A6AB9A7008E847E /* SectionHeaderView.swift */; };
+		372B09852A6AB9E2008E847E /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372B09842A6AB9E2008E847E /* DeadlineView.swift */; };
+		372B09872A6ABA05008E847E /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372B09862A6ABA05008E847E /* CheckBoxView.swift */; };
+		372B09892A6ABA7D008E847E /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372B09882A6ABA7D008E847E /* ListRowView.swift */; };
+		372B098B2A6ABAA4008E847E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372B098A2A6ABAA4008E847E /* Constants.swift */; };
+		372B098D2A6ABAE6008E847E /* CornerRadius+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372B098C2A6ABAE6008E847E /* CornerRadius+Extension.swift */; };
 		373349B82A41C6BA006BA9F6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373349B72A41C6BA006BA9F6 /* Colors.swift */; };
 		373349BA2A41CC3A006BA9F6 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373349B92A41CC3A006BA9F6 /* Fonts.swift */; };
 		374FFEFC2A3A5D1200B6EA5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFEFB2A3A5D1200B6EA5B /* AppDelegate.swift */; };
@@ -28,10 +35,22 @@
 		374FFF132A3A5D1400B6EA5B /* Yandex_Homework_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFF122A3A5D1400B6EA5B /* Yandex_Homework_1Tests.swift */; };
 		374FFF2C2A3A5D2200B6EA5B /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFF2B2A3A5D2200B6EA5B /* TodoItem.swift */; };
 		374FFF2E2A3A5D2F00B6EA5B /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FFF2D2A3A5D2F00B6EA5B /* FileCache.swift */; };
+		3751846E2A68AEC30052FD4D /* Yandex_Homework_2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751846D2A68AEC30052FD4D /* Yandex_Homework_2App.swift */; };
+		375184702A68AEC30052FD4D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751846F2A68AEC30052FD4D /* ContentView.swift */; };
+		375184722A68AEC40052FD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375184712A68AEC40052FD4D /* Assets.xcassets */; };
+		375184752A68AEC40052FD4D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375184742A68AEC40052FD4D /* Preview Assets.xcassets */; };
+		375546CF2A6961C200F7683C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373349B72A41C6BA006BA9F6 /* Colors.swift */; };
+		375546D02A6964D400F7683C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374FFF042A3A5D1400B6EA5B /* Assets.xcassets */; };
+		375546D12A696CA600F7683C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37EC21BD2A46AA15000DE90B /* Localizable.strings */; };
 		375D55E32A3D20A100C11276 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D55E22A3D20A100C11276 /* TestConstants.swift */; };
 		3762A74C2A61949B00FC739E /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762A74B2A61949B00FC739E /* NotificationBanner.swift */; };
 		3762A74E2A62092D00FC739E /* TodoLocalDBProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762A74D2A62092D00FC739E /* TodoLocalDBProtocol.swift */; };
 		3762A7522A62185D00FC739E /* TodoItem in Frameworks */ = {isa = PBXBuildFile; productRef = 3762A7512A62185D00FC739E /* TodoItem */; };
+		377F7BE22A6B2FFC002246B9 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F7BE12A6B2FFC002246B9 /* DetailsView.swift */; };
+		377F7BE62A6B6BEA002246B9 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F7BE52A6B6BEA002246B9 /* StackView.swift */; };
+		377F7BE82A6B6C10002246B9 /* RemoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F7BE72A6B6C10002246B9 /* RemoveView.swift */; };
+		377F7BEA2A6B6C2D002246B9 /* ViewForPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F7BE92A6B6C2D002246B9 /* ViewForPicker.swift */; };
+		377F7BEC2A6B6C4D002246B9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F7BEB2A6B6C4D002246B9 /* TextView.swift */; };
 		379FEF862A60D313005B56A3 /* Yandex-Homework-1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 379FEF842A60D313005B56A3 /* Yandex-Homework-1.xcdatamodeld */; };
 		379FEF882A60D4A5005B56A3 /* TodoCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FEF872A60D4A5005B56A3 /* TodoCoreData.swift */; };
 		37A5C4B92A5716E0003A7173 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5C4B82A5716E0003A7173 /* URLSession+Extension.swift */; };
@@ -77,6 +96,13 @@
 		3726837F2A4E63B7005AA9BC /* CreateNewTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskTableViewCell.swift; sourceTree = "<group>"; };
 		372683812A4F73DE005AA9BC /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		372683872A4FAA5F005AA9BC /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		372B09802A6AB96A008E847E /* SwipeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActions.swift; sourceTree = "<group>"; };
+		372B09822A6AB9A7008E847E /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		372B09842A6AB9E2008E847E /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
+		372B09862A6ABA05008E847E /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		372B09882A6ABA7D008E847E /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		372B098A2A6ABAA4008E847E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		372B098C2A6ABAE6008E847E /* CornerRadius+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CornerRadius+Extension.swift"; sourceTree = "<group>"; };
 		373349B72A41C6BA006BA9F6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		373349B92A41CC3A006BA9F6 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		374FFEF82A3A5D1200B6EA5B /* Yandex-Homework-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yandex-Homework-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,9 +116,19 @@
 		374FFF122A3A5D1400B6EA5B /* Yandex_Homework_1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yandex_Homework_1Tests.swift; sourceTree = "<group>"; };
 		374FFF2B2A3A5D2200B6EA5B /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		374FFF2D2A3A5D2F00B6EA5B /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		3751846B2A68AEC30052FD4D /* Yandex-Homework-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yandex-Homework-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3751846D2A68AEC30052FD4D /* Yandex_Homework_2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yandex_Homework_2App.swift; sourceTree = "<group>"; };
+		3751846F2A68AEC30052FD4D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		375184712A68AEC40052FD4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		375184742A68AEC40052FD4D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		375D55E22A3D20A100C11276 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		3762A74B2A61949B00FC739E /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
 		3762A74D2A62092D00FC739E /* TodoLocalDBProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoLocalDBProtocol.swift; sourceTree = "<group>"; };
+		377F7BE12A6B2FFC002246B9 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		377F7BE52A6B6BEA002246B9 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		377F7BE72A6B6C10002246B9 /* RemoveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveView.swift; sourceTree = "<group>"; };
+		377F7BE92A6B6C2D002246B9 /* ViewForPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForPicker.swift; sourceTree = "<group>"; };
+		377F7BEB2A6B6C4D002246B9 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		379FEF852A60D313005B56A3 /* Yandex-Homework-1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Yandex-Homework-1.xcdatamodel"; sourceTree = "<group>"; };
 		379FEF872A60D4A5005B56A3 /* TodoCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCoreData.swift; sourceTree = "<group>"; };
 		37A5C4B82A5716E0003A7173 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
@@ -145,9 +181,54 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		375184682A68AEC30052FD4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		372B098E2A6ABB08008E847E /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				372B098A2A6ABAA4008E847E /* Constants.swift */,
+				372B09822A6AB9A7008E847E /* SectionHeaderView.swift */,
+				3751846F2A68AEC30052FD4D /* ContentView.swift */,
+				372B098F2A6ABB19008E847E /* ListRow */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		372B098F2A6ABB19008E847E /* ListRow */ = {
+			isa = PBXGroup;
+			children = (
+				372B09882A6ABA7D008E847E /* ListRowView.swift */,
+				372B09802A6AB96A008E847E /* SwipeActions.swift */,
+				372B09902A6ABB21008E847E /* Subviews */,
+			);
+			path = ListRow;
+			sourceTree = "<group>";
+		};
+		372B09902A6ABB21008E847E /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				372B09862A6ABA05008E847E /* CheckBoxView.swift */,
+				372B09842A6AB9E2008E847E /* DeadlineView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		372B09912A6ABB54008E847E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				372B098C2A6ABAE6008E847E /* CornerRadius+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		373349B62A41C6AE006BA9F6 /* Design */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,9 +241,11 @@
 		374FFEEF2A3A5D1200B6EA5B = {
 			isa = PBXGroup;
 			children = (
+				373349B62A41C6AE006BA9F6 /* Design */,
 				37EC21BD2A46AA15000DE90B /* Localizable.strings */,
 				374FFEFA2A3A5D1200B6EA5B /* Yandex-Homework-1 */,
 				374FFF112A3A5D1400B6EA5B /* Yandex-Homework-1Tests */,
+				3751846C2A68AEC30052FD4D /* Yandex-Homework-2 */,
 				374FFEF92A3A5D1200B6EA5B /* Products */,
 				EECDD905B5338C3918027CFE /* Pods */,
 				7ADB6B281BEC2A745CACB767 /* Frameworks */,
@@ -174,6 +257,7 @@
 			children = (
 				374FFEF82A3A5D1200B6EA5B /* Yandex-Homework-1.app */,
 				374FFF0E2A3A5D1400B6EA5B /* Yandex-Homework-1Tests.xctest */,
+				3751846B2A68AEC30052FD4D /* Yandex-Homework-2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,7 +272,6 @@
 				37EC21B12A46771D000DE90B /* Services */,
 				37EC21B02A4676E8000DE90B /* Helpers */,
 				37B18E0D2A45D4F80061DC06 /* Todo */,
-				373349B62A41C6AE006BA9F6 /* Design */,
 				374FFF042A3A5D1400B6EA5B /* Assets.xcassets */,
 				374FFF062A3A5D1400B6EA5B /* LaunchScreen.storyboard */,
 				374FFF092A3A5D1400B6EA5B /* Info.plist */,
@@ -205,6 +288,27 @@
 			path = "Yandex-Homework-1Tests";
 			sourceTree = "<group>";
 		};
+		3751846C2A68AEC30052FD4D /* Yandex-Homework-2 */ = {
+			isa = PBXGroup;
+			children = (
+				3751846D2A68AEC30052FD4D /* Yandex_Homework_2App.swift */,
+				377F7BE32A6B6BCD002246B9 /* DetailsView */,
+				372B09912A6ABB54008E847E /* Extensions */,
+				372B098E2A6ABB08008E847E /* MainView */,
+				375184712A68AEC40052FD4D /* Assets.xcassets */,
+				375184732A68AEC40052FD4D /* Preview Content */,
+			);
+			path = "Yandex-Homework-2";
+			sourceTree = "<group>";
+		};
+		375184732A68AEC40052FD4D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				375184742A68AEC40052FD4D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		3762A7532A621B8600FC739E /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +317,26 @@
 				37A5C4BC2A578659003A7173 /* TodoDTO.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		377F7BE32A6B6BCD002246B9 /* DetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				377F7BE42A6B6BD8002246B9 /* SubViews */,
+				377F7BE12A6B2FFC002246B9 /* DetailsView.swift */,
+			);
+			path = DetailsView;
+			sourceTree = "<group>";
+		};
+		377F7BE42A6B6BD8002246B9 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				377F7BE52A6B6BEA002246B9 /* StackView.swift */,
+				377F7BE72A6B6C10002246B9 /* RemoveView.swift */,
+				377F7BE92A6B6C2D002246B9 /* ViewForPicker.swift */,
+				377F7BEB2A6B6C4D002246B9 /* TextView.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 		37B18DF52A4335F30061DC06 /* TodoViews */ = {
@@ -406,6 +530,25 @@
 			productReference = 374FFF0E2A3A5D1400B6EA5B /* Yandex-Homework-1Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		3751846A2A68AEC30052FD4D /* Yandex-Homework-2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 375184782A68AEC40052FD4D /* Build configuration list for PBXNativeTarget "Yandex-Homework-2" */;
+			buildPhases = (
+				375184672A68AEC30052FD4D /* Sources */,
+				375184682A68AEC30052FD4D /* Frameworks */,
+				375184692A68AEC30052FD4D /* Resources */,
+				375546D22A6973A200F7683C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3751847A2A68B1CF0052FD4D /* PBXTargetDependency */,
+			);
+			name = "Yandex-Homework-2";
+			productName = "Yandex-Homework-2";
+			productReference = 3751846B2A68AEC30052FD4D /* Yandex-Homework-2.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -422,6 +565,9 @@
 					374FFF0D2A3A5D1400B6EA5B = {
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 374FFEF72A3A5D1200B6EA5B;
+					};
+					3751846A2A68AEC30052FD4D = {
+						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
@@ -445,6 +591,7 @@
 			targets = (
 				374FFEF72A3A5D1200B6EA5B /* Yandex-Homework-1 */,
 				374FFF0D2A3A5D1400B6EA5B /* Yandex-Homework-1Tests */,
+				3751846A2A68AEC30052FD4D /* Yandex-Homework-2 */,
 			);
 		};
 /* End PBXProject section */
@@ -467,6 +614,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		375184692A68AEC30052FD4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				375184752A68AEC40052FD4D /* Preview Assets.xcassets in Resources */,
+				375546D12A696CA600F7683C /* Localizable.strings in Resources */,
+				375546D02A6964D400F7683C /* Assets.xcassets in Resources */,
+				375184722A68AEC40052FD4D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -486,6 +644,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#if which swiftlint > /dev/null; then\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
+		};
+		375546D22A6973A200F7683C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#if which swiftlint > /dev/null; then\n#  swiftlint\n#else\n # echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n\n#fi\n";
 		};
 		8071A9550F805B9C5A13EB92 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -605,6 +780,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		375184672A68AEC30052FD4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				372B098D2A6ABAE6008E847E /* CornerRadius+Extension.swift in Sources */,
+				372B09872A6ABA05008E847E /* CheckBoxView.swift in Sources */,
+				377F7BEA2A6B6C2D002246B9 /* ViewForPicker.swift in Sources */,
+				372B09852A6AB9E2008E847E /* DeadlineView.swift in Sources */,
+				377F7BE82A6B6C10002246B9 /* RemoveView.swift in Sources */,
+				375184702A68AEC30052FD4D /* ContentView.swift in Sources */,
+				372B09892A6ABA7D008E847E /* ListRowView.swift in Sources */,
+				375546CF2A6961C200F7683C /* Colors.swift in Sources */,
+				377F7BE22A6B2FFC002246B9 /* DetailsView.swift in Sources */,
+				377F7BEC2A6B6C4D002246B9 /* TextView.swift in Sources */,
+				372B09832A6AB9A7008E847E /* SectionHeaderView.swift in Sources */,
+				372B09812A6AB96A008E847E /* SwipeActions.swift in Sources */,
+				3751846E2A68AEC30052FD4D /* Yandex_Homework_2App.swift in Sources */,
+				372B098B2A6ABAA4008E847E /* Constants.swift in Sources */,
+				377F7BE62A6B6BEA002246B9 /* StackView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -612,6 +809,10 @@
 			isa = PBXTargetDependency;
 			target = 374FFEF72A3A5D1200B6EA5B /* Yandex-Homework-1 */;
 			targetProxy = 374FFF0F2A3A5D1400B6EA5B /* PBXContainerItemProxy */;
+		};
+		3751847A2A68B1CF0052FD4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 375184792A68B1CF0052FD4D /* TodoItem */;
 		};
 /* End PBXTargetDependency section */
 
@@ -854,6 +1055,66 @@
 			};
 			name = Release;
 		};
+		375184762A68AEC40052FD4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Yandex-Homework-2/Preview Content\"";
+				DEVELOPMENT_TEAM = 5TK92WAY4H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Yandex-Homework-2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		375184772A68AEC40052FD4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Yandex-Homework-2/Preview Content\"";
+				DEVELOPMENT_TEAM = 5TK92WAY4H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Yandex-Homework-2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -880,6 +1141,15 @@
 			buildConfigurations = (
 				374FFF262A3A5D1400B6EA5B /* Debug */,
 				374FFF272A3A5D1400B6EA5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		375184782A68AEC40052FD4D /* Build configuration list for PBXNativeTarget "Yandex-Homework-2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				375184762A68AEC40052FD4D /* Debug */,
+				375184772A68AEC40052FD4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -920,6 +1190,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3726839D2A4FCB61005AA9BC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
 			productName = CocoaLumberjackSwiftLogBackend;
+		};
+		375184792A68B1CF0052FD4D /* TodoItem */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3762A7502A62185D00FC739E /* XCRemoteSwiftPackageReference "TodoItem" */;
+			productName = TodoItem;
 		};
 		3762A7512A62185D00FC739E /* TodoItem */ = {
 			isa = XCSwiftPackageProductDependency;
